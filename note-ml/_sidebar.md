@@ -1,6 +1,4 @@
 * [机器学习](opencv/README.md)
-  - [机器视觉](opencv/README.md)
-    * [图像操作与增强知识梳理](opencv/OpenCV-图像操作与增强知识梳理.md)
   - [Udacity-机器学习项目](udacity/README.md)
     * [练习项目：泰坦尼克号乘客存活情况](udacity/titanic_survival_exploration/titanic_udacity.ipynb)
     * [预测波士顿房价](udacity/boston_housing/boston_housing.md)
