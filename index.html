@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="../favicon.ico" rel="icon">
+    <link rel="stylesheet" href="src/docsify/index.css" />
+    <title>文 档 库</title>
+    <style>
+      
+    </style>
+</head>
+
+<body>
+    <div class="e-header" style="padding-left: 20px;">
+        <div style="float: left;height: 60px;line-height: 60px;font-size: 18px;">文 档 库</div>
+        <div class="e-nav-group">
+            <div class="nav-toggle"><i></i></div>
+            <ul class="e-nav">
+                <li class="e-nav-item e-this">
+                    <a e-href="datawhale-team/"> DataWhale组队 </a>
+                </li>
+<!--                <li class="e-nav-item ">-->
+<!--                    <a e-href="ml-note/"> 机器学习 </a>-->
+<!--                </li>-->
+<!--                <li class="e-nav-item">-->
+<!--                    <a e-href="job/"> 刷题 </a>-->
+<!--                </li>-->
+<!--                <li class="e-nav-item">-->
+<!--                    <a e-href="learing-algorithm/"> 算法 </a>-->
+<!--                </li>-->
+<!--                <li class="e-nav-item">-->
+<!--                    <a e-href="competition-baseline/"> 科学竞赛 </a>-->
+<!--                </li>-->
+<!--               -->
+                <li class="e-nav-item ">
+                    <a e-href="book-note/"> 读书笔记 </a>
+                </li>
+            </ul>
+        </div>
+        <div class="user-group">
+            <a class="lg-btn" id="btnClear">清缓存</a>
+            <a class="lg-btn" id="btnTheme"></a>
+        </div>
+    </div>
+    <div class="e-iframe">
+        <iframe src="datawhale-team/" id="_ef" frameborder="0"></iframe>
+    </div>
+    <div class="banner">
+        <div class="wwads-cn wwads-vertical" data-id="73" style="max-width:200px"></div>
+    </div>
+    <!-- js部分 -->
+    <script type="text/javascript" src="https://wwads.cn/js/makemoney.js" async></script>
+    <script src="src/js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function() {
+            var $body = $('body'),
+                $iframe = $('#_ef');
+            $body.on('click', '[e-href]', function() {
+                $('.e-header .e-nav-item.e-this').removeClass('e-this');
+                $(this).parent().addClass('e-this');
+                $iframe.attr('src', $(this).attr('e-href'));
+            });
+
+            /* 清除缓存 */
+            $('#btnClear').click(function() {
+                localStorage.clear();
+                localStorage.setItem('doc_theme', $body.hasClass('ew-dark') ? 'ew-dark' : '');
+                $iframe.attr('src', $iframe.attr('src'));
+                showMsg('清除成功');
+            });
+
+            /* 显示提示信息 */
+            function showMsg(msg) {
+                if (window.msgTimer) clearTimeout(window.msgTimer);
+                $('.ew-tips-msg').remove();
+                $body.append('<div class="ew-tips-msg">' + msg + '</div>');
+                window.msgTimer = setTimeout(function() {
+                    $('.ew-tips-msg').remove();
+                }, 1500);
+            }
+
+            /* 切换主题 */
+            $('#btnTheme').click(function() {
+                $body.toggleClass('ew-dark');
+                $iframe[0].contentWindow.$('body').toggleClass('ew-dark');
+                localStorage.setItem('doc_theme', $body.hasClass('ew-dark') ? 'ew-dark' : '');
+            });
+            var theme = localStorage.getItem('doc_theme');
+            if (theme) $body.addClass(theme);
+
+        });
+    </script>
+</body>
+
+</html>

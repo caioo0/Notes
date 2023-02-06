@@ -1,0 +1,7 @@
+- [目录](README.md)
+    - 预测指标
+        - [R2（R-Square）指标](docs/evaluation/R2.md)
+        - [MSE（Mean Square Error）指标](docs/evaluation/MSE.md)
+        - [RMSE（Root Mean Square Error）指标](docs/evaluation/RMSE.md)
+        - [MAE（Mean Absolute Error）指标](docs/evaluation/MAE.md)
+        - [MAPE（Mean Absolute Percentage Error）指标](docs/evaluation/MAPE.md)
