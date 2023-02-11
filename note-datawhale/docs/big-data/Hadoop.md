@@ -347,9 +347,9 @@ This command was run using /root/install/hadoop-2.7.7/share/hadoop/common/hadoop
 
 ```
 
-## 1.5  Hadoop 测试案例 :id=1-5
+## 2.4  Hadoop 测试案例 :id=1-5
 
-### 1.5.1 官方案例
+### 2.4.1 官方案例
 
 利用Hadoop自带的`WordCount`示例程序进行检查集群，并在主节点上进行如下操作，创建执行MapReduce任务所需的HDFS目录：
 
