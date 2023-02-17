@@ -1,6 +1,7 @@
 - [读书笔记](README.md)
   - [初级管理会计笔记](Management_accounting/RAEDME.md)
     * [管理会计职业道德](Management_accounting/part01.md)
+    * [成本管理](Management_accounting/part02.md)
   - [《CEO 财务分析与决策（第二版）》](Financial_analysis_and_decision_making/README.md)
     * [第一章 解读企业财务报表](Financial_analysis_and_decision_making/chapter01.md)
     * [第二章 CEO 解读企业财务报表](Financial_analysis_and_decision_making/chapter02.md)
