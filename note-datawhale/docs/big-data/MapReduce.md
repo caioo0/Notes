@@ -2,7 +2,7 @@
 
 ---
 
-（本学习笔记整理自[大数据技术导论](https://github.com/datawhalechina/juicy-bigdata)，部分内容来自其他相关参考教程）
+（本学习笔记整理自[datawhale-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)，部分内容来自其他相关参考教程）
 
 ## 5.1 MapReduce概述
 

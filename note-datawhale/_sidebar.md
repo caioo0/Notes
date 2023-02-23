@@ -1,5 +1,5 @@
 * [DataWhale组队学习](README.md)
-  - [第46期 大数据技术导论](docs/big-data/README.md)
+  - [第46期 大数据处理技术导论](docs/big-data/README.md)
     * [基础：Linux常用命令](docs/big-data/Linux.md)
     * [task01:Hadoop](docs/big-data/Hadoop.md)
     * [task02:HDFS](docs/big-data/HDFS.md)
