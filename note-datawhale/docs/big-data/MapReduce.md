@@ -61,7 +61,7 @@ MapReduce无法像Mysql一样，在毫秒或者秒级内返回结果。
 
 ### 5.1.3 MapReduce 核心编程思想
 
-![img.png](D:\www\learning\BigData\Bigdata_development\chapter03_01.png)
+![image.png](./assets/1677117705174-image.png)
 
 1） 分布式的运算程序往往需要分成至少2个阶段。
 
