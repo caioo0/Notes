@@ -1,4 +1,5 @@
 # Chapter5 分布式并行编程模型MapReduce
+
 ---
 
 （本学习笔记整理自[大数据技术导论](https://github.com/datawhalechina/juicy-bigdata)，部分内容来自其他相关参考教程）
@@ -25,8 +26,6 @@ MapReduce处理过程分为两个阶段：
 - **机器学习：** 监督学习、非监督学习、分类算法如决策树、SVM等。
 - **自然语言处理：** 基于大数据的训练和预测；基于语料库构建单词同现矩阵，频繁项集数据挖掘、重复文档检测等；
 - **广告推荐：** 用户点击(CTR)和购买行为(CVR)预测。
-
-
 
 ### 5.1.2 MapReduce 优缺点
 
@@ -86,7 +85,7 @@ MapReduce无法像Mysql一样，在毫秒或者秒级内返回结果。
 
 
 | Java类型 | Hadoop Writable类型 |
-| -------- | ------------------- |
+| ---------- | --------------------- |
 | boolean  | BooleanWritable     |
 | byte     | ByteWritable        |
 | int      | IntWritable         |
@@ -115,20 +114,17 @@ MapReduce无法像Mysql一样，在毫秒或者秒级内返回结果。
 - Driver阶段
   - 相当于YARN集群的客户端，用于提交我们整个程序到YARN集群，提交的是封装了MapReduce程序相关运行参数的job对象。
 
-
-
 ## 5.2 MapReduce的工作流程
-
 
 ### 5.2.1 工作流程概述
 
 大规模数据集的处理包括:`分布式存储`和`分布式计算`
 
+
 | 对比   | 分布式存储         | 分布式计算       |
-| ------ | ------------------ | ---------------- |
+| -------- | -------------------- | ------------------ |
 | google | 布式文件系统GFS    | MapReduce        |
 | Hadoop | 分布式文件系统HDFS | Hadoop MapReduce |
-
 
 MapReduce的核心思想可以用**"分而治之"**来描述，即把一个大的数据集拆分成多个小数据块在多台机器上并行处理，也就是说，一个大的MapReduce作业的处理流程如下：
 
@@ -140,18 +136,14 @@ MapReduce的核心思想可以用**"分而治之"**来描述，即把一个大�
 > 不同的Map任务之间不会进行通信，不同的reduce任务之间也不会发生任何信息交换；用户不能显示地从一台机器向另一台机器发送消息，所有的数据交换都是通过mapreduce框架自身去实现的。
 > 在MapReduce的整个执行过程中，Map任务的输入文件，reduce任务的处理结果都是保存在分布式文件系统中的，而Map任务处理得到的中间结果则保存在本地存储（如磁盘）中。
 
-### 5.2.2 MapReduce的各个执行阶段 
+### 5.2.2 MapReduce的各个执行阶段
 
 MapReduce算法的执行过程：
 
 1. MapReduce框架使用`InputFormat`模块做`Map`前的预处理。作用：验证输入的格式是否符合输入定义，如果符合，将输入文件切分为逻辑上的多个`InputSplit`,`InputSplit`是MapReduce对文件进行处理和运算的输入单位，只是一个逻辑概念，每个`InputSplit`并没有对文件进行实际切割，知识记录了要处理的数据的位置和长度。
-
 2. 因为`InputSplit`是逻辑切分，所以，还需要通过`RecordReader`(RR)并根据`InputSplit`中的信息来处理`InputSplit`中的具体记录，加载数据并转换为适合`Map`任务读取的键值对，输入给`Map`任务。
-
 3. `Map`任务会根据用户自定义的映射规则，输出一系列的`<key,value>`作为中间结果。
-
 4. 为了让`Reduce`可以并行处理`Map`的结果，需要对`Map`的输出进行一定的分区，排序(Sort)、合并(Combine)和归并等操作，得到`<key,value-list>`形式的中间结果，再交给对应的`Reduce`程序进行处理，这个过程称为`shuffle`。
-
 5. `Reduce`以一系列`<key,value-list>`中间结果作为输入，执行用户定义的逻辑，输出结果给`OutputFormat`模块。
 6. `OutputFormat`模块会验证输出目录是否已经存在，以及输出结果类型是否符合配置文件中的配置类型，如果都满足，就输出`Reduce`的结果到分布式文件系统。
    ![img.png](images/chapter05-02.png)
@@ -160,7 +152,7 @@ MapReduce算法的执行过程：
 
 #### 5.2.3.1 shuffle过程简介
 
-> list(k2,v2) -> <k2,v2-list>的过程 
+> list(k2,v2) -> <k2,v2-list>的过程
 
 `shuffle`过程是MapReduce整个工作流程的核心环节，理解`shuffle`过程的基本原理，对于理解MapReduce流程至关重要。
 
@@ -170,13 +162,9 @@ MapReduce算法的执行过程：
 
 1. 在`Map`端的shuffle过程。`Map`的输出结果首先被写入缓存，当缓存满时，就启动溢写操作（分区、排序、合并），把缓存中的数据写入磁盘文件，并清空缓存，当启动溢写操作时，首先需要把缓存中的数据进行分区，然后对每个分区的数据进行排序(sort)和合并（Combine）,之后写入磁盘文件。 每次溢写操作会生成要给新的磁盘文件，随着`Map`任务的执行，磁盘中就会生成多个溢写文件。在`Map`任务全部结束之<前[todo]，这些溢写文件会被归并(merge)成一个大的磁盘文件，然后，通知相应的`reduce`任务来领取属于自己需要处理的数据。
 
-
 ![img.png](images/chapter05-05.png)
 
-
 2. 在`reduce`端的shuffle过程。`Reduce`任务从`Map`端的不同`Map`机器领回属于自己需要处理的那部分数据，然后，对数据进行归并(Merge)后交给`Reduce`处理。
-
-
 
 #### 5.2.3.2 Map端的shuffle过程
 
@@ -196,9 +184,7 @@ MapReduce算法的执行过程：
 
 提供给MapReduce的缓存的容量是有限的，默认大小是100MB. 随着`Map`任务的执行，缓存中`Map`结果的数量不断增加，很快就会占满整个缓存，这时，就必须启动溢写（spill）操作，把缓存中的内容一次性写入磁盘，并清空缓存。
 
-
-
-### 5.3  Wordcount 案例实操
+## 5.3  Wordcount 案例实操
 
 官方wordcount源码采用反编译工具反编译源码，发现WordCount案例有Map类、Reduce类和驱动类。且数据的类型是Hadoop自身封装的序列化类型。
 
@@ -443,12 +429,7 @@ ss      2
 xue     1
 ```
 
-
-
 ## 参考资料
 
 1. [大数据学习指南](https://ldbmcs.gitbook.io/bigdata/hadoop/fen-bu-shi-ji-suan-kuang-jia-mapreduce)
 2. [MapReduce 计算框架入门](https://www.cnblogs.com/shoufeng/p/15377088.html)
-
-
-
