@@ -5,7 +5,7 @@
     * [task02:HDFS](docs/big-data/HDFS.md)
     * [task03:HBase](docs/big-data/HBASE.md)
     * [task04:MapReduce](docs/big-data/MapReduce.md)
-    * [task05:期中作业](docs/big-data/MapReduce.md)
+    * [task05:期中作业](docs/big-data/Mid-exec.md)
     * [task06:Hive](docs/big-data/Hive.md)
     * [task07:Spark](docs/big-data/Spark.md)
     * [task08:期末大作业](docs/big-data/Spark.md)
