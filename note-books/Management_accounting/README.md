@@ -8,14 +8,10 @@
 - [成本管理](Management_accounting/part03.md)
 - [预算实务](Management_accounting/part04.md)
 
-### DataWhale文档
+### 参考文献
 
-【1】[第28期组队学习-基于Transformers的自然语言处理](https://github.com/datawhalechina/learn-nlp-with-transformers)    
-【2】[第29期组队学习-Matplotlib可视化](https://github.com/datawhalechina/fantastic-matplotlib)  
-【3】[Matplotlib 50题从入门到精通](https://www.heywhale.com/mw/notebook/5ec2336f693a730037a4415c)  
-【4】[第30期组队学习-树模型与集成学习](https://datawhalechina.github.io/machine-learning-toy-code/)  
-【5】[第31期组队学习-水很深的深度学习](https://datawhalechina.github.io/unusual-deep-learning)  
-【6】[第32期组队学习-推荐系统](https://github.com/datawhalechina/fun-rec)
+【1】[MBA智库.管理会计](https://wiki.mbalib.com/wiki/%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AE%A1)    
+
 
 ### 编写人员
 

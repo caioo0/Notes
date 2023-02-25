@@ -194,7 +194,7 @@ hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升�
 联邦集群 # 一些超大型企业可以使用的模式。主要为了应对超大规模的数据量对集群的主节点造 成的压力。
 ```
 
-### 2.3.3 单机版环境搭建
+### 2.3.3 单机版环境搭建(伪分布)
 
 <nav>
 <a href="#一前置条件">一、前置条件</a><br/>
@@ -203,18 +203,74 @@ hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升�
 <a href="#四HadoopYARN环境搭建">四、Hadoop(YARN)环境搭建</a><br/>
 </nav>
 
-一、前置条件
+首先我们搭建window10+wmware15+ubuntu20.04环境
 
-Hadoop 的运行依赖 JDK，需要预先安装;
+**Windows：**
 
-- **Linux下JDK的安装**
+**系统镜像下载链接：**[https://mirror.bjtu.edu.cn/ubuntu-releases/22.04.1/ubuntu-22.04.1-desktop-amd64.iso](https://mirror.bjtu.edu.cn/ubuntu-releases/22.04.1/ubuntu-22.04.1-desktop-amd64.iso)
 
-> **系统环境**：centos 7.6
+**✅参考教程：**[2020最新版VMware安装Ubuntu20.04教程(巨细)！](https://zhuanlan.zhihu.com/p/141033713)
+
+**Mac：**
+
+**下载VMware：**[https://customerconnect.vmware.com/cn/downloads/get-download?downloadGroup=FUS-PUBTP-2021H1](https://customerconnect.vmware.com/cn/downloads/get-download?downloadGroup=FUS-PUBTP-2021H1)
+
+**系统镜像下载链接：**[http://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04-live-server-arm64.iso](http://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04-live-server-arm64.iso)
+
+**✅参考教程：**[Mac M1芯片 安装vmware 和ubuntu 以及换源全过程](https://blog.csdn.net/nuomituansama/article/details/125909957)
+
+**🔑**：教程以Windows版为主，Mac版后续操作可能略有不同，自行百度,具体搭建见参考教程。
+
+接下来我们正式进入hadoop的搭建工作：
+
+**环境：**Linux Ubuntu 22.04   
+**要求：**在Linux系统的虚拟机上安装Hadoop软件，基本安装配置主要包括以下几个步骤：  
+
+1. 创建Hadoop用户  
+2. 安装Java  
+3. 设置SSH登录权限。  
+4. 单机安装配置。  
+5. 伪分布式安装配置。  
+
+- **创建Hadoop用户**
+
+** ** **创建用户的命令是**`adduser`：会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。
+
+```shell
+sudo adduser datawhale # 创建datawhale用户  我设置的密码为：12345678
+```
+
+![img_1.png](img_1.png)
+
+输入`sudo adduser datawhale sudo`,给用户'datawhale'赋予管理员'sudo'权限
+
+```shell
+sudo adduser datawhale sudo
+```
+
+![img_4.png](img_4.png)
+
+&emsp;&emsp;切换用户为`datawhale`用户，在该用户环境下进行操作。
+
+```shell
+su datawhale # 切换到datawhale用户
+```
+![img_3.png](img_3.png)
+
+输入sudo su查看添加管理员权限是否成功，成功下如图所示
+
+![img_5.png](img_5.png)
+
+- **安装 Hadoop 的运行依赖 JDK**
+
 > **JDK 版本**：jdk 1.8.0_20
+
+**注意：课程里默认是把安装包下载到`/data/hadoop`文件夹下，并解压到`/opt`下**
 
 1. 下载并解压
 
 在[官网](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 下载所需版本的 JDK，这里我下载的版本为[JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) ,下载后进行解压：
+
 
 ```shell
 [root@ java]# tar -zxvf jdk-8u201-linux-x64.tar.gz
@@ -292,6 +348,8 @@ ssh-keygen -t rsa
 ```
 
 二、Hadoop 环境搭建
+
+**注意：课程里默认是把安装包下载到`/data/hadoop`文件夹下，并解压到`/opt`下**
 
 这里使用的Hadoop版本为2.7.7。
 

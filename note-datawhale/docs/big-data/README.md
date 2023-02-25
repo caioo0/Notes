@@ -6,6 +6,22 @@
 4. [2020大数据面试题真题总结(附答案)](https://blog.csdn.net/wypblog/article/details/110251934)
 5. [算法工程师常见面试问题及相关资料汇总](https://cloud.tencent.com/developer/article/1518965)
 
+
+#### 环境安装
+
+- Java 8
+- Hadoop 3.3.1
+- HBase 2.3.5 or 2.4.8
+- Mysql 8.0.32
+- Hive 2.3.9
+- Spark 3.2.0
+
+**飞书下载地址**：https://datawhale.feishu.cn/drive/folder/fldcnvODsgRWbyqVW9ApavEVEJg   密码: hO38
+
+**百度网盘地址：**
+链接：https://pan.baidu.com/s/1-wVNYd1rdF9EPxcVatZMGQ?pwd=bdag
+提取码：bdag
+
 ### 练习项目
 
 1. [基于Flink实现的商品实时推荐系统](https://github.com/CheckChe0803/flink-recommandSystem-demo)
