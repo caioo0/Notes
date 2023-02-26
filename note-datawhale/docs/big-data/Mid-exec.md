@@ -23,9 +23,18 @@ Hadoop上大量 HDFS元数据信息存储在`NameNode`内存中,因此过多的�
 
 ### 6.1.3 HDFS中NameNode挂掉如何处理？
 
+**答：**
+方法一：
+将 SecondaryNameNode 中数据拷贝到 namenode 存储数据的目录；
+
+方法二：
+使用 -importCheckpoint 选项启动 namenode 守护进程，从而将 SecondaryNameNode
+中数据拷贝到 namenode 目录中。
 
 
 ### 6.1.4 HBase读写流程？
+
+**答：**
 
 Client 写入 -> 存入 MemStore，一直到 MemStore 满 -> Flush 成一个 StoreFile，
 直至增长到一定阈值 -> 触发 Compact 合并操作 -> 多个 StoreFile 合并成一个
@@ -40,10 +49,52 @@ Split 操作，把当前 Region Split 成 2 个 Region，Region 会下线，新 
 
 ### 6.1.5 MapReduce为什么一定要有Shuffle过程
 
+**答：**
+
+MapReduce计算模型包括两个阶段：Map和Reduce,Map映射，负责数据的过滤分发，而Reduce规约，负责数据的计算归并。Reduce的数据来源于Map，Map的输出即Reduce的输入。
+Shuffle 是来连接 Map 和 Reduce 的桥梁，一般把从 Map 产生输出开始到 Reduce 取得数据作为输入之前的过程称作shuffle。shuffle 分布在 Mapreduce 的 map 阶段和 reduce 阶段，在Map阶段包括Spill过程，在Reduce阶段包括copy和sort过程。 
+由于 Shuffle 阶段涉及磁盘的读写和网络传输，因此 Shuffle 的性能直接影响整个程序的性能和吞吐量。
 
 
 ### 6.1.6 MapReduce中的三次排序
 
+**答：**
 
+MapReduced计算模型的Map任务和Reduce任务的过程中，一共发生了三次排序：
+
+1）当map函数产生输出时，会首先写入内存的环形缓冲区，当达到设定的阀值，在刷写磁盘之前，后台线程会将缓冲区的数据划分成相应的分区。在每个分区中，后台线程按键进行内排序
+
+2）在Map任务完成之前，磁盘上存在多个已经分好区，并排好序的，大小和缓冲区一样的溢写文件，这时溢写文件将被合并成一个已分区且已排序的输出文件。由于溢写文件已经经过第一次排序，所有合并文件只需要再做一次排序即可使输出文件整体有序。
+
+3）在reduce阶段，需要将多个Map任务的输出文件copy到ReduceTask中后合并，由于经过第二次排序，所以合并文件时只需再做一次排序即可使输出文件整体有序
+
+在这3次排序中第一次是内存缓冲区做的内排序，使用的算法使快速排序，第二次排序和第三次排序都是在文件合并阶段发生的，使用的是归并排序。
 
 ### 6.1.7 MapReduce为什么不能产生过多小文件
+
+**答：**
+
+MapReduce默认情况下使用extInputFormat 切片，其机制：  
+（1）简单地按照文件的内容长度进行切片  
+（2）切片大小，默认等于Block大小，可单独设置    
+（3）切片时不考虑数据集整体，而是逐个针对每一个文件单独切片 MapTask  
+因此如果有大量小文件，就会产生大量的MapTask，处理效率极其低下。
+
+切片实例： 
+```
+（1）输入数据有两个文件：
+filel.txt 320M
+file2.txt 10M
+（2）经过 FilelnputFormat（TextInputFormat为其实现类）的切片机制运算后，形成的切片信息如下：
+filel.txt.splitl--0~128
+filel.txt.split2--128～256
+filel.txt.split3--256～320
+file2.txt.splitl--0～10M
+```
+
+MapReduce大量小文件的优化策略：
+
+**最优方案：** 在数据处理的最前端（预处理、采集），就将小文件合并成大文件，在上传到HDFS做后续 的分析
+
+**补救措施：** 如果HDFS中已经存在大量的小文件了，可以使用另一种Inputformat来做切片（CombineFileInputformat），它的切片逻辑跟FileInputformat不同，它可以将多个小文件从逻辑上规划到一个切片中，这样，多个小文件就可以交给一个 MapTask 处理。
+
