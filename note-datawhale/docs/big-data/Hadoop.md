@@ -271,7 +271,7 @@ su datawhale # 切换到datawhale用户
 
 在[官网](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 下载所需版本的 JDK，这里我下载的版本为[JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) ,下载后进行解压：
 
-
+华为镜像： https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
 ```shell
 [root@ java]# tar -zxvf jdk-8u201-linux-x64.tar.gz
 ```
