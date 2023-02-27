@@ -194,7 +194,7 @@ hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升�
 联邦集群 # 一些超大型企业可以使用的模式。主要为了应对超大规模的数据量对集群的主节点造 成的压力。
 ```
 
-### 2.3.3 单机版环境搭建(伪分布)
+### 2.3.3 单机版环境搭建
 
 <nav>
 <a href="#一前置条件">一、前置条件</a><br/>
@@ -221,16 +221,20 @@ hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升�
 
 **🔑**：教程以Windows版为主，Mac版后续操作可能略有不同，自行百度,具体搭建见参考教程。
 
+> 注意：
+> Ubuntu的默认root密码是随机的，即每次开机都有一个新的root密码。可以在终端输入命令 sudo passwd，然后输入当前用户的密码，终端会提示输入新的密码并确认，此时的密码就是root新密码。修改成功后，输入命令 su root，再输入新的密码就ok了。
+>
+> 另传输文件失败，可以查看这个链接：[解决XShell无法连接Ubuntu中的root用户](https://blog.csdn.net/zhanshixiang/article/details/104348192)
+
 接下来我们正式进入hadoop的搭建工作：
 
-**环境：**Linux Ubuntu 22.04   
-**要求：**在Linux系统的虚拟机上安装Hadoop软件，基本安装配置主要包括以下几个步骤：  
+**环境：**Linux Ubuntu 22.04**要求：**在Linux系统的虚拟机上安装Hadoop软件，基本安装配置主要包括以下几个步骤：
 
-1. 创建Hadoop用户  
-2. 安装Java  
-3. 设置SSH登录权限。  
-4. 单机安装配置。  
-5. 伪分布式安装配置。  
+1. 创建Hadoop用户
+2. 安装Java
+3. 设置SSH登录权限。
+4. 单机安装配置。
+5. 伪分布式安装配置。
 
 - **创建Hadoop用户**
 
@@ -255,6 +259,7 @@ sudo adduser datawhale sudo
 ```shell
 su datawhale # 切换到datawhale用户
 ```
+
 ![img_3.png](img_3.png)
 
 输入sudo su查看添加管理员权限是否成功，成功下如图所示
@@ -272,25 +277,36 @@ su datawhale # 切换到datawhale用户
 在[官网](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 下载所需版本的 JDK，这里我下载的版本为[JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) ,下载后进行解压：
 
 华为镜像： https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
+
+将`/data/hadoop`目录下`jdk-8u201-linux-x64.tar.gz`解压缩到`/opt`目录下。
+
 ```shell
-[root@ java]# tar -zxvf jdk-8u201-linux-x64.tar.gz
+sudo wget https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
+sudo tar -xzvf /data/hadoop/jdk-8u201-linux-x64.tar.gz -C /opt 
+sudo mv /opt/jdk1.8.0_201/ /opt/java # 文件夹重命名为`java`
+sudo chown -R datawhale:datawhale /opt/java # 修改`java`目录的所属用户
 ```
+
+其中，`wget`下载远程文件命令 ，`tar -xzvf` 对文件进行解压缩，-C 指定解压后，将文件放到/opt目录下。
+
+> **注意：**如果`sudo`命令无法使用，输入`sudo adduser datawhale sudo`,给用户'datawhale'赋予管理员'sudo'权限。具体见上文有说明。
 
 2. 设置环境变量
 
 ```shell
-[root@ java]# vi /etc/profile
+datawhale@datawhale001:/opt/java$ sudo vim /etc/profile
 ```
 
-添加如下配置：
+在该文件末尾，添加如下配置：
 
 ```shell
-export JAVA_HOME=/usr/java/jdk1.8.0_201  
+export JAVA_HOME=/opt/java  
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
 export PATH=${JAVA_HOME}/bin:$PATH
 ```
 
+使用`i`改为使用`Shift+:`，输入`wq`后回车，保存并关闭编辑器。
 执行 `source` 命令，使得配置立即生效：
 
 ```shell
@@ -320,9 +336,11 @@ Hadoop 组件之间需要基于 SSH 进行通讯。
 配置 ip 地址和主机名映射：
 
 ```shell
-vim /etc/hosts
+sudo vim hostname 
+
+sudo vim /etc/hosts
 # 文件末尾增加
-192.168.72.131  hadoop001
+192.168.163.128  datawhale001 # 分别为本机ip 本机hostname
 ```
 
 2. 生成公私钥
@@ -338,26 +356,46 @@ ssh-keygen -t rsa
 进入 `~/.ssh` 目录下，查看生成的公匙和私匙，并将公匙写入到授权文件：
 
 ```shell
-[root@@hadoop001 sbin]#  cd ~/.ssh
-[root@@hadoop001 .ssh]# ll
+datawhale@datawhale001:~/.ssh$  cd ~/.ssh
+datawhale@datawhale001:~/.ssh$ ll
 -rw-------. 1 root root 1675 3 月  15 09:48 id_rsa
 -rw-r--r--. 1 root root  388 3 月  15 09:48 id_rsa.pub
 # 写入公匙到授权文件
-[root@hadoop001 .ssh]# cat id_rsa.pub >> authorized_keys
-[root@hadoop001 .ssh]# chmod 600 authorized_keys
+datawhale@datawhale001:~/.ssh$ cat id_rsa.pub >> authorized_keys
+datawhale@datawhale001:~/.ssh$ chmod 600 authorized_keys
+```
+
+通过`ssh localhost`命令来检测一下是否需要输入密码。 测试ssh连接，看到“sucessful login”，则配置成功，命令如下：
+
+emsp;&emsp;这时可以通过`ssh localhost`命令来检测一下是否需要输入密码。 测试ssh连接，看到“sucessful login”，则配置成功，如果显示拒绝访问，则安装openssh-server,如下：
+
+```angular2html
+datawhale@datawhale001:~/.ssh$ ssh localhost
+ssh: connect to host localhost port 22: Connection refused 
+datawhale@datawhale001:~/.ssh$ sudo apt-get install openssh-server # 
+
 ```
 
 二、Hadoop 环境搭建
 
-**注意：课程里默认是把安装包下载到`/data/hadoop`文件夹下，并解压到`/opt`下**
+安装Hadoop版本为3.2.1。下载地址为http://archive.apache.org/dist/hadoop/core/hadoop-3.3.1/hadoop-3.3.1.tar.gz  （或者在readme文件中提供的链接地址下载也可）
 
-这里使用的Hadoop版本为2.7.7。
-
-将该文件夹解压后，可以放置到自己喜欢的位置，如`/root/install`文件夹下。
+将该文件夹解压后，可以放置到自己喜欢的位置，如`/data/hadoop`文件夹下，注意，文件夹的用户和组必须都为hadoop。
 
 ```shell
-tar -zxvf hadoop-2.7.2.tar.gz -C /root/install/
 
+datawhale@datawhale001:/data/hadoop$ sudo wget http://archive.apache.org/dist/hadoop/core/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+ 
+sudo tar -xzvf /data/hadoop/hadoop-3.3.1.tar.gz -C /opt/
+
+sudo mv /opt/hadoop-3.3.1/ /opt/hadoop
+
+```
+
+&emsp;修改hadoop目录的所属用户和所属组，命令如下
+
+```
+sudo chown -R datawhale:datawhale /opt/hadoop
 ```
 
 打开`/etc/profile`文件，命令如下：
@@ -366,12 +404,19 @@ tar -zxvf hadoop-2.7.2.tar.gz -C /root/install/
 sudo vi /etc/profile
 在文件末尾，添加如下内容：
 #hadoop
-HADOOP_HOME=/root/install/hadoop-2.7.7
+HADOOP_HOME=/opt/hadoop
 export HADOOP_HOME
-export HADOOP_CLASSPATH=`hadoop classpath`
-export HADOOP_CLASSPATH=$CLASSPATH:$HIVE_HOME/lib/*
+export PATH=$HADOOP_HOME/bin:$PATH
 
 
+```
+
+使用`Shift+:`，输入`wq`后回车，保存并关闭编辑器。
+
+输入以下命令，使得环境变量生效：
+
+```shell
+source /etc/profile
 ```
 
 对于单机安装，首先需要更改`hadoop-env.sh`文件，用于配置Hadoop运行的环境变量，命令如下：
@@ -379,7 +424,7 @@ export HADOOP_CLASSPATH=$CLASSPATH:$HIVE_HOME/lib/*
 修改hadoop-env.sh文件配置
 
 ```shell
-cd /root/install/hadoop-2.7.7
+cd /opt/hadoop
 vi etc/hadoop/hadoop-env.sh
 
 ```
@@ -387,7 +432,7 @@ vi etc/hadoop/hadoop-env.sh
 在文件末尾，添加如下内容：
 
 ```shell
-export JAVA_HOME=/root/install/jdk1.8.0_65
+export JAVA_HOME=/opt/java/
 
 
 ```
@@ -395,19 +440,19 @@ export JAVA_HOME=/root/install/jdk1.8.0_65
 通过查看版本号命令验证是否安装成功，命令如下：
 
 ```shell
-[root@hadoop5 hadoop-2.7.7]# hadoop version
-Hadoop 2.7.7
-Subversion Unknown -r c1aad84bd27cd79c3d1a7dd58202a8c3ee1ed3ac
-Compiled by stevel on 2018-07-18T22:47Z
-Compiled with protoc 2.5.0
-From source with checksum 792e15d20b12c74bd6f19a1fb886490
-This command was run using /root/install/hadoop-2.7.7/share/hadoop/common/hadoop-common-2.7.7.jar
+root@datawhale001:/opt/java# hadoop version
+Hadoop 3.3.1
+Source code repository https://github.com/apache/hadoop.git -r a3b9c37a397ad4188041dd80621bdeefc46885f2
+Compiled by ubuntu on 2021-06-15T05:13Z
+Compiled with protoc 3.7.1
+From source with checksum 88a4ddb2299aca054416d6b7f81ca55
+This command was run using /opt/hadoop/share/hadoop/common/hadoop-common-3.3.1.jar
+root@datawhale001:/opt/java# 
+
 
 ```
 
-## 2.4  Hadoop 测试案例 :id=1-5
-
-### 2.4.1 官方案例
+### 2.3.4 官方案例1
 
 利用Hadoop自带的`WordCount`示例程序进行检查集群，并在主节点上进行如下操作，创建执行MapReduce任务所需的HDFS目录：
 
@@ -443,7 +488,7 @@ hadoop fs -put test /input
 执行wordcount程序，命令如下：
 
 ```shell
-hadoop jar /root/install/hadoop-2.7.7/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar wordcount /input /out
+hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar wordcount /input /out
 
 ```
 
@@ -464,6 +509,8 @@ Found 2 items
 
 可以看到，结果中包含`_SUCCESS`文件，表示Hadoop集群运行成功。
 
+![image-20230227115650384](C:\Users\choi\AppData\Roaming\Typora\typora-user-images\image-20230227115650384.png)
+
 查看具体的输出结果，命令如下：
 
 ```
@@ -473,8 +520,90 @@ hadoop fs -text /out/part-r-00000
 
 输出结果如下：
 
+![image-20230227115722900](C:\Users\choi\AppData\Roaming\Typora\typora-user-images\image-20230227115722900.png)
+
+### 2.3.5 官方实例2
+
+emsp;&emsp;Hadoop文档中还附带了一些例子来供我们测试，可以运行`WordCount`的示例，检测一下Hadoop安装是否成功。运行示例的步骤如下：
+
+1. 在`/opt/hadoop/`目录下新建`input`文件夹，用来存放输入数据；
+2. 将`etc/hadoop/`文件夹下的配置文件拷贝至`input`文件夹中；
+3. 在`hadoop`目录下新建`output`文件夹，用于存放输出数据；
+4. 运行`wordCount`示例
+5. 查看输出数据的内容。
+
+执行命令如下：
+
 ```shell
-Hello   1
-world!  1
+cp etc/hadoop/*.xml input
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar grep input output 'dfs[a-z.]+'
+cat output/*
+```
+
+![img_6.png](img_6.png)
+
+### 2.3.6 Hadoop伪分布式安装
+
+**伪分布式安装是指在一台机器上模拟一个小的集群**。
+
+当Hadoop应用于集群时，不论是伪分布式还是真正的分布式运行，都需要通过配置文件对各组件的协同工作进行设置。
+
+对于伪分布式配置，我们需要修改4个文件：
+
+- `core-site.xml`
+- `hdfs-site.xml`
+- `mapred-site.xml`
+- `yarn-site.xml`
+
+1）**修改xml文件配置**
 
 ```
+1. vim /opt/hadoop/etc/hadoop/core-site.xml
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+
+
+2. vim /opt/hadoop/etc/hadoop/hdfs-site.xml
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>
+
+3. vim /opt/hadoop/etc/hadoop/mapred-site.xml
+
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
+    </property>
+</configuration>
+
+4. vim /opt/hadoop/etc/hadoop/yarn-site.xml
+
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+    </property>
+</configuration>
+```
+
+添加下面配置到`<configuration>与</configuration>`标签之间（**默认配置为空，如果有内容注意是添加不是替换**）.
+
+`core-site.xml`配置文件的格式十分简单，`<name>`标签代表了配置项的名字，`<value>`项设置的是配置的值。对于该文件，我们只需要在其中指定HDFS的地址和端口号，端口号按照官方文档设置为9000即可。
