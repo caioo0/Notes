@@ -9,8 +9,8 @@
 由于hive涉及内容有点多，所以我用了3个篇幅来说明：
 
 1. [task06之一：数据仓库Hive基础](hive.md)
-2. [task06之二:Hive-数据仓库进阶](hive2.md)
-3. [task06之三：Apache Hive高级实战](hive3.md)
+2. [task06之二:Hive-数据仓库进阶](Hive2.md)
+3. [task06之三：Apache Hive高级实战](Hive3.md)
 
 
 ## 6.0 数据仓库
