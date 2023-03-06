@@ -10,7 +10,7 @@
     * [task06:Hive之二](docs/big-data/Hive2.md)
     * [task06:Hive之三](docs/big-data/Hive3.md)
     * [task07:Spark](docs/big-data/Spark.md)
-    * [task08:期末大作业](docs/big-data/Spark.md)
+    * [task08:期末大作业](docs/big-data/end-exec.md)
     * [第八章 Flink](docs/big-data/Flink.md)
     * [第九章 YARN](docs/big-data/YARN.md)
     * [第十章 kafka](docs/big-data/Kafka.md)
