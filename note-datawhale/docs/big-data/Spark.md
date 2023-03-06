@@ -1,6 +1,10 @@
-# 第七章：Spark
+# task07：Spark
+---
+（本学习笔记整理自[datawhale-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)，部分内容来自其他相关参考教程）
 
 ## 7.0 引言
+
+![img_7.png](img_7.png)
 
 ### 7.0.1 Spark简介
 
@@ -161,7 +165,6 @@ protected def getPreferredLocations(split: Partition): Seq[String] = Nil
 
 RDD 有两种创建方式，分别介绍如下：
 
-
 #### 7.1.4.1 由现有集合创建
 
 这里使用`spark-shell`进行测试，启动命令如下：
@@ -199,6 +202,7 @@ val fileRDD = sr.textFile("/usr/file/emp.txt")
 // 获取第一行文本
 fileRDD.take(1)
 ```
+
 使用外部存储系统时需要注意以下两点：
 
 - 如果在集群环境下从本地文件系统读取数据，则要求该文件必须在集群中所有机器上都存在，且路径相同；
@@ -212,7 +216,6 @@ fileRDD.take(1)
 - wholeTextFiles：其返回格式是 RDD[(String, String)]，元组中第一个参数是文件路径，第二个参数是文件内容；
 - 两者都提供第二个参数来控制最小分区数；
 - 从 HDFS 上读取文件时，Spark 会为每个块创建一个分区。
-
 
 ## 7.2 Spark架构原理
 
