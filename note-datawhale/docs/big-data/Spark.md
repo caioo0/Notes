@@ -1,5 +1,7 @@
 # task07：Spark
+
 ---
+
 （本学习笔记整理自[datawhale-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)，部分内容来自其他相关参考教程）
 
 ## 7.0 引言
@@ -49,7 +51,15 @@ Spark 基于Spark Core 扩展了四个核心组件，分别用于满足不同领
 
 ![img.png](images/chapter07-03.png)
 
-#### 7.0.4.1 Spark SQL 主要用于结构化数据的处理，其具有以下特点：
+**Ø** ***\*Spark Core\****
+
+Spark Core中提供了Spark最基础与最核心的功能，Spark其他的功能如：Spark SQL，Spark Streaming，GraphX, MLlib都是在Spark Core的基础上进行扩展的
+
+**Ø** ***\*Spark SQL\****
+
+Spark SQL是Spark用来操作结构化数据的组件。通过Spark SQL，用户可以使用SQL或者Apache Hive版本的SQL方言（HQL）来查询数据。
+
+**Spark SQL 特点：**
 
 - 能够将 SQL 查询与 Spark 程序无缝混合，允许您使用 SQL 或DataFrame API 对结构化数据进行查询；
 - 支持多种数据源，包括 Hive,Avro,parquet,ORC,JSON 和 JDBC;
@@ -57,7 +67,9 @@ Spark 基于Spark Core 扩展了四个核心组件，分别用于满足不同领
 - 支持标准的 JDBC 和 ODBC 连接；
 - 支持优化器，列式存储和代码生成等特性，以提高查询效率；
 
-#### 7.0.4.2 Spark Streaming
+**Ø** ***\*Spark Streaming\****
+
+Spark Streaming是Spark平台上针对实时数据进行流式计算的组件，提供了丰富的处理数据流的API。
 
 Spark Streaming 主要用于快速构建可扩展，高吞吐量，高容错的流处理程序。支持从HDFS,Flume,kafka,Twitter和ZeroMQ读取数据，并进行处理。
 
@@ -67,9 +79,11 @@ Spark Streaming 本质上十微批处理，它将数据流进行极小粒度的�
 
 ![img.png](images/chapter07-05.png)
 
-#### 7.0.4.3 MLlib
+**Ø** ***\*Spark MLlib\****
 
-MLlib 是 Spark 的机器学习库。其设计目标是使得机器学习变得简单且可扩展。它提供了以下工具：
+MLlib是Spark提供的一个机器学习算法库。MLlib不仅提供了模型评估、数据导入等额外的功能，还提供了一些更底层的机器学习原语。
+
+MLlib 的一些工具：
 
 - **常见的机器学习算法** ：如分类，回归，聚类和协同过滤；
 - **特征化** ：特征提取，转换，降维和选择；
@@ -77,13 +91,17 @@ MLlib 是 Spark 的机器学习库。其设计目标是使得机器学习变得�
 - **持久性** ：保存和加载算法，模型，管道数据；
 - **实用工具** ：线性代数，统计，数据处理等。
 
-#### 7.0.4.4 Graphx
+**Ø** ***\*Spark GraphX\****
 
-GraphX 是 Spark 中用于图形计算和图形并行计算的新组件。在高层次上，GraphX 通过引入一个新的图形抽象来扩展 RDD(一种具有附加到每个顶点和边缘的属性的定向多重图形)。为了支持图计算，GraphX 提供了一组基本运算符（如： subgraph，joinVertices 和 aggregateMessages）以及优化后的 Pregel API。此外，GraphX 还包括越来越多的图形算法和构建器，以简化图形分析任务。
+GraphX是Spark面向图计算提供的框架与算法库。
+
+在高层次上，GraphX 通过引入一个新的图形抽象来扩展 RDD(一种具有附加到每个顶点和边缘的属性的定向多重图形)。为了支持图计算，GraphX 提供了一组基本运算符（如： subgraph，joinVertices 和 aggregateMessages）以及优化后的 Pregel API。此外，GraphX 还包括越来越多的图形算法和构建器，以简化图形分析任务。
+
+#### 
 
 ### 7.0.5 相关的几个问题
 
-#### 1. Spark和MapReduce在处理问题的方式上有什么区别
+#### 1）Spark和MapReduce在处理问题的方式上有什么区别
 
 - MapReduce每一个步骤发生在内存中，但产生的中间值（溢写文件）都会写入在磁盘里，下一步操作时又会将这个中间值`merge`到内存中，如此循环直到最终完成计算。MapReduce每一个步骤发生在内存中，但产生的中间值（溢写文件）都会写入在磁盘里，下一步操作时又会将这个中间值`merge`到内存中，如此循环直到最终完成计算。
 
@@ -93,7 +111,7 @@ GraphX 是 Spark 中用于图形计算和图形并行计算的新组件。在高
 
 ![img.png](images/chapter07-0-2.png)
 
-#### 2. Spark与Hadoop、MapReduce、HDFS的关系?
+#### 2） Spark与Hadoop、MapReduce、HDFS的关系?
 
 **Hadoop处理大数据的流程:**
 
@@ -113,7 +131,9 @@ Spark不像Hadoop一样采取磁盘读写，而是 **基于性能更高的内存
 
 ### 7.1.1 RDD概述
 
-RDD是Spark的核心概念，是弹性数据集（Resilient Distributed Datasets）的缩写。RDD既是Spark面向开发者的编程模型，又是Spark自身架构的核心元素。
+RDD （Resilient Distributed Datasets） 叫做弹性分布式数据集，是 spark中最基本的数据处理模型。
+
+代码中是一个抽象类，它代表一个弹性的、不可变、可分区、里面的元素可并行计算的集合。
 
 大数据计算就是在大规模的数据集上进行一系列的数据计算处理。类比MapReduce，针对输入数据，将计算过程分为两个阶段，Map阶段和Reduce阶段，可以理解成是**面向过程**的大数据计算。我们在用MapReduce编程的时候，思考的是，如何将计算逻辑用 Map和Reduce两个阶段实现，map和reduce函数的输入和输出是什么。
 
@@ -219,4 +239,178 @@ fileRDD.take(1)
 
 ## 7.2 Spark架构原理
 
-Spark和MapReduce一样，也遵循着 移动计算而非移动数据这一大数据计算基本原则。MapReduce通过固定的`map`与`reduce`分阶段计算，而Spark的计算框架通过`DAG`来实现计算。
+> 移动计算而非移动数据
+
+MapReduce：通过固定的`map`与`reduce`分阶段计算
+
+Spark：计算框架通过`DAG`来实现计算。
+
+### 7.2.1 spark计算阶段
+
+&emsp;MapReduce中，一个应用一次只运行一个`map`和一个`reduce`，而Spark可以根据应用的复杂程度，将过程分割成更多的计算阶段（stage），这些计算阶段组成一个有向无环图（DAG），Spark任务调度器根据**DAG的依赖关系**执行计算阶段（stage）。
+&emsp;&emsp;Spark比MapReduce快100 多倍。因为某些机器学习算法可能需要进行大量的迭代计算，产生数万个计算阶段，这些计算阶段在一个应用中处理完成，而不是像MapReduce那样需要启动数万个应用，因此极大地提高了运行效率。
+&emsp;&emsp;DAG是有向无环图，即是说**不同阶段的依赖关系是有向**的，计算过程只能沿着依赖关系方向执行，被依赖的阶段执行完成之前，依赖的阶段不能开始执行，同时，这个依赖关系不能是环形依赖，否则就造成死循环。下面这张图描述了一个典型的Spark运行DAG的不同阶段：
+
+<center><img src="images/ch07/ch7.3.1_1.png" style="zoom: 50%;" /></center>
+
+&emsp;&emsp;从图上看，整个应用被切分成3个阶段，阶段3需要依赖阶段1和阶段2，阶段1和阶段2互不依赖。Spark在执行调度时，先执行阶段1和阶段2，完成以后再执行阶段3。如果有更多的阶段，Spark的策略是一样的。**Spark大数据应用的计算过程**为：Spark会根据程序初始化DAG，由DAG再建立依赖关系，根据依赖关系顺序执行各个计算阶段。
+&emsp;&emsp;**Spark 作业调度执行核心是DAG**，由DAG可以得出 **整个应用就被切分成哪些阶段**以及**每个阶段的依赖关系**。再根据每个阶段要处理的数据量生成相应的任务集合（TaskSet），每个任务都分配一个任务进程去处理。
+&emsp;&emsp;那DAG是怎么来生成的呢？在Spark中，`DAGScheduler`组件负责应用DAG的生成和管理，`DAGScheduler`会根据程序代码生成DAG，然后将程序分发到分布式计算集群，按计算阶段的先后关系调度执行。
+
+### 7.2.2 如何划分计算阶段
+
+&emsp;&emsp;上图的DAG对应Spark伪代码可以表示为：
+
+```python
+rddB = rddA.groupBy(key)
+rddD = rddC.map(func)
+rddF = rddD.union(rddE)
+rddG = rddB.join(rddF)
+```
+
+&emsp;&emsp;可以看到，共有4个转换函数，但是只有3个阶段。看起来并不是RDD上的每个转换函数都会生成一个计算阶段。那**RDD的计算阶段是怎样来进行划分**的呢？
+
+<center><img src="images/ch07/ch7.3.2_1.png" style="zoom: 50%;" /></center>
+
+&emsp;&emsp;再看下上图，我们发现了一个规律，当 **RDD之间的转换连接线呈现多对多交叉连接**的时候，就会产生新的阶段。图中每个RDD里面都包含多个小块，每个小块都表示RDD的一个分片。
+&emsp;&emsp;**一个RDD表示一个数据集，一个数据集中的多个数据分片需要进行分区传输，写入到另一个数据集的不同分片中**。这种涉及到数据分区交叉传输的操作，是否在MapReduce中也有印象？我们来回忆下MapReduce的过程：
+
+<center><img src="images/ch07/ch7.3.2_2.png" style="zoom: 100%;" /></center>
+
+&emsp;&emsp;MapReduce把这种从数据集跨越，由多个分区传输的过程，叫做**Shuffle**。同样，Spark也需要通过`Shuffle`将数据进行重新组合，把相同`key`的数据放一起。由于会进行新的聚合、关联等操作，所以Spark每次`Shuffle`都会产生新的计算阶段。而每次计算时，需要的数据都是由前面一个或多个计算阶段产生的，所以计算阶段需要依赖关系，必须等待前面的阶段执行完毕后，才能进行`Shuffle`。
+&emsp;&emsp;**Spark中计算阶段划分的依据是Shuffle**，而不是操作函数的类型，并不是所有的函数都有`Shuffle`过程。比如Spark计算阶段示例图中，RDD B和RDD F进行join后，得到RDD G。**RDD B不需要Shuffle**，因为RDD B在上一个阶段中，已经进行了数据分区，分区数和分区key不变，就不需要进行`Shuffle`。而RDD F的分区数不同，就需要进行`Shuffle`。Spark把**不需要Shuffle**的依赖，称为**窄依赖**。**需要Shuffle**的依赖，称为**宽依赖**。`Shuffle`是Spark最重要的一个环节，只有通过`Shuffle`，相关数据才能互相计算，从而构建起复杂的应用逻辑。
+
+&emsp;&emsp;那么Spark和MapReduce一样，都进行了`Shuffle`，为什么Spark会比MapReduce更高效呢？  我们从**本质和存储方式**两个方面，对Spark和MapReduce进行比较：
+
+- **从本质上**：Spark可以算是一种MapReduce计算模型的不同实现，Hadoop MapReduce根据`Shuffle`将大数据计算分为Map和Reduce两个阶段。而Spark更流畅，将前一个的Reduce和后一个的Map进行连接，当作一个阶段进行计算，从而形成了一个更高效流畅的计算模型。其本质仍然是Map和Reduce。但是这种多个计算阶段依赖执行的方案可以有效减少对HDFS的访问（落盘），减少作业的调度执行次数，因此执行速度也更快。
+- **从存储方式上**：MapReduce主要使用磁盘存储`Shuffle`过程的数据，而Spark优先使用内存进行数据存储（RDD也优先存于内存）。这也是Spark比Hadoop性能高的另一个原因。
+
+### 7.2.3 Spark 作业管理
+
+> 本小节主要说明作业、计算阶段、任务的依赖和时间先后关系。
+
+&emsp;&emsp;Spark的RDD有两种函数：转换函数和`action`函数。`action`函数调用之后不再返回RDD。Spark的`DAGScheduler`遇到`Shuffle`时，会生成一个计算阶段，在遇到`action`函数时，会生成一个作业（Job）。RDD里的每个数据分片，Spark都会创建一个计算任务进行处理，所以，一个计算阶段会包含多个计算任务（Task）。
+&emsp;&emsp;一个作业至少包含一个计算阶段，每个计算阶段由多个任务组成，这些任务（Task）组成一个任务集合。
+&emsp;&emsp;`DAGScheduler`根据代码生成DAG图，Spark的任务调度以任务为单位进行分配，将任务分配到分布式集群的不同机器上进行执行。
+
+### 7.2.4 Spark 执行过程
+
+&emsp;&emsp;Spark支持多种部署方案（Standalone、Yarn、Mesos等），不同的部署方案核心功能和运行流程基本一样，只是不同组件角色命名不同。
+
+<center><img src="images/ch07/ch7.3.4_1.png" style="zoom: 100%;" /></center>
+
+&emsp;&emsp;**首先**，Spark在自己的`JVM`进程里启动应用程序，即`Driver`进程。启动后，`Driver`调用`SparkContext`初始化执行配置和输入数据。再由`SparkContext`启动`DAGScheduler`构造执行的DAG图，切分成计算任务这样的最小执行单位。
+&emsp;&emsp;**接着**，`Driver`向`Cluster Manager`请求计算资源，用于`DAG`的分布式计算。`ClusterManager`收到请求以后，将`Driver`的主机地址等信息通知给集群的所有计算节点`Worker`。
+&emsp;&emsp;**最后**，`Worker`收到信息后，根据`Driver`的主机地址，向`Driver`通信并注册，然后根据自己的空闲资源向`Driver`通报可以领用的任务数。`Driver`根据DAG图向注册的`Worker`分配任务。
+
+## 7.3 实验内容
+
+### 7.3.1 实验一：Spark Local模式的安装
+
+#### 7.3.1.1 安装
+
+**实验环境：**
+
+运行环境：**Linux Ubuntu 22.04**
+
+部署要求：
+
+1. 完成Java运行环境部署（详见第2章Java安装）
+2. 完成Hadoop 3.3.1的单点部署（详见第2章安装单机版Hadoop）
+
+![img_9.png](img_9.png)
+
+##### 1.解压安装包
+
+&emsp;&emsp;通过官网下载地址（✅**官网下载地址**：[Spark下载](https://spark.apache.org/downloads.html)），下载[spark-3.2.0-bin-without-hadoop.tgz](https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-without-hadoop.tgz)。
+
+![](images/ch07/ch7_ex1.1.png)
+
+&emsp;&emsp;将安装包放置本地指定目录，如`/data/hadoop/`下。解压安装包至`/opt`目录下，命令如下：
+
+```shell
+sudo tar -zxvf /data/hadoop/spark-3.2.0-bin-without-hadoop.tgz -C /opt/
+```
+
+&emsp;&emsp;解压后，在`/opt`目录下会产生`spark-3.2.0-bin-without-hadoop`文件夹。
+
+##### 2.更改文件夹名和所属用户
+
+&emsp;&emsp;使用`mv`命令，将文件名改为`spark`，命令如下：
+
+```shell
+sudo mv /opt/spark-3.2.0-bin-without-hadoop/ /opt/spark
+```
+
+&emsp;&emsp;使用`chown`命令，更改文件夹及其下级的所有文件的所属用户和用户组，将其改为`datawhale`用户和`datawhale`用户组，命令如下：
+
+```shell
+sudo chown -R datawhale:datawhale /opt/spark/
+```
+
+##### 3.修改Spark的配置文件spark-env.sh
+
+&emsp;&emsp;进入`/opt/spark/conf`目录下，将`spark-env.sh.template`文件拷贝一份并命名为`spark-env.sh`，命令如下：
+
+```shell
+cd /opt/spark/conf
+cp ./spark-env.sh.template ./spark-env.sh
+```
+
+&emsp;&emsp;编辑`spark-env.sh`文件，命令如下：
+
+```shell
+vim spark-env.sh
+```
+
+&emsp;&emsp;在第一行添加如下配置信息：
+
+```shell
+export SPARK_DIST_CLASSPATH=$(/opt/hadoop/bin/hadoop classpath)
+```
+
+&emsp;&emsp;配置完成后就可以直接使用，不需要像Hadoop运行启动命令。
+
+##### 4.设置Spark的环境变量
+
+&emsp;&emsp;将`SPARK_HOME`环境变量设置为`/opt/spark`，作为工作目录，打开系统环境变量配置文件，命令如下：
+
+```shell
+sudo vim /etc/profile
+```
+
+&emsp;&emsp;在文件末尾，添加如下内容：
+
+```shell
+# spark
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+```
+
+&emsp;&emsp;使用`Shift+:`，输入`wq`后回车，保存退出。运行如下命令使环境变量生效：
+
+```shell
+source /etc/profile
+```
+
+##### 5.检验Spark是否成功部署
+
+&emsp;&emsp;通过运行Spark自带的示例，验证Spark是否安装成功，命令如下：
+
+```shell
+cd /opt/spark
+bin/run-example SparkPi
+```
+
+&emsp;&emsp;执行时会输出非常多的运行信息，输出结果不容易找到，可以通过`grep`命令进行过滤（命令中的`2>&1`可以将所有的信息都输出到`stdout`中，否则由于输出日志的性质，还是会输出到屏幕中），命令如下：
+
+```shell
+cd /opt/spark
+bin/run-example SparkPi 2>&1 | grep "Pi is"
+```
+
+&emsp;&emsp;过滤后的运行结果如下，可以得到$\pi$的5位小数近似值：
+
+![img_10.png](img_10.png)
+
+`Spark`安装部署完成！

@@ -203,7 +203,7 @@ hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升�
 <a href="#四HadoopYARN环境搭建">四、Hadoop(YARN)环境搭建</a><br/>
 </nav>
 
-首先我们搭建window10+wmware15+ubuntu20.04环境
+首先我们搭建window10+wmware15+ubuntu20.04环境  (`考虑到wsl兼容的话，需要wmware15.5.1以上版本`)
 
 **Windows：**
 
@@ -327,7 +327,23 @@ Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
 Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
 ```
 
-- **配置免密登录**
+> 每次都打开终端重新创建会话，需要重新生效配置文件，太繁琐
+
+**解决方法**
+
+在执行完`source /etc/profile`后，再执行下面操作即可生效全局命令：
+
+```
+sudo vi ~/.bashrc
+
+# 在文件最后一行添加：
+
+source /etc/profile
+```
+
+
+
+**配置免密登录**
 
 Hadoop 组件之间需要基于 SSH 进行通讯。
 
@@ -378,7 +394,7 @@ datawhale@datawhale001:~/.ssh$ sudo apt-get install openssh-server #
 
 二、Hadoop 环境搭建
 
-安装Hadoop版本为3.2.1。下载地址为http://archive.apache.org/dist/hadoop/core/hadoop-3.3.1/hadoop-3.3.1.tar.gz  （或者在readme文件中提供的链接地址下载也可）
+安装Hadoop版本为3.3.1。下载地址为http://archive.apache.org/dist/hadoop/core/hadoop-3.3.1/hadoop-3.3.1.tar.gz  （或者在readme文件中提供的链接地址下载也可）
 
 将该文件夹解压后，可以放置到自己喜欢的位置，如`/data/hadoop`文件夹下，注意，文件夹的用户和组必须都为hadoop。
 
