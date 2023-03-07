@@ -776,7 +776,177 @@ Region Split时机：
 
 ![image.png](./assets/1650165798698-image.png)
 
-## 3.6 参考资料
+## 3.6 HBase 编程实战
+
+### 3.6.1 实验一：HBase的安装部署和使用
+
+#### 3.6.1.1 实验准备
+
+**实验环境：**Linux Ubuntu 22.04  **  **
+**前提条件：**
+
+1. **完成Java运行环境部署（详见第2章Java安装）**
+2. **完成Hadoop 3.3.1的单点部署（详见第2章安装单机版Hadoop）**
+
+#### 3.6.1.2 实验步骤
+
+1. 启动Hadoop的HDF相关进程
+
+   ```shell
+   datawhale@datawhale001:/opt$ sudo mv /opt/hbase-2.4.8/ /opt/hbase
+   datawhale@datawhale001:/opt$ sudo chown -R datawhale:datawhale /opt/hbase/
+   datawhale@datawhale001:sudo tar -zxvf /data/hadoop/hbase-2.4.8-bin.tar.gz -C /opt/
+
+   ....省略
+
+   datawhale@datawhale001:~$ cd /opt
+   datawhale@datawhale001:/opt$ ls
+   google  hadoop  hbase-2.4.8  java  spark
+   datawhale@datawhale001:/opt$ sudo mv /opt/hbase-2.4.8/ /opt/hbase
+   datawhale@datawhale001:/opt$ sudo chown -R datawhale:datawhale /opt/hbase/
+   
+   ```
+   
+配置HBASE_HOME环境变量
+
+```shell
+sudo vim /etc/profile
+```
+在文件末尾，添加如下内容：
+```shell
+# hbase
+export HBASE_HOME=/opt/hbase
+export PATH=$PATH:$HBASE_HOME/bin
+```
+&emsp;&emsp;使用`Shift+:`，输入`wq`后回车，保存退出。运行下面命令使环境变量生效：
+```shell
+source /etc/profile
+```
+![img_16.png](img_16.png)
+
+4.修改hbase-site.xml配置文件
+
+```shell
+sudo vim /opt/hbase/conf/hbase-site.xml
+```
+emsp;&emsp;添加下面配置到`<configuration>与</configuration>`标签之间，添加内容如下：
+```shell
+<configuration>
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>/opt/hadoop/zookeeper</value>
+    </property>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://datawhal001:9000/hbase</value>
+    </property>
+    <property>
+        <name>hbase.unsafe.stream.capability.enforce</name>
+        <value>false</value>
+    </property>
+</configuration>
+```
+&emsp;使用`Shift+:`，输入`wq`后回车，保存并退出。
+
+5.修改hbase-env.sh配置文件
+```shell
+sudo vim /opt/hbase/conf/hbase-env.sh
+```
+&emsp;&emsp;配置`JAVA_HOME`，`HBASE_CLASSPATH`，`HBASE_MANAGES_ZK`。`hbase-env.sh`中本来就存在这些变量的配置，大家只需要删除前面的`#`并修改配置内容即可(`#`代表注释)，或者直接在文件中增加以下内容：
+
+```shell
+&emsp;&emsp;配置`JAVA_HOME`，`HBASE_CLASSPATH`，`HBASE_MANAGES_ZK`。`hbase-env.sh`中本来就存在这些变量的配置，大家只需要删除前面的`#`并修改配置内容即可(`#`代表注释)，或者直接在文件中增加以下内容：
+```
+emsp;&emsp;使用`Shift+:`，输入`wq`后回车，保存并退出。
+
+6.启动hadoop
+
+```shell
+cd /opt/hadoop/sbin/
+./start-all.sh
+```
+&emsp;&emsp;执行`jps`命令检查`hadoop`是否启动成功，出现了6个进程，则表示正常启动，可以得到如下类似结果：
+```shell
+datawhale@datawhale001:/opt/hadoop/sbin$ jps
+63459 Jps
+34755 DataNode
+35253 SecondaryNameNode
+20634 ResourceManager
+34572 NameNode
+36205 NodeManager
+
+```
+
+7. 启动HBase  
+
+&emsp;启动HBase，命令如下：
+```shell
+cd /opt/hbase/bin/
+start-hbase.sh
+```
+&emsp;执行`jps`命令检查HBase是否启动成功，新增了3个进程（`HQuorumPeer`、`HMaster`和`HRegionServer`），则表示正常启动，可得到如下类似结果：
+
+```shell
+78625 HQuorumPeer
+34755 DataNode
+35253 SecondaryNameNode
+92425 Jps
+20634 ResourceManager
+91819 HMaster
+92027 HRegionServer
+34572 NameNode
+36205 NodeManager
+```
+![img_17.png](img_17.png)
+**Tips：**
+
+- 如果HMaster启动后瞬间消失，请查看`/opt/hbase/logs`日志文件。  一般为 hbase  的 `cat /opt/hbase/conf/hbase-site.xml` 和 hadoop 的`cat /opt/hadoop/etc/hadoop/core-site.xml` 中的hdfs的路径不匹配，修改一致即可
+- 如果出现`connection failed`，注意虚拟机环回IP的通信问题以及防火墙是否关闭！！！
+
+1. 关闭防火墙  
+   ⚠ 如果熟悉Linux操作，可以不用关闭防火墙，只需要开放9000端口就行。但是为了避免这类问题，建议直接关闭防火墙，命令如下：
+
+```shell
+systemctl disable firewalld.service
+```
+
+2. 修改`/etc/hosts`文件  
+   &emsp;&emsp;打开`/etc/hosts`文件，命令如下：
+
+   ```shell
+   sudo vim /etc/hosts
+   ```
+
+   &emsp;&emsp;在文件中添加以下内容：
+
+   ```
+   127.0.1.1 虚拟机的名称
+   ```
+
+   &emsp;&emsp;使用`Shift+:`，输入`wq`后回车，保存并退出。
+
+3. 修改`/opt/hbase/conf/regionservers`文件  
+   &emsp;&emsp;打开`/opt/hbase/conf/regionservers`文件，命令如下：
+
+   ```shell
+   vim /opt/hbase/conf/regionservers
+   ```
+
+   &emsp;&emsp;在文件中添加以下内容：
+
+   ```shell
+   <虚拟机的名称>
+   ```
+
+✅**官方HBase安装指南**：[HBase伪集群分布安装](https://hbase.apache.org/book.html#quickstart_pseudo)
+
+✅**林子雨HBase2.2版本安装指南**：[HBase2.2安装](
+
+## 3.7 参考资料
 
 1. 尚硅谷大数据之HBase
 2. https://www.runoob.com/mongodb/nosql.html

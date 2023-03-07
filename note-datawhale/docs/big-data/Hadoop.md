@@ -341,8 +341,6 @@ sudo vi ~/.bashrc
 source /etc/profile
 ```
 
-
-
 **配置免密登录**
 
 Hadoop 组件之间需要基于 SSH 进行通讯。
