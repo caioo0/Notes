@@ -124,7 +124,7 @@ Hive:  由Facebook开源用于解决海量结构化日志的数据统计。
 - 策略：靠考虑不新不九的稳定版本
 - 当前Hive的主流版本有两个
     - hive-1.x 其中使用比较多的是hive-1.2.x的版本，最后一个稳定版本是hive-1.2.2,如果使用这个版本，你的hive将来没法集成spark.
-    - hive-2.x 现行主流的hive使用版本，现行稳定的hive-2.x版本中，我们选择使用hive-2.3.6
+    - hive-2.x 现行主流的hive使用版本，现行稳定的hive-2.x版本中，我们选择使用hive-2.3.9
     - HDP（商业版大数据环境）2.6.3内置的hive为1.2.1
 
 ### 6.2.3 Hive架构原理
@@ -219,10 +219,10 @@ http://archive.apache.org/dist/hive/
 # 基本要求：启动hadoop,mysql已安装
 
 1. 上传安装包
-apache-hive-2.3.6-bin.tar.gz
+apache-hive-2.3.9-bin.tar.gz
 
 2. 解压安装包
-tar -zxvf apache-hive-2.3.6-bin.tar.gz -C ../install/
+tar -zxvf apache-hive-2.3.9-bin.tar.gz -C ../install/
 
 3. 修改配置 hive-site.xml
 <configuration>
@@ -279,15 +279,15 @@ tar -zxvf apache-hive-2.3.6-bin.tar.gz -C ../install/
 </property>
 
 4. 一定要记得把Hadoop集群中的 core-site.xml 和 hdfs-site.xml 两个配置文件都放置在Hive安装目 录下conf目录中。
- cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.6-bin/conf/
+ cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.9-bin/conf/
 
 5、进入到bin目录，运行hive脚本 
-cd apache-hive-2.3.6-bin/bin 
+cd apache-hive-2.3.9-bin/bin 
 ./hive 
 
-6. 如果报错打开hadoop-2.7.7/etc/hadoop/文件加执行命令：
+6. 如果报错打开hadoop-3.3.1/etc/hadoop/文件加执行命令：
 
-cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.6-bin/conf/
+cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.9-bin/conf/
 
 4、测试使用 
 show databases;
@@ -296,6 +296,8 @@ show databases;
 报错问题修复：
 
 hive> show databases; FAILED: SemanticException org.apache.hadoop.hive.ql.metadata.HiveException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
+
+![img.png](images/hive-01.png)
 
 > 可能是hive的服务端没有打开
 > 1）hive --service metastore &
@@ -311,10 +313,10 @@ hive> show databases; FAILED: SemanticException org.apache.hadoop.hive.ql.metada
     安装好hadoop和mysql(mysql配置远程连接权限)
 
 第1步：上传安装包
-上传apache-hive-2.3.6-bin.tar.gz到服务器节点中。
+上传apache-hive-2.3.9-bin.tar.gz到服务器节点中。
 
 第2步：解压安装包到对应的Hive安装目录中
-tar -zxvf apache-hive-2.3.6-bin.tar.gz -C ../install/
+tar -zxvf apache-hive-2.3.9-bin.tar.gz -C ../install/
 
 第3步：创建配置文件 hive-site.xml
 touch hive-site.xml
@@ -394,17 +396,17 @@ lib目录中，hive要读写MySQL
 
 录下conf目录中。 
 
-cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.6-bin/conf/
+cp core-site.xml hdfs-site.xml ~/install/apache-hive-2.3.9-bin/conf/
 
 第6步：复制hive到其他节点 
 
-scp -r apache-hive-2.3.6-bin root@hadoop2:/root/install 
+scp -r apache-hive-2.3.9-bin root@hadoop2:/root/install 
 
-scp -r apache-hive-2.3.6-bin root@hadoop3:/root/install 
+scp -r apache-hive-2.3.9-bin root@hadoop3:/root/install 
 
 第7步： 安装完成，配置环境变量 
 
-export HIVE_HOME=/home/bigdata/apps/apache-hive-2.3.6-bin 
+export HIVE_HOME=/home/bigdata/apps/apache-hive-2.3.9-bin 
 
 export PATH=$PATH:$HIVE_HOME/bin 
 
@@ -466,9 +468,9 @@ HiveServer2服务部署方法如下：
 
 启动Hiveserver2服务 
 
-nohup hiveserver2 1>/root/install/apache-hive-2.3.6-bin/log/hiveserver.log 
+nohup hiveserver2 1>/root/install/apache-hive-2.3.9-bin/log/hiveserver.log 
 
-2>/root/install/apache-hive-2.3.6-bin/log/hiveserver.err & 
+2>/root/install/apache-hive-2.3.9-bin/log/hiveserver.err & 
 
 启动beeline客户端，HUE,HDP的hive界面 
 
@@ -508,7 +510,7 @@ hive-site.xml 配置文件：
 （1）启动hive
 
 ```
-[root@hadoop5 apache-hive-2.3.6-bin]$ bin/hive
+[root@hadoop5 apache-hive-2.3.9-bin]$ bin/hive
 ```
 
 （2）查看数据库
@@ -576,7 +578,7 @@ hive> quit;
 ```
 
 ```sql
-[root@hadoop5 apache-hive-2.3.6-bin]# bin/hive
+[root@hadoop5 apache-hive-2.3.9-bin]# bin/hive
 hive> show databases;
 hive> use default;
 OK
@@ -682,7 +684,7 @@ Transaction isolation: TRANSACTION_REPEATABLE_READ
 ### 6.3.6 Hive常用交互命令
 
 ```sql
-[root@hadoop5 apache-hive-2.3.6-bin]# bin/hive -help
+[root@hadoop5 apache-hive-2.3.9-bin]# bin/hive -help
 usage: hive
  -d,--define <key=value>          Variable substitution to apply to Hive
                                   commands. e.g. -d A=B or --define A=B
@@ -703,7 +705,7 @@ usage: hive
 1．“-e” 不进入hive的交互窗口执行sql语句
 
 ```sql
-[root@hadoop5 apache-hive-2.3.6-bin]# bin/hive -e "select id from student;"
+[root@hadoop5 apache-hive-2.3.9-bin]# bin/hive -e "select id from student;"
 OK
 1001
 1002
@@ -739,7 +741,7 @@ $ bin/hive -f /root/hdp/hive_stage/hivef.sql  > /root/hdp/hive_stage/hive_resul
 OK
 Time taken: 6.712 seconds, Fetched: 3 row(s)
 
-[root@hadoop5 apache-hive-2.3.6-bin]# cat  /root/hdp/hive_stage/hive_result.txt
+[root@hadoop5 apache-hive-2.3.9-bin]# cat  /root/hdp/hive_stage/hive_result.txt
 1001    zhangshan
 1002    lishi
 1003    zhaoliu
@@ -845,7 +847,7 @@ Time taken: 3.49 seconds, Fetched: 3 row(s)
 ```xml
 
    [root@hadoop5 conf]# pwd
-   /root/install/apache-hive-2.3.6-bin/conf
+   /root/install/apache-hive-2.3.9-bin/conf
 
    [root@hadoop5 conf]# ls 
    beeline-log4j2.properties.template    hive-log4j2.properties.template
@@ -857,7 +859,7 @@ Time taken: 3.49 seconds, Fetched: 3 row(s)
 
    [root@hadoop5 conf]# vi hive-log4j.properties
    #property.hive.log.dir = ${sys:java.io.tmpdir}/${sys:user.name}
-   property.hive.log.dir = /root/install/apache-hive-2.3.6-bin/logs
+   property.hive.log.dir = /root/install/apache-hive-2.3.9-bin/logs
 
 ```
 
@@ -884,7 +886,7 @@ hive>set;
 例如：
 
 ```
-[root@hadoop5 apache-hive-2.3.6-bin]# bin/hive -hiveconf mapred.reduce.tasks=10;
+[root@hadoop5 apache-hive-2.3.9-bin]# bin/hive -hiveconf mapred.reduce.tasks=10;
 ```
 
 注意：仅对本次hive启动有效
