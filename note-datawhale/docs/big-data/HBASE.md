@@ -822,7 +822,7 @@ export PATH=$PATH:$HBASE_HOME/bin
 ```shell
 source /etc/profile
 ```
-![img_16.png](img_16.png)
+![img_16.png](images/img_16.png)
 
 4.修改hbase-site.xml配置文件
 
@@ -901,7 +901,7 @@ start-hbase.sh
 34572 NameNode
 36205 NodeManager
 ```
-![img_17.png](img_17.png)
+![img_17.png](images/img_17.png)
 **Tips：**
 
 - 如果HMaster启动后瞬间消失，请查看`/opt/hbase/logs`日志文件。  一般为 hbase  的 `cat /opt/hbase/conf/hbase-site.xml` 和 hadoop 的`cat /opt/hadoop/etc/hadoop/core-site.xml` 中的hdfs的路径不匹配，修改一致即可

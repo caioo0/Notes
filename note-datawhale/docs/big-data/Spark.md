@@ -6,7 +6,7 @@
 
 ## 7.0 引言
 
-![img_7.png](img_7.png)
+![img_7.png](images/img_7.png)
 
 ### 7.0.1 Spark简介
 
@@ -318,7 +318,7 @@ rddG = rddB.join(rddF)
 1. 完成Java运行环境部署（详见第2章Java安装）
 2. 完成Hadoop 3.3.1的单点部署（详见第2章安装单机版Hadoop）
 
-![img_9.png](img_9.png)
+![img_9.png](images/img_9.png)
 
 ##### 1.解压安装包
 
@@ -411,7 +411,7 @@ bin/run-example SparkPi 2>&1 | grep "Pi is"
 
 &emsp;&emsp;过滤后的运行结果如下，可以得到$\pi$的5位小数近似值：
 
-![img_10.png](img_10.png)
+![img_10.png](images/img_10.png)
 
 至此`Spark`安装部署完成！
 
@@ -465,7 +465,7 @@ scala> wordCountOdered.collect.foreach(wordNumberPair => println(wordNumberPair.
 
 1.textFile操作
 
-![img_11.png](img_11.png)
+![img_11.png](images/img_11.png)
 
 emsp;&emsp;在`textFile`操作之后，产生了两个RDD：**HadoopRDD** 和 **MapPartitionRDD**。
 
@@ -479,23 +479,23 @@ emsp;&emsp;在`textFile`操作之后，产生了两个RDD：**HadoopRDD** 和 **
 
 2.flatMap操作
 
-![img_12.png](img_12.png)
+![img_12.png](images/img_12.png)
 
 &emsp;&emsp;flatMap操作产生了一个**MapPartitionsRDD**，其作用是对每个Partition中的每一行内容进行单词切分，并合并成一个大的单词实例的集合。
 
 3.map操作
 
-![img_13.png](img_13.png)
+![img_13.png](images/img_13.png)
 
 emsp;map操作产生了一个**MapPartitionsRDD**，其作用是在单词拆分的基础上，对单词计数为1。例如将“Hello”和“Spark“变为`(Hello, 1)`,`(Spark, 1)`。
 
 4.reduceByKey操作
 
-![img_14.png](img_14.png)
+![img_14.png](images/img_14.png)
 
 &emsp;&emsp;reduceByKey操作是对相同`key`进行`value`的统计。包括本地级别和全局级别的统计。 该操作实际上产生了两个 RDD：**MapPartitionsRDD**与**ShuffledRDD**。
 
-![img_15.png](img_15.png)
+![img_15.png](images/img_15.png)
 
 - MapPartitionsRDD  
   &emsp;&emsp;reduceByKey在MapPartitionRDD之后，首先，进行本地级别（local）的归并操作，把统计后的结果按照分区策略放到不同的分布式文件中。  
