@@ -902,9 +902,12 @@ start-hbase.sh
 36205 NodeManager
 ```
 ![img_17.png](images/img_17.png)
-**Tips：**
 
-- 如果HMaster启动后瞬间消失，请查看`/opt/hbase/logs`日志文件。  一般为 hbase  的 `cat /opt/hbase/conf/hbase-site.xml` 和 hadoop 的`cat /opt/hadoop/etc/hadoop/core-site.xml` 中的hdfs的路径不匹配，修改一致即可
+
+**注意事项：Tips：**
+
+- 如果HMaster启动后瞬间消失，请查看`/opt/hbase/logs`日志文件。  一般为 hbase  的 `cat /opt/hbase/conf/hbase-site.xml` 和 hadoop 的`cat /opt/hadoop/etc/hadoop/core-site.xml` 中的hdfs的路径不匹配，修改一致即可。
+ > -- 已验证
 - 如果出现`connection failed`，注意虚拟机环回IP的通信问题以及防火墙是否关闭！！！
 
 1. 关闭防火墙  
@@ -929,8 +932,7 @@ systemctl disable firewalld.service
 
    &emsp;&emsp;使用`Shift+:`，输入`wq`后回车，保存并退出。
 
-3. 修改`/opt/hbase/conf/regionservers`文件  
-   &emsp;&emsp;打开`/opt/hbase/conf/regionservers`文件，命令如下：
+3. 修改`/opt/hbase/conf/regionservers`文件，打开`/opt/hbase/conf/regionservers`文件，命令如下：
 
    ```shell
    vim /opt/hbase/conf/regionservers
@@ -944,7 +946,6 @@ systemctl disable firewalld.service
 
 ✅**官方HBase安装指南**：[HBase伪集群分布安装](https://hbase.apache.org/book.html#quickstart_pseudo)
 
-✅**林子雨HBase2.2版本安装指南**：[HBase2.2安装](
 
 ## 3.7 参考资料
 

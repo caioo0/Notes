@@ -241,27 +241,27 @@ pom.xml 文件代码：
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-hdfs</artifactId>
-        <version>2.7.2</version>
+        <version>3.3.1</version>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-auth</artifactId>
-        <version>2.7.2</version>
+        <version>3.3.1</version>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-client</artifactId>
-        <version>2.7.2</version>
+        <version>3.3.1</version>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-client-core</artifactId>
-        <version>2.7.2</version>
+        <version>3.3.1</version>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
-        <version>2.7.2</version>
+        <version>3.3.1</version>
     </dependency>
     <dependency>
         <groupId>junit</groupId>
