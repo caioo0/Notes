@@ -8,13 +8,19 @@
 
 ### 10.1.1 hive外部表和内部表的区别
 
-托管表(内部表)和外部表是Hive中的两种不同类型的表，在这篇文章中，我们将讨论Hive中表的类型以及它们之间的差异以及如何创建这些表以及何时将这些表用于特定的数据集。
+**解答：**
 
-1. 内部表
-   托管表(Managed TABLE)也称为内部表(Internal TABLE)。这是Hive中的默认表。当我们在Hive中创建一个表，没有指定为外部表时，默认情况下我们创建的是一个内部表。如果我们创建一个内部表，那么表将在HDFS中的特定位置创建。默认情况下，表数据将在HDFS的/usr/hive/warehouse目录中创建。如果我们删除了一个内部表，那么这个表的表数据和元数据都将从HDFS中删除。
-2. 当数据在Hive之外使用时，创建外部表(EXTERNAL TABLE)来在外部使用。无论何时我们想要删除表的元数据，并且想保留表中的数据，我们使用外部表。外部表只删除表的schema。
+未被`external `修饰的是内部表，被` externa`l 修饰的为外部表；
 
-详细参见：[task06之一：数据仓库Hive基础关于表的知识点](https://caioo0.github.io/note-datawhale/#/docs/big-data/Hive?id=_64-hive%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b)
+内部表数据由hive自身管理，外部表数据由HDFS管理；
+
+| 对比内容     | 内部表                                                       | 外部表                                                       |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 数据存储位置 | 内部表数据存储的位置由`hive.Metastore.warehouse.dir`参数指定， 默认情况下，表的数据存储在`HDFS`的`/user/hive/warehouse/数据库名.db/表名/`目录下 | 外部表数据的存储位置创建表时由`Location`参数指定             |
+| 导入数据     | 在导入数据到内部表，内部表将数据移动到自己的数据仓库目录下， 数据的生命周期由`Hive`来进行管理 | 外部表不会将数据移动到自己的数据仓库目录下， 只是在元数据中存储了数据的位置 |
+| 删除表       | 删除元数据（metadata）和文件                                 | 只删除元数据（metadata）                                     |
+
+详细参见：[task06之一：数据仓库Hive基础关于表的知识点](Hive?id=_64-hive%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b)
 
 ### 10.1.2 简述对Hive桶的理解？
 
@@ -141,3 +147,24 @@ Hadoop包括以下4个基本模块。
 除了以上这些官方认可的Hadoop生态圈组件之外，还有很多十分优秀的组件这里没有介绍，这些组件的应用也非常广泛，例如基于Hive查询优化的Presto、Impala、Kylin等。
 
 此外，在Hadoop生态圈的周边，还聚集了一群“伙伴”，它们虽然未曾深入融合Hadoop生态圈，但是和Hadoop有着千丝万缕的联系，并且在各自擅长的领域起到了不可替代的作用。图2是阿里云E-MapReduce平台整合的Hadoop生态体系中的组件，比Apache提供的组合更为强大。
+
+
+## 期末作业
+
+#### 1. 文本准备：
+
+
+新建一个文本文件`sample.txt`，将该文件放到文件目录` /opt/spark/data/wordcount/`中，文本内容如下：
+```shell
+cd /opt/spark/data
+mkdir wordcount
+cd wordcount
+sudo vim helloSpark.txt
+
+datawhale@datawhale001:/opt/spark/data/wordcount$ cat helloSpark.txt  # 文件内容如下：
+Hello Spark Hello Scala
+Hello Hadoop
+Hello Flink
+Spark is amazing
+
+```

@@ -619,3 +619,50 @@ cat output/*
 ```
 
 添加下面配置到`<configuration>与</configuration>`标签之间（**默认配置为空，如果有内容注意是添加不是替换**）.
+
+
+**Tips:**
+
+**namenode无法启动解决方案**
+
+1. 首先在home目录下建立一个hadoop_tmp目录 `sudo mkdir ~/hadoop_tmp`
+2. 修改hadoop/conf目录里面的`core-site.xml`文件，加入以下节点：
+```shell
+
+
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/home/datawhale<用户名>/hadoop_tmp</value>
+<description>临时文件</description>
+</property>
+```
+
+> 注意：我的用户是`datewhale`所以目录是`/home/datawhale/hadoop_tmp`
+
+3. 重新格式化`Namenode `，如果格式化报错出现类似字样  `Cannot create directory /home/datawhale/hadoop_tmp/dfs/name/current`,先执行`sudo chown -R datawhale<用户名> /home/datawhale/hadoop_tmp`，再格式化：
+
+```shell
+    hadoop namenode -format
+  
+```
+
+4. 启动hadoop
+```shell
+    /opt/hadoop/sbin/start-all.sh
+```
+       
+最后执行下`JPS`命令就可以看到NameNode了。
+```shell
+datawhale@datawhale001:/opt/hadoop/sbin$ jps
+122291 DataNode
+123042 NodeManager
+122117 NameNode
+123259 Jps
+122922 ResourceManager
+122526 SecondaryNameNode
+```
+
+## 2.4 参考资料
+
+1. [datawhale-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)
+2. 尚硅谷hadoop资料
