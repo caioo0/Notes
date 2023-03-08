@@ -303,6 +303,64 @@ sbin/start-balancer.sh -t 10%
 
 ## 2.7 HDFS 文件系统
 
+1. 启动Hadoop的HDFS相关进程
+
+启动Hadoop的HDFS服务，使用**普通用户datawhale**执行如下命令：
+
+```shell
+
+cd /opt/hadoop/sbin/
+./start-dfs.sh
+```
+emsp;&emsp;输入`jps`命令可以查看所有的`Java`进程，正常启动后，可以得到如下类似结果：
+![img.png](images/HDFS_0308001.png)
+
+2. 验证HDFS运行状态
+```shell
+# 在hdfs上创建一个目录，执行如下命令，验证能够创建成功：
+datawhale@datawhale001:/root$ hadoop fs -mkdir /myhadoop1
+datawhale@datawhale001:/root$ hadoop fs -ls /
+Found 1 items
+drwxr-xr-x   - datawhale supergroup          0 2023-03-08 10:35 /myhadoop1
+```
+3. ls命令
+```shell
+datawhale@datawhale001:/root$ hadoop fs -mkdir /myhadoop1/word.txt
+# 列出hdfs文件系统根目录下的目录和文件
+datawhale@datawhale001:/root$ hadoop fs -ls /
+Found 1 items
+drwxr-xr-x   - datawhale supergroup          0 2023-03-08 10:38 /myhadoop1
+# 列出hdfs文件系统所有的目录和文件
+datawhale@datawhale001:/root$ hadoop fs -ls -R /
+drwxr-xr-x   - datawhale supergroup          0 2023-03-08 10:38 /myhadoop1
+drwxr-xr-x   - datawhale supergroup          0 2023-03-08 10:38 /myhadoop1/word.txt
+
+```
+
+4. put命令
+
+```shell
+# 拷贝文件 
+datawhale@datawhale001:/data/hadoop$ sudo vim README.txt
+datawhale@datawhale001:/data/hadoop$ cat README.txt
+hello world
+hello spark
+hello hadoop
+hello spark
+hello hdfs 
+datawhale@datawhale001:/opt/hadoop$ hadoop fs -put /data/hadoop/README.txt /
+datawhale@datawhale001:/opt/hadoop$ hadoop fs -ls /
+Found 2 items
+-rw-r--r--   1 datawhale supergroup         60 2023-03-08 10:55 /README.txt
+drwxr-xr-x   - datawhale supergroup          0 2023-03-08 10:38 /myhadoop1
+datawhale@datawhale001:/opt/hadoop$ hadoop fs -cat /README.txt
+hello world
+hello spark
+hello hadoop
+hello spark
+hello hdfs
+```
+
 HDFS 文件系统可以执行常用的文件系统操作，例如，读取文件，新建目录，移动文件，删除数据，列出目录，等等。可以输入 `hadoop fs -help`命令获取每个命令的详细帮助文件。
 
 本地文件系统将一个文件复制到HDFS:
@@ -386,4 +444,3 @@ hdfs dfsadmin -safemode leave
 1. [HDFS 副本存放策略](https://www.freesion.com/article/32251142386/)
 2. [HDFS知识整理](https://www.freesion.com/article/3093185943/)
 4. [Hadoop源码分析之FileSystem抽象文件系统](https://www.cnblogs.com/dj-blog/p/9178465.html)
-
