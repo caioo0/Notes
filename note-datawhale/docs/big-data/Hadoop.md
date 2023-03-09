@@ -389,7 +389,7 @@ ssh: connect to host localhost port 22: Connection refused
 datawhale@datawhale001:~/.ssh$ sudo apt-get install openssh-server # 
 
 ```
-
+也可以参考这个教程:[ubuntu安装openssh-server](https://www.jianshu.com/p/40587c4666f7)
 二、Hadoop 环境搭建
 
 安装Hadoop版本为3.3.1。下载地址为http://archive.apache.org/dist/hadoop/core/hadoop-3.3.1/hadoop-3.3.1.tar.gz  （或者在readme文件中提供的链接地址下载也可）

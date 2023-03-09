@@ -23,7 +23,7 @@
 【4】[第30期组队学习-树模型与集成学习](https://datawhalechina.github.io/machine-learning-toy-code/)  
 【5】[第31期组队学习-水很深的深度学习](https://datawhalechina.github.io/unusual-deep-learning)  
 【6】[第32期组队学习-推荐系统](https://github.com/datawhalechina/fun-rec)  
-
+【7】[第46期组队学习-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)
 ### 社交网站
 
 [@ 蔡-Choi-恒者行远](https://github.com/caioo0)

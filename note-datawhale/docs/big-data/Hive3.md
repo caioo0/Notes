@@ -130,7 +130,11 @@ insert into test values('test1',52);
 ```
 
 3)对test表执行select的同时执行insert操作
+alter user 'root'@'localhost' identified by 'root';
 
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '1234567890' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'0.0.0.0'IDENTIFIED BY 'root' WITH GRANT OPTION;
 ```
 select count(*) from test;
 insert into test values("test123",123);
