@@ -1,17 +1,42 @@
 # datawhale-第46期 大数据处理技术导论
 
+
+
+## [大数据处理技术导论目录](https://datawhalechina.github.io/juicy-bigdata/#/?id=大数据处理技术导论目录)
+
+- [第一章：大数据概述](https://datawhalechina.github.io/juicy-bigdata/#/ch01-bigdata-introduction)
+- [第二章：Hadoop](https://datawhalechina.github.io/juicy-bigdata/#/ch02-Hadoop)
+- [第三章：HDFS](https://datawhalechina.github.io/juicy-bigdata/#/ch03-HDFS)
+- [第四章：HBase](https://datawhalechina.github.io/juicy-bigdata/#/ch04-HBase)
+- [第五章：MapReduce](https://datawhalechina.github.io/juicy-bigdata/#/ch05-MapReduce)
+- [第六章：期中大作业](https://datawhalechina.github.io/juicy-bigdata/#/ch06-Homework01)
+- [第七章：Hive](https://datawhalechina.github.io/juicy-bigdata/#/ch07-Hive)
+- [第八章：Spark](https://datawhalechina.github.io/juicy-bigdata/#/ch08-Spark)
+- [第九章：大数据处理技术总结](https://datawhalechina.github.io/juicy-bigdata/#/ch09-bigdata-summary)
+- [第十章：期末大作业](https://datawhalechina.github.io/juicy-bigdata/#/ch10-Homework02)
+
 ### 环境安装
-- ubuntu 20.04
+
+- ubuntu 20.04 
+
 - Mysql8.0  账号：root/1234567890  , cai/1111111111 `(10个1)`
+
 - Java 8
+
 - Hadoop 3.3.1
+
 - HBase 2.3.5 or 2.4.8
+
 - Mysql 8.0.32
+
 - Hive 2.3.9
+
 - Spark 3.2.0
   **飞书下载地址**：https://datawhale.feishu.cn/drive/folder/fldcnvODsgRWbyqVW9ApavEVEJg   密码: hO38
   **百度网盘地址：**
   链接：https://pan.baidu.com/s/1-wVNYd1rdF9EPxcVatZMGQ?pwd=bdag  提取码：bdag
+  
+  **注意：课程里默认是把安装包下载到`/data/hadoop`文件夹下，并解压到`/opt`下**
 
 ### 大数据面试题
 

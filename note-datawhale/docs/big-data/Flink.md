@@ -6,7 +6,36 @@
 
 Flink项目的理念是：“**Apache Flink是为分布式、高性能、随时可用以及准确的流处理应用程序打造的开源流处理框架**”。
 
-Flink 是一个分布式的流处理框架，它能够对有界和无界的数据流进行有状态计算。FLink被设计在所有常见的集群环境中运行，以内存执行速度和任意规模来执行计算。Flink 的核心是流处理，当然它也能支持批处理，Flink 将批处理看成是流处理的一种特殊情况，即数据流是有明确界限的。这和 Spark Streaming 的思想是完全相反的.
+Flink 是一个分布式的流处理框架，它能够对有界和无界的数据流进行有状态计算。FLink被设计在所有常见的集群环境中运行，以内存执行速度和任意规模来执行计算。
+
+Flink 的核心是流处理，当然它也能支持批处理，Flink 将批处理看成是流处理的一种特殊情况，即数据流是有明确界限的。
+
+这和 Spark Streaming 的思想是完全相反的。
+
+### Flink流处理特性
+
+1. 支持高吞吐、低延迟、高性能的流处理
+2. 支持带有事件时间 的窗口（window）操作
+3. 支持有状态计算的Exactly-once语义 。
+> **Exactly-Once一致性语义**
+> 当任意条数据流转到某分布式系统中，如果系统在整个处理过程中对该任意条数据都仅精确处理一次，且处理结果正确，则被认为该系统满足Exactly-Once一致性。
+知识点：[一文彻底了解Exactly-Once一致性语义: 对比Spark/Flink流处理模型](https://zhuanlan.zhihu.com/p/431414055)
+4. 支持高度灵活的窗口（Window）操作，支持基于time、count、session以及data-driven的窗口操作。
+5. 支持具有Backpressure功能的持续流模型
+6. 支持基于轻量级分布快照(Snapshot)实现的容错
+7. 运行时同时支持Batch on Streaming 处理和Streaming处理
+8. Flink在JVM内部实现了自己的内存管理
+9. 支持迭代计算
+10. 支持程序自动优化：避免特定给情况下shuffle、排序等昂贵操作，中间结果有必要进行缓存
+
+### Flink 基石
+
+Flink 之所以能这么流行，离不开它最重要的四个基石： `Checkpoint、State、Time、Window`。
+
+- Checkpoint：基于Chandy-Lamport算法（1985）， 实现了分布式一致性快照，提供了一致性的语义。
+
+
+
 
 ### Flink的重要特点
 
