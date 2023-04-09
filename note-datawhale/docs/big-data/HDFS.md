@@ -131,7 +131,7 @@ HDFS的数据复制采用了 **流水线复制** 的策略，大大提高了数�
 
 ### 2.3.4  修改副本数
 
-第一种方式:修改集群文件 hdfs-site.xml
+第一种方式:修改集群文件 `/opt/hadoop/etc/hadoop/hdfs-site.xml`
 
 ```
 <property> 

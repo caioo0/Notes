@@ -1,13 +1,15 @@
-* [机器学习](opencv/README.md)
-  - [机器学习方法](udacity/README.md)
-    * [第一章 机器学习及监督学习概论](udacity/titanic_survival_exploration/titanic_udacity.ipynb)
-    * [预测波士顿房价](udacity/boston_housing/boston_housing.md)
-    * [为慈善机构寻找捐助者](udacity/finding_donors/)
-    * [狗狗品种分类器](udacity/dog_app/dog_app.ipynb)
-    * [创建客户细分](udacity/creating_customer_segments/customer_segments-zh.ipynb)
-    * [强化学习走迷宫](udacity/robot_maze/robot_maze.ipynb)
-    * [预测 Rossmann 未来的销售额](udacity/Rossmann_Store_Sales/Rossmann_xgb.ipynb)
-  - [Udacity-机器学习项目](udacity/README.md)
+[数学基础](opencv/README.md)
+
+- [概率论](udacity/README.md)
+  * [条件概率](udacity/titanic_survival_exploration/titanic_udacity.ipynb)
+  * [协方差](udacity/boston_housing/boston_housing.md)
+  * [期望值](udacity/finding_donors/)
+  * [方差](udacity/dog_app/dog_app.ipynb)
+  * [概率分布](udacity/creating_customer_segments/customer_segments-zh.ipynb)
+  * [信息论](udacity/robot_maze/robot_maze.ipynb)
+- 
+
+* - [Udacity-机器学习项目](udacity/README.md)
     * [练习项目：泰坦尼克号乘客存活情况](udacity/titanic_survival_exploration/titanic_udacity.ipynb)
     * [预测波士顿房价](udacity/boston_housing/boston_housing.md)
     * [为慈善机构寻找捐助者](udacity/finding_donors/)
@@ -15,4 +17,3 @@
     * [创建客户细分](udacity/creating_customer_segments/customer_segments-zh.ipynb)
     * [强化学习走迷宫](udacity/robot_maze/robot_maze.ipynb)
     * [预测 Rossmann 未来的销售额](udacity/Rossmann_Store_Sales/Rossmann_xgb.ipynb)
-  

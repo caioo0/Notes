@@ -384,7 +384,8 @@ sudo apt update #更新全部
 sudo apt-get install openssh-server # 安装服务端
 sudo apt-get install ssh # 安装客户端 
 ps -e|grep ssh # 检查是否安装成功 
-sudo/etc/init.d/ssh start # 启动ssh 
+sudo /etc/init.d/ssh start # 启动ssh 
+sudo systemctl enable ssh #开机启动
 ```
  对于ssh详细配置，可以参考：https://cloud.tencent.com/developer/article/1751149
 

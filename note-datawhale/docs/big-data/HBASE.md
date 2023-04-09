@@ -946,8 +946,16 @@ systemctl disable firewalld.service
 
 ✅**官方HBase安装指南**：[HBase伪集群分布安装](https://hbase.apache.org/book.html#quickstart_pseudo)
 
+**tips:**
 
+```
+1. HBase报错ERROR: KeeperErrorCode = NoNode for /hbase/master
+解答： 
+https://blog.csdn.net/Y_6155/article/details/110455338 
+https://blog.csdn.net/haiyan09/article/details/99863987
+```
 ## 3.7 参考资料
 
 1. 尚硅谷大数据之HBase
 2. https://www.runoob.com/mongodb/nosql.html
+

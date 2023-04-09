@@ -460,10 +460,16 @@ scala> val pairs = words.map{word => (word, 1)}
 scala> val wordCountOdered = pairs.reduceByKey(_+_).map(pair=>(pair._2, pair._1)).sortByKey(false).map(pair => (pair._2, pair._1))
 
 3. 打印数据
-scala> wordCountOdered.collect.foreach(wordNumberPair => println(wordNumberPair._1 + "：" + wordNumberPair._2))
+scala> wordCountOdered.collect.foreach(wordNumberPair => println(wordNumberPair._1 + ": " + wordNumberPair._2))
 ```
 
 本地执行就崩，所以无法提供打印效果页面
+
+![spark_20230316164316.png](./assets/spark_20230316164316.png)
+
+#### 3. 开发Spark独立应用程序 
+
+
 
 ### 7.4.2  WordCount在RDD的运行原理
 
@@ -522,3 +528,8 @@ emsp;map操作产生了一个**MapPartitionsRDD**，其作用是在单词拆分�
 ## 7.5 本章小结
 
 &emsp;在本章的学习中，主要介绍`Spark`的编程模型：`RDD`的定义、特性和操作函数，接着从`Spark`的架构原理出发，简述了`Spark`的计算阶段、作业管理和执行过程。最后通过实验，介绍了`Spark`的安装、并通过`WordCount`实例观察`RDD`的数据流向。如果想要更多的了解Spark SQL和Scala API的内容，可以参考本仓库[experiments](https://github.com/datawhalechina/juicy-bigdata/tree/master/experiments)目录下的笔记[Spark SQL的基本使用](https://github.com/datawhalechina/juicy-bigdata/blob/master/experiments/Spark%20SQL的基本使用.md)以及[Spark的Scala API介绍](https://github.com/datawhalechina/juicy-bigdata/blob/master/experiments/Spark的Scala%20API介绍.md)（✅**Gitee地址**：[Spark SQL的基本使用](https://gitee.com/shenhao-stu/Big-Data/blob/master/experiments/Spark%20SQL的基本使用.md)以及[Spark的Scala API介绍](https://gitee.com/shenhao-stu/Big-Data/blob/master/experiments/Spark的Scala%20API介绍.md)）。
+
+
+## 学习参考
+
+1. https://spark-examples.readthedocs.io/en/latest/spark-rdd/spark-rdd-textFile.html
