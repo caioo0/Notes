@@ -157,7 +157,9 @@ drop_last(bool, optional)
 
 ### 3.4.1  神经网络的构造
 
-`torch.nn`是专门为神经网络设计的模块化接口。`nn`构建于 `Autograd` 之上，可用来定义和运行神经网络。
+使用`torch.nn`构建神经网络。
+
+上一讲已经讲过了`autograd`，`nn`包依赖 `Autograd`包来定义模型并求导， 一个`nn.Module`包含各个层和一个`forward(input)`方法，该方法返回`output`。
 
 **约定：torch.nn 我们为了方便使用，会为他设置别名为nn，本章除nn以外还有其他的命名约定**
 
@@ -178,7 +180,7 @@ torch.__version__
 
 
 
-除了`nn`别名以外，我们还引用了`nn.functional`，这个包中包含了神经网络中使用的一些常用函数，这些函数的特点是，不具有可学习的参数(如ReLU，pool，DropOut等)，这些函数可以放在构造函数中，也可以不放，但是这里建议不放。
+除了`nn`别名以外，我们还引用了`nn.functional`，这个包中包含了神经网络中使用的一些常用函数。
 
 一般情况下我们会**将nn.functional 设置为大写的F**，这样缩写方便调用
 
@@ -230,7 +232,7 @@ net(X)
       (fc3): Linear(in_features=128, out_features=10, bias=True)
       (act3): Softmax(dim=1)
     )
-    
+
 
 
 
@@ -242,7 +244,7 @@ net(X)
 
 
 
-### 3.4.2  神经网络中常见的层
+### 3.4.3  神经网络中常见的层
 
 
 深度学习的一个魅力在于神经网络中各式各样的层，例如全连接层、卷积层、池化层与循环层等，下面我们学习使用`Module`定义层：
@@ -252,7 +254,6 @@ net(X)
 
 
 两种类型核心都一样,自定义一个继承自`nn.Module`的类,在类的`forward`函数里实现该`layer`的计算,不同的是,带参数的`layer`需要用到`nn.Parameter`
-
 
 **不含模型参数的层**
 
@@ -323,7 +324,7 @@ print(net)
           (3): Parameter containing: [torch.FloatTensor of size 4x1]
       )
     )
-    
+
 
 
 ```python
@@ -351,7 +352,7 @@ print(net)
           (linear3): Parameter containing: [torch.FloatTensor of size 4x2]
       )
     )
-    
+
 
 下面给出常见的神经网络的一些层，比如卷积层、池化层，以及较为基础的AlexNet，LeNet等。
 
@@ -388,8 +389,3 @@ class Conv2D(nn.Module):
 1. [从头学PyTorch](https://www.cnblogs.com/sdu20112013/category/1610864.html)
 2. [PyTorch 中文手册（pytorch handbook）](https://handbook.pytorch.wiki/index.html)
 3. [深度学习入门之 PyTorch](https://wizardforcel.gitbooks.io/learn-dl-with-pytorch-liaoxingyu/content/)
-
-
-```python
-
-```

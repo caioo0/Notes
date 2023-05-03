@@ -9,12 +9,37 @@ docker rmi -f $(docker images -qa) # 删除所有镜像
 
 
 
+## 安装msyql8.0
+
+```
+sudo docker pull mysql:8.0
+sudo docker images
+```
+
+```
+sudo docker run -p 3308:3306 --name mysql \
+-v /usr/local/docker/mysql/mysql-files:/var/lib/mysql-files \
+-v /usr/local/docker/mysql/conf:/etc/mysql \
+-v /usr/local/docker/mysql/logs:/var/log/mysql \
+-v /usr/local/docker/mysql/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+-d mysql:8.0
+
+```
 
 
-1.门户 （企业展示）
 
-2.web端也是常规的后台设置 
+```
+docker stop mysql
+docker start mysql
+sudo docker exec -it mysql bash
+mysql -uroot -proot
+docker update mysql --restart=always
+docker restart mysql
+whereis mysql
+sudo systemctl stop firewalld.service
+sudo systemctl restart docker
+docker start mysql
 
-3. web端（培训管理员） 素材这一块。
+```
 
-1. 

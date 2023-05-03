@@ -6,6 +6,8 @@
 
 GitHub地址：https://github.com/datawhalechina/thorough_pytorch
 
+源码地址：https://github.com/deep-learning-with-pytorch/dlwpt-code
+
 ### 学习笔记
 
 * [第一章 PyTorch简介和安装](docs/thorough_pytorch/chapter01.md)
@@ -23,6 +25,8 @@ GitHub地址：https://github.com/datawhalechina/thorough_pytorch
 2. [PyTorch官方文档](https://pytorch.org/docs/stable/index.html)：官方发布的文档，十分丰富。
 3. [Pytorch-handbook](https://github.com/zergtant/pytorch-handbook)：GitHub上已经收获14.8K，pytorch手中书。
 4. [PyTorch官方社区](https://discuss.pytorch.org/)：在这里你可以和开发pytorch的人们进行交流。
+5. [PyTorch 深度学习](https://tangshusen.me/Deep-Learning-with-PyTorch-Chinese/#/)
+6. [PyTorch 中文手册](https://handbook.pytorch.wiki/chapter1/1.1-pytorch-introduction.html)
 
 
 

@@ -1,4 +1,5 @@
 # PyTorch简介和安装
+
 （本学习笔记来源于[DataWhale-深入浅出PyTorch](https://github.com/datawhalechina/thorough_pytorch)）
 ## PyTorch简介
 
@@ -74,7 +75,6 @@ conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=1
 conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cpuonly -c pytorch
 ```
 注意下一定要保持Pytorch和cudatoolkit的版本适配。[查看](https://pytorch.org/get-started/previous-versions/),本机版本为：
-
 
 ### 1.2.4 检验本地环境是否安装成功
 

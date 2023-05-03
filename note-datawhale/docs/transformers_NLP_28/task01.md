@@ -10,24 +10,15 @@ Yoshua Bengio团队:[《Learning Phrase Representation using RNN Encoder-Decoder
 
 ####  模型定义：
 
-seq2seq 即 Sequence-to-sequence 模型，通常指 Encoder Decoder LSTM 模型，它由两个循环神经网络（可以是 RNN、LSTM、GRU 等）组成：
+seq2seq 是一种常见的NLP模型结构，全称是 Sequence-to-sequence 模型，翻译为"序列到序列"，顾名思义Seq2seq模型的输入是序列化数据（比如单词、信件内容、图片特征等），输出也是序列化数据。
 
-- 一个 Encoder 编码器，Encoder 用于编码序列的信息，将任意长度的序列信息编码到一个固定“上下文向量”c 里。
-- 一个 Decoder 解码器，得到固定“上下文向量” c 之后可以将信息解码，并输出为序列，输出为目标序列。
+它由两个循环神经网络（可以是 RNN、LSTM、GRU 等）组成：
 
-**输入和输出序列可以是长度是不固定的序列,可以理解为一种 N×M 的模型**
+- Encoder 编码器，Encoder 用于编码序列的信息，将任意长度的序列信息编码到一个固定“上下文向量”c 里。
 
+- Decoder 解码器，得到固定“上下文向量” c 之后可以将信息解码，并输出为序列，输出为目标序列。
 
-
-#### 应用场景：
-
-机器翻译、对话系统、自动文摘
-
-![image.png](attachment:image.png)
-
-
-
-如图所示为一个简单的邮件对话的场景。
+  
 
 ####  原理解析：
 
@@ -37,8 +28,8 @@ seq2seq 即 Sequence-to-sequence 模型，通常指 Encoder Decoder LSTM 模型�
 
 **优点**
 
-1. 输入序列和输出序列的长度可以不固定
-2. Encoder 处理完整个输入句子后，Decoder 再进行预测
+1. 输入序列和输出序列的长度可以不固定.
+2. Encoder 处理完整个输入句子后，Decoder 再进行预测.
 
 **缺点** 
 
@@ -48,10 +39,7 @@ seq2seq 即 Sequence-to-sequence 模型，通常指 Encoder Decoder LSTM 模型�
 
 3. 运算量太大了，训练起来比较困难。
 
-
 #### 用 Keras 实现 seq2seq
-
-
 
 ```python
 from random import seed
@@ -209,7 +197,7 @@ print(model.summary())
     Non-trainable params: 0
     _________________________________________________________________
     None
-    
+
 
 
 ```python
@@ -279,7 +267,7 @@ for i in range(n_epoch):
     100/100 [==============================] - 0s 5ms/step - loss: 0.0795 - accuracy: 0.9880
     29
     100/100 [==============================] - 1s 5ms/step - loss: 0.0768 - accuracy: 0.9850
-    
+
 
 
 ```python
@@ -315,7 +303,7 @@ for i in range(20):
     Expected=13, Predicted=13
     Expected= 9, Predicted= 9
     Expected=12, Predicted=12
-    
+
 
 通过上面的这个很简单的例子，我们知道了 seq2seq 是如何处理序列的，下面我们将自注意力部分。
 
@@ -694,16 +682,16 @@ if __name__ == '__main__':
 
 
     ---------------------------------------------------------------------------
-
+    
     ImportError                               Traceback (most recent call last)
-
+    
     <ipython-input-18-8b4f34e37cb9> in <module>
           2 from keras import backend as K
           3 from keras import regularizers, constraints, initializers, activations
     ----> 4 from keras.layers.recurrent import Recurrent
           5 from keras.engine import InputSpec
           6 
-    
+
 
     ImportError: cannot import name 'Recurrent' from 'keras.layers.recurrent' (d:\ProgramData\Anaconda3\lib\site-packages\keras\layers\recurrent.py)
 
@@ -733,14 +721,6 @@ Transformer 的基本框架本质上就是一种 Encoder-Decoder 结构，如下
 ## 参考：
 
 -  NLP之Seq2Seq:https://blog.csdn.net/qq_32241189/article/details/81591456
+-  Seq2seq+Attention模型最通俗易懂的讲解:https://zhuanlan.zhihu.com/p/150294471
 
 
-
-```python
-
-```
-
-
-```python
-
-```

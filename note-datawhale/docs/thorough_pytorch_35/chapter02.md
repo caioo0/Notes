@@ -11,7 +11,7 @@
 - 0D：**标量** 标量是一个数字
 - 1D：**向量**  1维张量称为“向量”。
 - 2D： 2维张量称为**矩阵**
-- 3D： 公用数据存储在张量 时间序列数据 股价 文本数据 彩色图片(**RGB**)
+- 3D： 公用数据存储在**张量** 时间序列数据 股价 文本数据 彩色图片(**RGB**)
 - 4D:  批量3维张量，比如10,000张彩色图片的集合；
 
 一个图像可以用三个字段表示：
@@ -175,22 +175,23 @@ torch.ones((2,3,4,6))
               [1., 1., 1., 1., 1., 1.],
               [1., 1., 1., 1., 1., 1.],
               [1., 1., 1., 1., 1., 1.]]],
-    
-    
-            [[[1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.]],
-    
-             [[1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.]],
-    
-             [[1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.],
-              [1., 1., 1., 1., 1., 1.]]]])
+
+
+​    
+​            [[[1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.]],
+​    
+​             [[1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.]],
+​    
+​             [[1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.],
+​              [1., 1., 1., 1., 1., 1.]]]])
 
 
 
@@ -227,29 +228,29 @@ print(x.shape)
 
     torch.Size([3, 4])
     torch.Size([3, 4])
-    
+
 
 > 注意：返回的torch.Size其实就是一个tuple, 支持所有tuple的操作。
 
 还有很多函数可以创建`Tensor`，去翻翻官方API就知道了，下表给了一些常用的作参考。
 
 
-|函数	|功能|
-| --- |---|
-| Tensor(*sizes) | 基础构造函数|
-|tensor(data,)	|类似np.array的构造函数|
-|ones(*sizes)	|全1Tensor|
-|zeros(*sizes)	|全0Tensor|
-|eye(*sizes)	|对角线为1，其他为0|
-|arange(s,e,step)|	从s到e，步长为step|
-|linspace(s,e,steps)	|从s到e，均匀切分成steps份|
-|rand/randn(*sizes)|	均匀/标准分布
-|normal(mean,std)/uniform(from,to)	|正态分布/均匀分布|
-|randperm(m)	随机排列|
+|函数	|功能| 示例|
+| --- |---| ---|
+| Tensor(*sizes) | 基础构造函数|  |
+|tensor(data,)	|类似np.array的构造函数|torch.tensor([1.0, 2.0]) or torch.tensor((1, 2))|
+|ones(*sizes)	|全1Tensor|torch.ones(3,4,5)|
+|zeros(*sizes)	|全0Tensor|torch.zeros(3,4,5)|
+|eye(*sizes)	|对角线为1，其他为0|torch.eye(3,4)|
+|arange(s,e,step)|	从s到e，步长为step|torch.arange(1, 4) or torch.arange(1, 2.5, 0.5)|
+|linspace(s,e,steps)	| 从s到e，均匀切分成steps份|torch.linspace(0,10,steps=4)|
+|rand/randn(*sizes)     |	均匀/标准分布||
+|normal(mean,std)/uniform(from,to)|正态分布/均匀分布||
+|randperm(m) |	随机排列 ||
 
 这些创建方法都可以在创建的时候指定数据类型dtype和存放device(cpu/gpu)。
 
-### 2.1.2. 操作 
+### 2.1.2. 操作
 
 
 本小节介绍`Tensor`的各种操作。
@@ -299,7 +300,7 @@ print(x + y)
             [1.7169, 1.9392, 1.6505],
             [1.9700, 1.4227, 1.5914],
             [1.4348, 1.9572, 1.8105]], dtype=torch.float64)
-    
+
 
 - **加法形式二**
 
@@ -313,7 +314,7 @@ print(torch.add(x, y))
             [1.7169, 1.9392, 1.6505],
             [1.9700, 1.4227, 1.5914],
             [1.4348, 1.9572, 1.8105]], dtype=torch.float64)
-    
+
 
 还可指定输出：
 
@@ -329,7 +330,7 @@ print(result)
             [1.7169, 1.9392, 1.6505],
             [1.9700, 1.4227, 1.5914],
             [1.4348, 1.9572, 1.8105]])
-    
+
 
 - **加法形式三、inplace**
 
@@ -346,7 +347,7 @@ print(y)
             [4.7169, 4.9392, 4.6505],
             [4.9700, 4.4227, 4.5914],
             [4.4348, 4.9572, 4.8105]])
-    
+
 
 > 注：PyTorch操作inplace版本都有后缀_, 例如x.copy_(y), x.t_()
 
@@ -531,14 +532,13 @@ X
 
 |函数|	功能|
 | --- | --- |
-|index_select(input, dim, index)|	在指定维度dim上选取，比如选取某些行、某些列|
-|masked_select(input, mask)|	例子如上，a[a>0]，使用ByteTensor进行选取
-|nonzero(input)	非0元素的下标|
-|gather(input, dim, index)	|根据index，在dim维度上选取数据，输出的size与index一样|
+|index_select(input, dim, index)|	在指定维度dim上选取，比如选取某些行、某列|
+|masked_select(input, mask)|	例子如上，a[a>0]，使用ByteTensor进行选取 |
+|nonzero(input)|非0元素的下标|
+|gather(input, dim, index)	|根据index，在dim维度上选取数据，输出的size与inde一样|
 
 
 这里不详细介绍，用到了再查官方文档。
-
 
 ### 2.1.5 改变形状
 
@@ -566,7 +566,7 @@ print(z)
     tensor([[1., 1., 1., 1., 1.],
             [1., 1., 1., 1., 1.],
             [1., 1., 1., 1., 1.]], dtype=torch.float64)
-    
+
 
 注意`view()`返回的新`Tensor`与源`Tensor`虽然可能有不同的`size`，但是是共享`data`的，也即更改其中的一个，另外一个也会跟着改变。(顾名思义，view仅仅是改变了对这个张量的观察角度，内部数据并未改变)
 
@@ -584,7 +584,7 @@ print(y) # 也加了1
             [2., 2., 2.]], dtype=torch.float64)
     tensor([2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2.],
            dtype=torch.float64)
-    
+
 
 所以如果我们想返回一个真正新的副本（即不共享data内存）该怎么办呢？Pytorch还提供了一个`reshape()`可以改变形状，但是此函数并不能保证返回的是其拷贝，所以不推荐使用。推荐先用`clone`创造一个副本然后再使用`view`。[参考此处](https://stackoverflow.com/questions/49643225/whats-the-difference-between-reshape-and-view-in-pytorch)
 
@@ -603,7 +603,7 @@ print(y)
             [1., 1., 1.]], dtype=torch.float64)
     tensor([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
            dtype=torch.float64)
-    
+
 
 > 使用`clone`还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源`Tensor`。
 
@@ -618,7 +618,7 @@ print(x.item())
 
     tensor([0.2106])
     0.21058855950832367
-    
+
 
 ### 2.1.6. 节省内存
 
@@ -654,7 +654,7 @@ print('id(Z):', id(Z))
 
     id(Z): 1561725302656
     id(Z): 1561725302656
-    
+
 
 如果在后续计算中没有重复使用X， 我们也可以使用X[:] = X + Y或X += Y来减少操作的内存开销。
 
@@ -714,7 +714,7 @@ a,a.item(),float(a),int(a)
 
 
 
-其他一些尝试，关于`backward`,`grad`,`TensorDataset`,`DataLoader`：
+其他一些尝试，关于`backward`（反向求导）,`grad`,`TensorDataset`（打包）,`DataLoader`（封装）：
 
 
 ```python
@@ -766,7 +766,7 @@ print('=' * 80)
     tensor([4, 5, 6]) tensor(55)
     tensor([7, 8, 9]) tensor(66)
     ================================================================================
-    
+
 
 
 ```python
@@ -797,7 +797,7 @@ if __name__ == '__main__':
 
     steop:0, batch_x:tensor([1., 2., 3., 4., 5.]), batch_y:tensor([10.,  9.,  8.,  7.,  6.])
     steop:1, batch_x:tensor([ 6.,  7.,  8.,  9., 10.]), batch_y:tensor([5., 4., 3., 2., 1.])
-    
+
 
 ### 2.1.8 线性代数
 
@@ -948,18 +948,22 @@ X.shape,Y.shape
 ## 2.2 自动求梯度
 
 
-在深度学习中，我们经常需要对函数求梯度（gradient）。PyTorch提供的`autograd`包能够根据输入和前向传播过程自动构建计算图，并执行反向传播。
+在深度学习中，我们经常需要对函数求梯度（gradient）。PyTorch中所有神经网络的核心是`autograd`包，它能够根据输入和前向传播过程自动构建计算图，并执行反向传播。
 
 ### 2.2.1 概念
 
-`torch.Tensor `是这个包的核心类。如果设置它的属性` .requires_grad` 为 `True`，那么它将会追踪对于该张量的所有操作（这样就可以利用链式法则进行梯度传播了）。完成计算后,可以调用` .backward()`，来自动计算所有的梯度。此`Tensor`的梯度将会累计到`.grad`属性。
+`torch.Tensor `是这个包的核心类。如果设置它的属性` .requires_grad` 为 `True`，那么它将会追踪对于该张量的所有操作（这样就可以利用链式法则进行梯度传播了）。完成计算后,可以调用` .backward()`，来自动计算所有的梯度。此`Tensor`的梯度将会自动积累到`.grad`属性。
 
 
 > 注意：在 `y.backward()` 时，如果 y 是标量，则不需要为 backward() 传入任何参数；否则，需要传入一个与 y 同形的Tensor。
 
-如果不想一个张量被跟踪历史，可以调用` .detach() `将其从追踪记录中分离出来，这样就可以防止将来的计算被追踪，这样梯度就传不过去了。此外，还可以用`with torch.no_grad()`将不想被追踪的操作代码块包裹起来，这种方法在评估模型的时候很常用，因为在评估模型时，我们并不需要计算可训练参数（`requires_grad=True`）的梯度。
+要阻止张量跟踪历史记录，可以调用` .detach() `将其从追踪记录中分离出来，这样就可以防止将来的计算被追踪。
 
-`Function`是另外一个很重要的类。`Tensor `和` Function` 互相结合就可以构建一个记录有整个计算过程的有向无环图 (acyclic graph DAG)，每个张量`Tensor`都有一个` .grad_fn `属性，该属性创建该 `Tensor `的`Function`，就是说该`Tensor`是不是通过某些运算得到的，若是，则`grad_fn`返回一个与这些运算相关的对象，否则是None。
+此外，还可以用`with torch.no_grad()`将不想被追踪的操作代码块包裹起来，这种方法在评估模型的时候很常用，因为在评估模型时，我们并不需要计算可训练参数（`requires_grad=True`）的梯度。
+
+在自动梯度计算中还有另外一个重要的类`Function`
+
+ `Tensor `和` Function` 互相结合就可以构建一个记录有整个计算过程的有向无环图 (acyclic graph DAG)，它表示和存储了完整的计算历史。每个张量`Tensor`都有一个` .grad_fn `属性，该属性创建该 `Tensor `的`Function`，就是说该`Tensor`是不是通过某些运算得到的，若是，则`grad_fn`返回一个与这些运算相关的对象，否则是None。
 
 下面通过一些例子来理解这些概念。
 
@@ -988,7 +992,7 @@ print(x.grad_fn)
 ```
 
     None
-    
+
 
 [**在我们计算$y$关于$\mathbf{x}$的梯度之前，我们需要一个地方来存储梯度。**]
 重要的是，我们不会在每次对一个参数求导时都分配新的内存。
@@ -1007,7 +1011,7 @@ print(x.grad_fn)
 ```
 
     None
-    
+
 
 现在我们计算$y$,根据函数$y=2\mathbf{x}^{\top}\mathbf{x}$
 
@@ -1020,21 +1024,19 @@ print(y.grad_fn)
 
     tensor(28., grad_fn=<MulBackward0>)
     <MulBackward0 object at 0x0000016BA286B310>
-    
+
 
 注意$x$是直接创建的，所以它没有`grad_fn`, 而$y$是通过一个函数操作创建的，所以它有一个为`<MulBackward0>`的`grad_fn`。
 
 
 像$x$这种直接创建的称为叶子节点，叶子节点对应的`grad_fn`是`None`。
 
-
-
 ```python
 print(x.is_leaf, y.is_leaf) # True False
 ```
 
     True False
-    
+
 
 再来点复杂度运算操作：
 
@@ -1047,7 +1049,7 @@ print(y1,z,out)
 ```
 
     tensor([2., 3., 4., 5.], grad_fn=<AddBackward0>) tensor([12., 27., 48., 75.], grad_fn=<MulBackward0>) tensor(40.5000, grad_fn=<MeanBackward0>)
-    
+
 
 通过`.requires_grad_()`来用in-place的方式改变`requires_grad`属性：
 
@@ -1069,7 +1071,7 @@ print(b.grad_fn)
     None
     True
     <SumBackward0 object at 0x0000016BA294C370>
-    
+
 
 ### 2.2.2 梯度
 
@@ -1090,7 +1092,7 @@ print(x.grad)
 ```
 
     tensor([ 0.,  4.,  8., 12.])
-    
+
 
 函数$y=2\mathbf{x}^{\top}\mathbf{x}$关于$\mathbf{x}$的梯度应为$4\mathbf{x}$。
 让我们快速验证这个梯度是否计算正确。
@@ -1171,7 +1173,7 @@ x.grad
 ```
 
     tensor([0., 1., 2., 3.], requires_grad=True)
-    
+
 
 
 
@@ -1188,11 +1190,9 @@ plt.plot(x.detach().numpy(), y.detach().numpy())
 plt.show()
 ```
 
+![png](./images/chapter02-00.png)
 
-    
-![png](chapter02-00.png)
-    
-
+`autograd` 和 `Function` 的官方文档 https://pytorch.org/docs/autograd    
 
 ## 2.3 并行计算
 
@@ -1218,7 +1218,7 @@ plt.show()
 
 架构如图：
 
-![img.png](chapter02-01.png)
+![img.png](./images/chapter02-01.png)
 
 
 **2）同一层的任务分布到不同数据中(Layer-wise partitionign)**
@@ -1229,7 +1229,7 @@ plt.show()
 
 其架构如下：
 
-![img.png](chapter02-02.png)
+![img.png](./images/chapter02-02.png)
 
 
 **3）不同的数据分布到不同的设备中，执行相同的任务(Data parallelism) **
@@ -1241,7 +1241,7 @@ plt.show()
 
 其架构如下：
 
-![img.png](chapter02-03.png)
+![img.png](./images/chapter02-03.png)
 
 
 **现在的主流方式，这种方式可以解决之前模式遇到的通讯问题。**
@@ -1251,15 +1251,6 @@ plt.show()
 
 ## 2.4 参考资料
 
-1. https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter02_prerequisite/2.3_autograd
-2. https://foxsen.github.io/archbase/%E5%A4%9A%E6%A0%B8%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%84.html#nvidia-gpu
+1. [动手学深度学习之自动求梯度](https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter02_prerequisite/2.3_autograd?id=_23-自动求梯度)
+2. [计算机体系结构基础之NVIDIA GPU](https://foxsen.github.io/archbase/%E5%A4%9A%E6%A0%B8%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%84.html#nvidia-gpu)
 
-
-```python
-
-```
-
-
-```python
-
-```

@@ -19,6 +19,7 @@
 ### 资料
 
 - [Transformer面试题解析](docs/transformers_NLP_28/question.md)
+- [[基于transformers的自然语言处理(NLP)入门](https://datawhalechina.github.io/learn-nlp-with-transformers/)](https://datawhalechina.github.io/learn-nlp-with-transformers/#/)
 
 ### 主要贡献者
 

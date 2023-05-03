@@ -69,6 +69,19 @@ Life is what you make it.
 
 （4）2018 年 Hortonworks 目前**已经被** **Cloudera** **公司收购**
 
+
+
+**Hadoop的不同版本：**
+
+Hadoop-0.x # 古老的Hadoop，连YARN都没有，现在应该没有任何企业还在使用这么古老的Hadoop了
+hadoop-1.x # 基本淘汰的Hadoop版本。不用考虑
+hadoop-2.x # 现阶段主流的使用版本。比如Hadoop-2.6.5， hadoop-2.7.7， hadoop-2.8.5，支持两个NameNode提供HA功能Active NameNode和Standby NameNode 。前者负责对外提供服务，后者作为前者的热备节点，它们通过一个共享的存储结构--QJM(Quorum Journal Manager)实现数据同步。
+hadoop-3.x # 在Hadoop2.0基础改动项主要是围绕提高系统的可扩展性和资源利用率上。为YARN提供了Federation，是其规模可达到上万台，还为NameNode提供了多个Standby NameNode。HDFS增加了纠错码副本策略，可以提高存储资源的利用率。为YARN新增了Node Attribute功能，并且新增了Hadoop Ozone (一种对象存储方案，缓解HDFS集群中小文件的问题，)和 Hadoop Submarine(机器学习引擎，可使TensorFlow或Pytorch运行在Yarn中)。
+
+**Hadoop1.x、2.x、3.x的区别：**
+
+![image.png](./assets/1676120058100-image.png)
+
 ## 2.1 概述:id=2-1
 
 ### 2.1.1 Hadoop简介
@@ -87,21 +100,17 @@ Life is what you make it.
 
 Hadoop 几个基础模块：
 
-- **Common:** 支持其他模块的公用工具包,它主要包括**FileSystem、RPC和串行化库**。
-- **HDFS:**  一个可高吞吐访问应用数据的分布式分拣系统,HDFS具有处理超大数据、流式处理、可以运行在廉价商用服务器上等优点。。
-- **YARN:** 一个管理集群服务器资源和任务调度的框架。
-- **MapReduce:** 基于Yarn对大数据集进行并行计算的系统。
+- **Common:** 支持其他模块的公用工具包,它主要包括**configuration、FileSystem、远程调用包RPC、用于指标检测的jmx和metrics包，以及串行化库等其他**。
+- **HDFS:**  一个可高吞吐访问应用数据的分布式文件系统,HAFS的设计场景是一次写入，多次读取。HDFS具有处理超大数据、流式处理、高度容错性，能够自动检测和应对硬件故障，并可以运行在廉价商用服务器上等优点。
+- **YARN:** 从JobTracker的资源管理功能中独立出来，用于作业调度和资源管理的框架。一个管理集群服务器资源和任务调度的框架。
+- **MapReduce:** 基于Yarn对大数据集进行并行计算的系统，将整个计算过程分为Map和reduce两个任务。map任务从输入的数据集中读取数据，并对取出的数据进行指定的逻辑处理，然后生成键值对形式的中间结果，并将该结果写入本地磁盘。reduce任务从map任务输出的中间结果中读取相应的键值对，然后进行聚合处理，最后输出结果。
 
-**Hadoop的不同版本：**
+​    mapreduce主要用于对大规模进行离线计算。一个完整的mapreduce作业由n个map任务和M个reduce任务组成，处于对性能优化的考虑，n>m 。另外，对于某些特定的场景，可以对map任务使用的combiner个数进行优化以减少它的输出数据。至于reduce任务要读取哪些数据，这是由map任务的分区策略决定的，默认是散列分区策略，也可以根据需要自定义。
 
-Hadoop-0.x # 古老的Hadoop，连YARN都没有，现在应该没有任何企业还在使用这么古老的Hadoop了
-hadoop-1.x # 基本淘汰的Hadoop版本。不用考虑
-hadoop-2.x # 现阶段主流的使用版本。比如Hadoop-2.6.5， hadoop-2.7.7， hadoop-2.8.5
-hadoop-3.x # 目前较新的Hadoop版本，提供了很多新特性，但是升级的企业还是比较少。
+- Hadoop Ozone 。专门为Hadoop 设计的，有HDDS (hadoop Distributed Data Store)构建成的可扩展的分布式对象存储系统。
+- Hadoop Submarine 一个机器学习引擎，可以运行TensorFlow,pytorch,mxnet等框架。
 
-**Hadoop1.x、2.x、3.x的区别：**
 
-![image.png](./assets/1676120058100-image.png)
 
 ### 2.1.2 Hadoop的特性
 
@@ -125,7 +134,7 @@ Hadoop的特性：
 - **国外应用：** Yahoo、Facebook等大厂
 - **国内应用：** 百度、阿里巴巴、腾讯、华为等大厂
 
-## 2.2 Hadoop的项目架构:id=2-2
+### 2.1.4 Hadoop的项目架构:id=2-2
 
 
 
@@ -136,6 +145,10 @@ Hadoop的特性：
 - **Sqoop:** 主要用来在Hadoop和关系数据库之间交换数据,Sqoop可以改进数据的互操作性。通过JDBC（Java DataBase Connectivity）与关系数据库进行交互理论上，支持JDBC的关系数据库都可以用Sqoop与Hadoop进行数据交互。
 - **Chukwa：** Chukwa是开源的数据收集系统，用于监控和分析大型分布式系统的数据。
 - **Zookeeper：** Zookeeper是一个为分布式应用所涉及的开源协调服务，主要为用户提供同步、配置管理、分组和命名等服务，减轻分布式应用程序所承担的协调任务，Zookeeper的文件系统使用了我们所熟悉的目录树结构，Zookeeper是主要使用Java语言编写，同时支持C语言。
+
+## 2.2 阅读Hadoop源码
+
+
 
 ## 2.3 实验一：Hadoop3.3.1伪分布式安装 :id=2-3
 
@@ -718,3 +731,4 @@ java与hadoop的安装与伪分布式流程一致，此处不再赘述，后面�
 
 1. [datawhale-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)
 2. 尚硅谷-hadoop资料
+3. https://hadoop.org.cn/download/
