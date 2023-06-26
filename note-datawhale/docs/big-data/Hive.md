@@ -12,7 +12,6 @@
 2. [task06之二:Hive-数据仓库进阶](Hive2.md)
 3. [task06之三：Apache Hive高级实战](Hive3.md)
 
-
 ## 6.0 数据仓库
 
 ### 6.0.1 为什么要有数据仓库

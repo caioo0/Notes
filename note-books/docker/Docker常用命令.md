@@ -938,7 +938,7 @@ docker inspect 容器id
 
 ```
 # 获取镜像
-docker pull mysql:5.7
+docker pull mysql:5.6
 # 运行容器，需要做数据目录挂载。（安装启动mysql，注意：需要配置密码）
 # 官方启动mysql
 docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
@@ -947,8 +947,9 @@ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
 -p 端口映射
 -v 卷挂载
 
-(base) choi@DESKTOP-B1FCICA:/home/mysql$ docker run -d -p 7777:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_SQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7
+$ docker run -d -p 3308:3306 -v E:\docker\mysql\conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root --name mysql56 mysql:5.6
 
+SET SESSION sql_mode = sys.list_drop(@@session.sql_mode, 'ONLY_FULL_GROUP_BY');
 
 # 启动成功之后，我们在本地使用navicat来接测试一下。
 # navicat连接到服务器的7777端口和容器内的3306映射，这个时候我们就可以连接上了！
