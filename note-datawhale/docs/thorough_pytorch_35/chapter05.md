@@ -1,6 +1,6 @@
 # task05 PyTorch模型定义的方式
 ---
-（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://github.com/datawhalechina/thorough_pytorch)）
+（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://datawhalechina.github.io/thorough-pytorch/)）
 本节学习：
 
 - 熟悉PyTorch中模型定义的三种方式：Sequential，ModuleList和ModuleDict

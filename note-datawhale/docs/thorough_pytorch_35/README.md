@@ -4,7 +4,7 @@
 
 ### 学习教程
 
-GitHub地址：https://github.com/datawhalechina/thorough_pytorch
+GitHub地址：https://datawhalechina.github.io/thorough-pytorch/
 
 源码地址：https://github.com/deep-learning-with-pytorch/dlwpt-code
 

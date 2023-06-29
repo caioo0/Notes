@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>DataWhale-组队学习(github)</title>
+    <title>.::::.</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="description" content="A vuepress-theme docsify plugin"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
@@ -10,17 +10,9 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="stylesheet" href="assets/npm/vue.css">
-    <link rel="stylesheet" href="assets/docsify/docsify-ew.css?v">
+    <link rel="stylesheet" href="assets/docsify/docsify-ew.css">
     <link rel="stylesheet" href="assets/npm/mermaid.min.css">
     <script src="assets/npm/mermaid.min.js"></script>
-<!--    <style>-->
-<!--        :root {-->
-<!--            /* Reduce the font size */-->
-<!--            &#45;&#45;base-font-size: 14px;-->
-<!--            /*!* Change the theme color hue *!*/-->
-<!--            /*&#45;&#45;theme-hue: 325;*/-->
-<!--        }-->
-<!--    </style>-->
 </head>
 <body>
 <div id="app"></div>
@@ -29,7 +21,7 @@
     mermaid.initialize({startOnLoad: false});
     window.$docsify = {
         name: '',
-        repo: 'https://github.com/caioo0/datawhale-team',
+        repo: 'https://caioo0.github.io/note-datawhale/',
         loadSidebar: true,
         loadNavbar: false,
         auto2top: true,
@@ -50,12 +42,16 @@
             placeholder: '搜索',
             noData: '找不到结果！',
         },
-        count: {
-            countable: true,
-            fontsize: '0.9em',
-            color: 'rgb(90,90,90)',
-            language: 'chinese'
-        },
+            count: {
+                countable: true,
+                position: 'top',
+                margin: '10px',
+                float: 'right',
+                fontsize: '0.9em',
+                color: 'rgb(90,90,90)',
+                language: 'chinese',
+                isExpected: true
+            },
         markdown: {
             renderer: {
                 code: function (code, lang) {
@@ -90,10 +86,13 @@
 <script src="assets/npm/prism-bash.js"></script>
 <script src="assets/npm/prism-python.js"></script>
 <script src="assets/npm/docsify-pagination.min.js"></script>
-<script src="./assets/npm/docsify-copy-code"></script>
+<script src="./assets/npm/docsify-copy-code.js"></script>
 <!-- CDN files for docsify-katex -->
-<script src="assets/npm/docsify-katex.js"></script>
+
+<script src="assets/npm/katex.min.js"></script>
 <link rel="stylesheet" href="assets/npm/katex.min.css"/>
+<script src="assets/npm/marked@4.js" title="//fastly.jsdelivr.net/npm/marked@4.js"></script>
+<script src="assets/npm/docsify-katex.js"></script>
 <!-- sidebar collapse -->
 <script src="assets/npm/docsify-sidebar-collapse.min.js"></script>
 <!-- search -->
@@ -102,7 +101,14 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/index.min.js"></script>
 <script src="assets/npm/external-script.min.js"></script>
-<script src="./assets/countable.js"></script>
+<script src="./assets/npm/countable.js"></script>
+<style>
+    .katex {
+    font-size: 1.1em;
+    text-indent: 0;
+    text-rendering: auto;
+} 
+</style>
 </body>
 
 </html>

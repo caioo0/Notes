@@ -1,6 +1,6 @@
 # 第二章 PyTorch基础知识
 
-（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://github.com/datawhalechina/thorough_pytorch)）
+（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://datawhalechina.github.io/thorough-pytorch/)）
 
 ## 2.1 数据操作
 

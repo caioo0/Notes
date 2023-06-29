@@ -1,5 +1,5 @@
 # 第三章 PyTorch的主要组成模块
-（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://github.com/datawhalechina/thorough_pytorch)）
+（本学习笔记来源于[DataWhale-深入浅出PyTorch](https://datawhalechina.github.io/thorough-pytorch/)）
 
 ## 3.1 机器学习 vs 深度学习
 

@@ -10,17 +10,9 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="stylesheet" href="assets/npm/vue.css">
-    <link rel="stylesheet" href="assets/docsify/docsify-ew.css?v">
+    <link rel="stylesheet" href="assets/docsify/docsify-ew.css">
     <link rel="stylesheet" href="assets/npm/mermaid.min.css">
     <script src="assets/npm/mermaid.min.js"></script>
-<!--    <style>-->
-<!--        :root {-->
-<!--            /* Reduce the font size */-->
-<!--            &#45;&#45;base-font-size: 14px;-->
-<!--            /*!* Change the theme color hue *!*/-->
-<!--            /*&#45;&#45;theme-hue: 325;*/-->
-<!--        }-->
-<!--    </style>-->
 </head>
 <body>
 <div id="app"></div>
@@ -96,8 +88,11 @@
 <script src="assets/npm/docsify-pagination.min.js"></script>
 <script src="./assets/npm/docsify-copy-code.js"></script>
 <!-- CDN files for docsify-katex -->
-<script src="assets/npm/docsify-katex.js"></script>
+
+<script src="assets/npm/katex.min.js"></script>
 <link rel="stylesheet" href="assets/npm/katex.min.css"/>
+<script src="assets/npm/marked@4.js" title="//fastly.jsdelivr.net/npm/marked@4.js"></script>
+<script src="assets/npm/docsify-katex.js"></script>
 <!-- sidebar collapse -->
 <script src="assets/npm/docsify-sidebar-collapse.min.js"></script>
 <!-- search -->
@@ -107,6 +102,13 @@
 <script src="assets/js/index.min.js"></script>
 <script src="assets/npm/external-script.min.js"></script>
 <script src="./assets/npm/countable.js?v=1.0"></script>
+<style>
+    .katex {
+    font-size: 1.1em;
+    text-indent: 0;
+    text-rendering: auto;
+} 
+</style>
 </body>
 
 </html>
