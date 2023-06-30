@@ -694,3 +694,11 @@ Flink 支持批处理的方式是通过 DataSet API。DataSet API 提供了一�
 val countVisits = env.fromElements(visits).groupBy(region).sum(visits)  
 在这个例子中，fromElements方法将数据流转换为数据集，groupBy方法将数据集分组按照地区，sum方法对每个地区的访问次数进行求和。这种批处理方式的优点是可以使用 Flink 强大的 DataStream API 进行数据处理，同时也可以支持批量数据的处理。
 Flink 还提供了一些机制来支持流批一体，包括检查点机制和状态机制、水印机制、窗口和触发器等。这些机制可以用于实现容错、有状态的处理、事件时钟和数据处理的限制等功能。例如，可以使用水印机制来实现事件时钟，窗口和触发器可以用于限制数据处理的范围和时间。这些机制可以帮助 Flink 在处理无限数据流的同时，也可以支持批量数据的处理。
+
+## \#每日打卡# 6月30日面试题— Flink的内存管理是如何做的
+
+Flink 是基于 JVM 的大数据处理引擎，针对大数据流式处理的特点，Flink 定制了自己的内存管理策略。Flink 将内存分为堆内内存和堆外内存，按照用途可以划分为 task 所用内存，networkmemory、managedmemory、以及 framework 所用内存，其中 tasknetworkmanaged 所用内存计入 slot 内存。framework 为 taskmanager 公用。
+堆内内存包含用户代码所用内存、heapstatebackend、框架执行所用内存。堆外内存是未经 JVM 虚拟化的内存，直接映射到操作系统的内存地址，堆外内存包含框架执行所用内存，JVM 堆外内存、Direct、native 等。
+Flink 使用内存划分为堆内内存和堆外内存，可以避免 Java 对象存储密度低、fullgc 时消耗性能、gc 存在 stw 的问题，同时针对频繁序列化和反序列化问题，Flink 使用堆内堆外内存可以直接在一些场景下操作二进制数据，减少序列化反序列化的消耗。
+Flink 内存管理和 Spark 的 Tungsten 的内存管理的出发点很相似，都可以使用堆内和堆外内存，并且使用本地内存可以减少序列化和反序列化的消耗。此外，Flink 还基于 CPU L1 L2 L3 高速缓存的机制以及局部性原理，设计使用缓存友好的数据结构，可以提高数据处理的效率。同时，Flink 的 ManagedMemory 主要用于 RocksDBStateBackend 和批处理算子，也属于 native memory 的范畴。
+Flink 通过使用堆内和堆外内存、本地内存以及缓存友好的数据结构，提高了大数据处理的效率和稳定性，同时避免了 Java 对象存储密度低、fullgc 时消耗性能、gc 存在 stw 的问题，以及频繁序列化和反序列化问题。
