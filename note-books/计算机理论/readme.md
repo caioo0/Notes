@@ -1,8 +1,13 @@
-# 深入理解计算机系统笔记
+# 计算器理论
 
-docker实现lab:
+
+
+## 1. 深入理解计算机系统
+
+### 课后实验部署
 
 ```
+docker实现lab:
 # 查看
 docker images
 # 启动容器（里面有配置好的环境 和 PDF 资料）
@@ -23,14 +28,25 @@ sudo snap install evince
 evince datalab.pdf  &  //打开pdf 
 ```
 
+## 2. 汇编语言
 
+## 3. 编译原理
 
-## 参考资料
+## 4. 参考资料
 
-1. [深入理解计算机系统配套的9个lab](https://www.zhihu.com/column/c_1480603406519238656)
-1. [Computer Systems: A Programmer's Perspective](https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter2/2.55/)
-2. [homework](https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter2/2.55/)
-4. [CSAPP一键环境配置、完成8个lab总结](https://zhuanlan.zhihu.com/p/505497911)
-5. [ASCII码一览表，ASCII码对照表](http://c.biancheng.net/c/ascii/)
-6. [深入理解计算机系统》中文电子版（原书第 3 版）](https://hansimov.gitbook.io/csapp/)
-7. https://www.zhihu.com/people/222-75-24/columns
+- [深入理解计算机系统配套的9个lab](https://www.zhihu.com/column/c_1480603406519238656)
+- [Computer Systems: A Programmer's Perspective](https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter2/2.55/)
+- [homework](https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter2/2.55/)
+- [CSAPP一键环境配置、完成8个lab总结](https://zhuanlan.zhihu.com/p/505497911)
+- [ASCII码一览表，ASCII码对照表](http://c.biancheng.net/c/ascii/)
+- [深入理解计算机系统》中文电子版（原书第 3 版）](https://hansimov.gitbook.io/csapp/)
+- https://www.zhihu.com/people/222-75-24/columns
+
+- https://blog.csdn.net/qq_39654127/article/details/88698911
+
+- https://zhuanlan.zhihu.com/p/139785404
+- https://zhuanlan.zhihu.com/p/380175489
+
+- https://blog.csdn.net/tqdada/article/details/53132201
+- https://blog.csdn.net/tenlee/article/details/48712177
+- https://blog.csdn.net/qq_39654127/article/details/88698911
