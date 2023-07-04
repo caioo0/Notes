@@ -1,7 +1,7 @@
-# rust 进阶
+# rust 学习资料
 
 
 
-## 参考资料
+## 资料
 
-https://www.runoob.com/rust/cargo-tutorial.html
+https://www.zhihu.com/people/wu-wang-18-39/posts
