@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/datawhale-team" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ml-note/udacity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ml-note/udacity/dog-project" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/note-BigData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/note-ml/udacity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/note-ml/udacity/dog-project" vcs="Git" />
   </component>
