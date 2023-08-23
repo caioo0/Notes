@@ -1,3 +1,0 @@
-# typescript 手册
-
-## 
