@@ -12,3 +12,5 @@
 ### 学习资料
 
 1. https://geek-docs.com/linear-algebra/linearalgebra-tutorials/linear-algebra-intro.html
+
+2. [MIT数学笔记](https://www.zhihu.com/column/c_1029672383375949824)

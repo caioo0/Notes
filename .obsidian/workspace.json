@@ -1,0 +1,161 @@
+{
+  "main": {
+    "id": "ea9b87e6571c48bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "a2493c7c8587b150",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b407e1d645b7f249",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2c51c450864fe900",
+    "type": "split",
+    "children": [
+      {
+        "id": "be090e56ba104980",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5dd92c1aa1a1416",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "22855198be37bde7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f47796ab9727632c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 255.49999618530273
+  },
+  "right": {
+    "id": "f417bfce6b8d492f",
+    "type": "split",
+    "children": [
+      {
+        "id": "b3107cd1ff4e2ceb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f5c75eee6cd9360",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c7806c49d868f6a8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c0a92e8cc3435424",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e2df420c3d9752b9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "note-coding/docs/数据仓库工具箱/part08.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "b407e1d645b7f249",
+  "lastOpenFiles": [
+    "note-exec/Untitled.ipynb",
+    "note-coding/docs/数据仓库工具箱/part07.md",
+    "note-coding/docs/数据仓库工具箱/part06.md",
+    "note-coding/docs/数据仓库工具箱/part05.md",
+    "note-coding/docs/数据仓库工具箱/part04.md",
+    "note-coding/docs/数据仓库工具箱/part03.md",
+    "note-coding/docs/数据仓库工具箱/part02.md",
+    "note-coding/docs/数据仓库工具箱/part01.md",
+    "note-coding/docs/算法导论/第1章 算法在计算中的作用.md"
+  ]
+}
