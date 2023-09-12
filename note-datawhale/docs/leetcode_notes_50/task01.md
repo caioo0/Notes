@@ -138,7 +138,7 @@
 
 这 3 个目标是算法的基本标准，是所有算法所必须满足的。一般我们对好的算法的评判标准就是上边提到的 **所需运行时间更少（时间复杂度更低）**、**占用内存空间更小（空间复杂度更低）**。
 
-### 1.3 小结
+### 1.3 数据结构小结
 
 #### 1.3.1 数据结构总结
 
@@ -224,10 +224,111 @@ $O$是一种渐进符号，$T(n)$称作算法的渐进时间复杂度（Asymptot
 
 相比于算法的时间复杂度计算来说，算法的空间复杂度更容易计算，主要包括「局部变量（算法范围内定义的变量）所占用的存储空间」和「系统为实现递归（如果算法是递归的话）所使用的堆栈空间」两个部分。
 
-## [算法复杂度总结](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity?id=算法复杂度总结)
+### [2.3 算法复杂度小结](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity?id=算法复杂度总结)
 
 **「算法复杂度」** 包括 **「时间复杂度」** 和 **「空间复杂度」**，用来分析算法执行效率与输入问题规模 $n$ 的增长关系。通常采用 **「渐进符号」** 的形式来表示「算法复杂度」。
 
 常见的时间复杂度有：$O(1)$、$O(\log n)$、$O(n)$、$O(n \times \log n)$、$O(n^2)$、$O(n^3)$、$O(2^n)$、$O(n!)$。
 
 常见的空间复杂度有：$O(1)$、$O(\log n)$、$O(n)$、$O(n^2)$。
+
+## 3、LeetCode练习题5道
+
+#### 1. [2235. 两整数相加](https://leetcode.cn/problems/add-two-integers/)
+
+```python
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    numDict = dict()
+    for i in range(len(nums)):
+        if target-nums[i] in numDict:
+            return numDict[target-nums[i]], i
+        numDict[nums[i]] = i
+    return [0]
+```
+
+
+
+#### 2. [1929. 数组串联](https://leetcode.cn/problems/concatenation-of-array/)
+
+```python
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        nums.extend(nums)
+        return nums
+```
+
+
+
+#### 3.[0771. 宝石与石头](https://leetcode.cn/problems/jewels-and-stones/)
+
+```python
+class Solution(object):
+    def numJewelsInStones(self, J, S):
+        res = 0
+        j_arr = []
+        for c in J:
+            j_arr.append(c)
+        for c in S:
+            if c in j_arr:
+                res += 1
+        return res
+
+```
+
+
+
+#### 4.[1480. 一维数组的动态和](https://leetcode.cn/problems/running-sum-of-1d-array/)
+
+```python
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        lis = []
+        sum = 0
+        for i in nums:
+            sum+=i
+            lis.append(sum)    
+        return lis
+        
+
+```
+
+
+
+#### 5.[0709. 转换成小写字母](https://leetcode.cn/problems/to-lower-case/)
+
+```python
+class Solution:
+    def toLowerCase(self, str: str) -> str:
+        new_ch_list=[]
+        for ch in str:
+            if 65<=ord(ch)<97:
+                new_ch_list.append(chr(ord(ch)+32))
+            else:
+                new_ch_list.append(ch)
+        return "".join(new_ch_list)
+
+```
+
+
+
+#### 6.[1672. 最富有客户的资产总量](https://leetcode.cn/problems/richest-customer-wealth/)
+
+```python
+class Solution(object):
+    def maximumWealth(self, accounts):
+        """
+        :type accounts: List[List[int]]
+        :rtype: int
+        """
+        maxm = 0
+        for i in accounts:
+            if maxm < sum(i):
+                maxm = sum(i)
+        return maxm
+
+```
+
