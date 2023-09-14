@@ -143,32 +143,41 @@ print(arr)
 #### [1.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.02-Exercises?id=_1-0066-加一)[0066. 加一](https://leetcode.cn/problems/plus-one/)
 
 ```python
-
-def plusOne(self, digits: List[int]) -> List[int]:
-    num = 0
-    for i in range(len(digits)):  # 把列表转换成数字
-        num = num * 10 + digits[i]
-        num += 1  # 加一
-        num_str = str(num)  # 把数字转换成字符串
-        L = []
-        for i in range(len(num_str)):  # 把字符串存入列表
-            L.append(int(num_str[i]))
-            return L
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        n = len(digits)
+        while n > 0:
+            if digits[n - 1] == 9:
+                digits[n - 1] = 0
+                n -= 1
+            else:
+                digits[n - 1] = digits[n - 1] + 1
+                return digits
+        if n == 0:
+            return [1] + digits
 
 ```
 
 #### [2.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.02-Exercises?id=_2-0724-寻找数组的中心下标)[0724. 寻找数组的中心下标](https://leetcode.cn/problems/find-pivot-index/)
 
 ```python
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        idx = 0
+        left, right_ = 0, sum(nums)
 
-def pivotIndex(self, nums: List[int]) -> int:
-    total = sum(nums)
-    left = 0
-    for i in range(len(nums)):
-        if left == (total - left - nums[i]):
-            return i
-        left += nums[i]
-    else:
+        while idx < len(nums):
+            if left == right_-nums[idx]:
+                return idx
+            else:
+                left += nums[idx]
+                right_ -= nums[idx]
+                idx += 1
+
         return -1
 
 ```
@@ -176,80 +185,101 @@ def pivotIndex(self, nums: List[int]) -> int:
 #### [3.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.02-Exercises?id=_3-0189-轮转数组)[0189. 轮转数组](https://leetcode.cn/problems/rotate-array/)
 
 ```python
+class Solution:
+    def rotate(self, A: List[int], k: int) -> None:
+        def reverse(i, j):
+            while i < j:
+                A[i], A[j] = A[j], A[i]
+                i += 1
+                j -= 1
+        n = len(A)
+        k %= n
+        reverse(0, n - 1)
+        reverse(0, k - 1)
+        reverse(k, n - 1)
 
-def rotate(self, nums: List[int], k: int) -> None:
-    num = [0 for i in range(len(nums))]
-    for i in range(len(nums)):
-        num[(i+k) % len(nums)] = nums[i]
-        nums[:] = num[:]
 
 ```
 
 #### [4. 0048. 旋转图像](https://leetcode.cn/problems/rotate-image/)
 
 ```python
-def rotate(self, matrix):  
+#方法1
+class Solution:
+    def rotate(self, matrix):
+        n = len(matrix)
+        for i in range(n // 2):
+            for j in range((n + 1) // 2):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[n - 1 - j][i]
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j]
+                matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i]
+                matrix[j][n - 1 - i] = tmp
+           
+```
+
+```python
+# 方法2
+class Solution:
+     def rotate(self, matrix):  
         matrix[:] = map(list,zip(*matrix[::-1]))
 ```
+
+
 
 #### [5.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.03-Exercises?id=_2-0054-螺旋矩阵)[0054. 螺旋矩阵](https://leetcode.cn/problems/spiral-matrix/)
 
 ```python
-# 螺旋矩阵
-def spiralMatrix(self, matrix):
-    res = []
-    if len(matrix) == 0: 
+class Solution:
+    def spiralOrder(self, matrix):
+        m, n = len(matrix), len(matrix[0])
+
+        res = []
+        for turn in range(min(m, n)//2):
+            for j in range(turn, n-turn):
+                res.append(matrix[turn][j])
+
+            for i in range(turn+1, m-turn):
+                res.append(matrix[i][n-turn-1])
+
+            for j in range(n-turn-2, turn-1, -1):
+                res.append(matrix[m-turn-1][j])
+
+            for i in range(m-turn-2, turn, -1):
+                res.append(matrix[i][turn])
+
+        if min(m, n)%2 == 1:
+            turn = min(m, n)//2
+            if m<=n:
+                for j in range(turn, n-turn):
+                    res.append(matrix[turn][j])
+            else:
+                for i in range(turn, m-turn):
+                    res.append(matrix[i][n-turn-1])
         return res
-    top,bottom,left,right = 0,len(matrix)-1,0,len(matrix[0])-1 
-    while top <= bottom and left <= right:
-        for i in range(left, right+1): 
-            res.append(matrix[top][i])
-            top += 1 
-            for i in range(top, bottom+1): 
-                res.append(matrix[i][right])
-                right -= 1 
-                if top > bottom or left > right: 
-                    break
-                    for i in range(right, left-1, -1): 
-                        res.append(matrix[bottom][i])
-                        bottom -= 1 # 向左走完此轮，bottom++
-                        for i in range(bottom, top-1, -1): 
-                            res.append(matrix[i][left])
-                            left += 1 # 向上走完此轮，left++
-                            return res
- 
 ```
 
 #### [6.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.03-Exercises?id=_3-0498-对角线遍历)[0498. 对角线遍历](https://leetcode.cn/problems/diagonal-traverse/)
 
 ```python
+class Solution:
+    def findDiagonalOrder(self, matrix):
+        if not matrix: return []
+        lookup = collections.defaultdict(list)
+        row, col = len(matrix), len(matrix[0])
 
-    def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
-        if not matrix or not matrix[0]:
-            return []
-
-        m, n = len(matrix), len(matrix[0])
-        i, j, d1, d2 = 0, 0, -1, 1
-
-        ans = []
-
-        while len(ans) < m * n:
-            ans.append(matrix[i][j])
-            if 0 <= i + d1 < m and 0 <= j + d2 < n:
-                i, j = i + d1, j + d2
+        for i in range(row):
+            for j in range(col):
+                lookup[j + i].append(matrix[i][j])
+        res = []
+        flag = True
+        for k, v in sorted(lookup.items()):
+            if flag:
+                res.extend(v[::-1])
             else:
-                if j + d2 >= n:
-                    i += 1
-                elif i + d1 < 0:
-                    j += 1
-                elif i + d1 >= m:
-                    j += 1
-                elif j + d2 < 0:
-                    i += 1
-                d1, d2 = d2, d1
-
-        return ans
-
+                res.extend(v)
+            flag = not flag
+        return res
 ```
 
 
