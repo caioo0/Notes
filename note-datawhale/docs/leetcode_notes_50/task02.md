@@ -256,9 +256,7 @@ def spiralMatrix(self, matrix):
 
 ## 附加数组基础知识题
 
-# [01.02.04 数组基础知识题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List?id=_010204-数组基础知识题目)
-
-## [数组操作题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List?id=数组操作题目)
+#### [数组操作题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List?id=数组操作题目)
 
 | 题号 | 标题                                                         | 题解                                                         | 标签               | 难度 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ | ---- |
@@ -268,7 +266,7 @@ def spiralMatrix(self, matrix):
 | 0485 | [最大连续 1 的个数](https://leetcode.cn/problems/max-consecutive-ones/) | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/solutions/0485)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/solutions/0485.md) | 数组               | 简单 |
 | 0238 | [除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/solutions/0238)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/solutions/0238.md) | 数组、前缀和       | 中等 |
 
-## [二维数组题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List?id=二维数组题目)
+#### [二维数组题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List?id=二维数组题目)
 
 | 题号 | 标题                                                         | 题解                                                         | 标签               | 难度 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ | ---- |
