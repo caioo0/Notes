@@ -1,5 +1,7 @@
 # 数组基础
 
+> 关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
+
 ## 数组基础知识
 
 ### 定义
@@ -136,7 +138,7 @@ print(arr)
 
 
 
-### 练习题
+## 练习题
 
 
 

@@ -1,6 +1,8 @@
-# [01. 算法入门与数组篇（共 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_01-算法入门与数组篇（共-14-天）)
 
-## [01.01 数据结构与算法简介、LeetCode 入门及攻略（第 01 ~ 02 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0101-数据结构与算法简介、leetcode-入门及攻略（第-01-02-天）)
+
+## [01. 算法入门与数组篇（共 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_01-算法入门与数组篇（共-14-天）)
+
+#### [01.01 数据结构与算法简介、LeetCode 入门及攻略（第 01 ~ 02 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0101-数据结构与算法简介、leetcode-入门及攻略（第-01-02-天）)
 
 | 章节标题                                      | 链接地址                                                     |
 | --------------------------------------------- | ------------------------------------------------------------ |
@@ -10,7 +12,7 @@
 | 01.01.04 练习题目（第 01 天）                 | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.04-Exercises)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.01/01.01.04-Exercises.md) |
 | 01.01.05 练习题目（第 02 天）                 | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.05-Exercises)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.01/01.01.05-Exercises.md) |
 
-## [01.02 数组基础（第 03 ~ 04 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0102-数组基础（第-03-04-天）)
+#### [01.02 数组基础（第 03 ~ 04 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0102-数组基础（第-03-04-天）)
 
 | 章节标题                               | 链接地址                                                     |
 | -------------------------------------- | ------------------------------------------------------------ |
@@ -19,7 +21,7 @@
 | 01.02.03 练习题目（第 04天）           | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.03-Exercises)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.02/01.02.03-Exercises.md) |
 | 01.02.04 数组基础知识题目              | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.02/01.02.04-Array-Basic-List)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.02/01.02.04-Array-Basic-List.md) |
 
-## [01.03 数组排序（第 05 ~ 08 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0103-数组排序（第-05-08-天）)
+#### [01.03 数组排序（第 05 ~ 08 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0103-数组排序（第-05-08-天）)
 
 | 章节标题                      | 链接地址                                                     |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -39,7 +41,7 @@
 | 01.03.14 练习题目（第 08 天） | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.14-Exercises)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.03/01.03.14-Exercises.md) |
 | 01.03.15 数组排序题目         | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.15-Array-Sort-List)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.03/01.03.15-Array-Sort-List.md) |
 
-## [01.04 数组二分查找（第 09 ~ 11 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0104-数组二分查找（第-09-11-天）)
+#### [01.04 数组二分查找（第 09 ~ 11 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0104-数组二分查找（第-09-11-天）)
 
 | 章节标题                                     | 链接地址                                                     |
 | -------------------------------------------- | ------------------------------------------------------------ |
@@ -50,7 +52,7 @@
 | 01.04.05 练习题目（第 11 天）                | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.04/01.04.05-Exercises)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.04/01.04.05-Exercises.md) |
 | 01.04.06 数组二分查找题目                    | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.04/01.04.06-Array-Binary-Search-List)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/ch01/01.04/01.04.06-Array-Binary-Search-List.md) |
 
-## [01.05 数组双指针、滑动窗口（第 12 ~ 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0105-数组双指针、滑动窗口（第-12-14-天）)
+#### [01.05 数组双指针、滑动窗口（第 12 ~ 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0105-数组双指针、滑动窗口（第-12-14-天）)
 
 | 章节标题                                 | 链接地址                                                     |
 | ---------------------------------------- | ------------------------------------------------------------ |
