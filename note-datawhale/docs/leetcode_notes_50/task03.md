@@ -524,27 +524,298 @@ def radix_sort(nums: list[int]):
 
 ### [1.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.04-Exercises?id=_1-剑指-offer-45-把数组排成最小的数)[剑指 Offer 45. 把数组排成最小的数](https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/)
 
+```python
+class Solution:
+    def minNumber(self, nums):
+
+        arr = [str(i) for i in nums]
+        def quick_sort(left, right):
+            if left >= right: return 
+            low, high = left, right
+            target = arr[left]
+
+            while left < right:
+                while left < right and arr[right] + target >= target + arr[right] : right -= 1
+                arr[left] = arr[right]
+                while left < right and arr[left] + target <= target + arr[left]: left += 1
+                arr[right] = arr[left]
+            
+            arr[left] = target
+            quick_sort(low, left-1)
+            quick_sort(right+1, high)
+
+        quick_sort(0, len(arr)-1)
+        return ''.join(arr)
+```
+
 ### [2.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.04-Exercises?id=_2-0283-移动零)[0283. 移动零](https://leetcode.cn/problems/move-zeroes/)
+
+```python
+class Solution(object):
+    def moveZeroes(self, nums):
+        slow = 0
+        for fast in range(len(nums)):
+            if nums[fast] != 0:
+                nums[slow] = nums[fast]
+                slow += 1
+        for i in range(slow, len(nums)):
+            nums[i] = 0
+```
+
+
 
 ### [3.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.04-Exercises?id=_3-0912-排序数组)[0912. 排序数组](https://leetcode.cn/problems/sort-an-array/)
 
+```python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        self.quickSort(nums, 0, len(nums)-1)
+        return nums
+
+        
+    def quickSort(self, nums, left: int, right: int):
+        flag = nums[randint(left, right)]
+        i,j = left,right
+
+        while i<=j:
+            while nums[i]<flag:
+                i+=1
+            while nums[j]>flag:
+                j-=1
+            if i<=j:
+                nums[i], nums[j]=nums[j], nums[i]
+                i+=1
+                j-=1
+
+        if i<right:
+            self.quickSort(nums, i, right)
+        if left<j:
+            self.quickSort(nums, left, j)
+```
+
+
+
 ### [4.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.07-Exercises?id=_1-0506-相对名次)[0506. 相对名次](https://leetcode.cn/problems/relative-ranks/)
+
+```python
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        res = [None for _ in range(len(score))]
+        for prize, oridata in enumerate(sorted(enumerate(score), key=lambda x: -x[1])):
+            idx, _ = oridata
+            if prize == 0:
+                res[idx] = "Gold Medal"
+            elif prize == 1:
+                res[idx] = "Silver Medal"
+            elif prize == 2:
+                res[idx] = "Bronze Medal"
+            else:
+                res[idx] = str(prize+1)
+        return res
+
+```
+
+
 
 ### [5.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.07-Exercises?id=_2-0088-合并两个有序数组)[0088. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)
 
+```python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        p1, p2 = m - 1, n - 1
+        tail = m + n - 1
+        while p1 >= 0 or p2 >= 0:
+            if p1 == -1:
+                nums1[tail] = nums2[p2]
+                p2 -= 1
+            elif p2 == -1:
+                nums1[tail] = nums1[p1]
+                p1 -= 1
+            elif nums1[p1] > nums2[p2]:
+                nums1[tail] = nums1[p1]
+                p1 -= 1
+            else:
+                nums1[tail] = nums2[p2]
+                p2 -= 1
+            tail -= 1
+
+```
+
+
+
 ### [6.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.07-Exercises?id=_3-剑指-offer-51-数组中的逆序对)[剑指 Offer 51. 数组中的逆序对](https://leetcode.cn/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)
+
+```python
+class Solution:
+    def reversePairs(self, nums: List[int]) -> int:
+        self.cnt = 0
+        def merge(nums, start, mid, end, temp):
+            i, j = start, mid + 1
+            while i <= mid and j <= end:
+                if nums[i] <= nums[j]:
+                    temp.append(nums[i])
+                    i += 1
+                else:
+                    self.cnt += mid - i + 1
+                    temp.append(nums[j])
+                    j += 1
+            while i <= mid:
+                temp.append(nums[i])
+                i += 1
+            while j <= end:
+                temp.append(nums[j])
+                j += 1
+            
+            for i in range(len(temp)):
+                nums[start + i] = temp[i]
+            temp.clear()
+                    
+
+        def mergeSort(nums, start, end, temp):
+            if start >= end: return
+            mid = (start + end) >> 1
+            mergeSort(nums, start, mid, temp)
+            mergeSort(nums, mid + 1, end, temp)
+            merge(nums, start, mid,  end, temp)
+        mergeSort(nums, 0, len(nums) - 1, [])
+        return self.cnt
+```
+
+
 
 ### [7.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.10-Exercises?id=_1-0075-颜色分类)[0075. 颜色分类](https://leetcode.cn/problems/sort-colors/)
 
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        i, zero, two = 0, -1, len(nums)
+        while i < two:
+            if nums[i] == 1:
+                i += 1
+            elif nums[i] == 2:  
+                two -= 1
+                nums[i], nums[two] = nums[two], nums[i]
+            else: 
+                zero += 1
+                nums[i], nums[zero] = nums[zero], nums[i]
+                i += 1
+
+```
+
+
+
 ### [8.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.10-Exercises?id=_2-0215-数组中的第k个最大元素)[0215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
+
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        # nums.sort(reverse=True)
+        # return nums[k-1]
+        def quicksort(nums:list)->list:
+            if len(nums) < 2:
+                return nums
+            else:
+                pivot = nums[0]
+                small_list = [i for i in nums[1::] if i<= pivot]
+                big_list = [i for i in nums[1::] if i > pivot]
+                return quicksort(big_list) +[pivot] + quicksort(small_list)
+                # 这里按照降序排列
+        nums = quicksort(nums)
+        return nums[k-1]
+
+```
+
+
 
 ### [9.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.10-Exercises?id=_3-剑指-offer-40-最小的k个数)[剑指 Offer 40. 最小的k个数](https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/)
 
+```python
+class Solution:
+    def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
+        if k == 0:
+            return list()
+        
+        hp = [-x for x in arr[:k]]
+        heapq.heapify(hp)
+        for i in range(k, len(arr)):
+            if -hp[0] > arr[i]:
+                heapq.heappop(hp)
+                heapq.heappush(hp, -arr[i])
+
+        res = [-x for x in hp]
+        return res
+
+```
+
+
+
 ### [10.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.14-Exercises?id=_1-1122-数组的相对排序)[1122. 数组的相对排序](https://leetcode.cn/problems/relative-sort-array/)
+
+```python
+class Solution(object):
+    def relativeSortArray(self, arr1, arr2):
+        """
+        :type arr1: List[int]
+        :type arr2: List[int]
+        :rtype: List[int]
+        """
+        #将arr1 counter计数，按照arr2来取
+        li = []
+        counter = collections.Counter
+        count = counter(arr1)
+        #按照arr2将arr1的元素存入li
+        for val in arr2:
+            if val in count:
+                l = count[val]
+                print(l)
+                for i in range(l):
+                    li.append(val)
+            #被存的元素删除掉
+            del count[val]
+        #剩下的元素排序放到末尾
+        li += sorted(list(count.elements()))
+        return li
+```
+
+
 
 ### [11.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.14-Exercises?id=_2-0220-存在重复元素-iii)[0220. 存在重复元素 III](https://leetcode.cn/problems/contains-duplicate-iii/)
 
+```python
+class Solution:
+    def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -> bool:
+        bucket = dict()
+        if t < 0: return False
+        for i in range(len(nums)):
+            nth = nums[i] // (t + 1)
+            if nth in bucket:
+                return True
+            if nth - 1 in bucket and abs(nums[i] - bucket[nth - 1]) <= t:
+                return True
+            if nth + 1 in bucket and abs(nums[i] - bucket[nth + 1]) <= t:
+                return True
+            bucket[nth] = nums[i]
+            if i >= k: bucket.pop(nums[i - k] // (t + 1))
+        return False
+```
+
+
+
 ### [12.](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.14-Exercises?id=_3-0164-最大间距)[0164. 最大间距](https://leetcode.cn/problems/maximum-gap/)
+
+```python
+class Solution:
+    def maximumGap(self, nums: List[int]) -> int:
+        if not nums or len(nums)<=1:
+            return 0
+        nums.sort(reverse = True)
+        return max(nums[i] - nums[i+1]   for i in range(len(nums)-1))
+```
+
+
 
 # [11. 排序算法题目](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.03/01.03.15-Array-Sort-List?id=_010315-排序算法题目)
 
