@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note-coding/docs/数据仓库工具箱/part08.md",
+                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note-coding/docs/数据仓库工具箱/part08.md"
+                "file": "note-datawhale/docs/leetcode_notes_50/task01.md"
               }
             }
           }
@@ -148,14 +148,19 @@
   },
   "active": "b407e1d645b7f249",
   "lastOpenFiles": [
-    "note-exec/Untitled.ipynb",
-    "note-coding/docs/数据仓库工具箱/part07.md",
+    "note-ml/docs/Lebesgue.md",
+    "note-ml/docs/Untitled.md",
+    "img/image-20230912101153647.png.md",
+    "img",
     "note-coding/docs/数据仓库工具箱/part06.md",
     "note-coding/docs/数据仓库工具箱/part05.md",
     "note-coding/docs/数据仓库工具箱/part04.md",
     "note-coding/docs/数据仓库工具箱/part03.md",
-    "note-coding/docs/数据仓库工具箱/part02.md",
     "note-coding/docs/数据仓库工具箱/part01.md",
+    "note-coding/docs/数据仓库工具箱/part08.md",
+    "note-exec/Untitled.ipynb",
+    "note-coding/docs/数据仓库工具箱/part07.md",
+    "note-coding/docs/数据仓库工具箱/part02.md",
     "note-coding/docs/算法导论/第1章 算法在计算中的作用.md"
   ]
 }
