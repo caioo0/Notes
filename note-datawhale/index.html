@@ -14,6 +14,7 @@
     <!--    <link rel="stylesheet" href="../assets/docsify/docsify-vue.css">-->
     <link rel="stylesheet" href="../assets/npm/mermaid.min.css">
     <script src="../assets/npm/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-updated/src/time-updater.min.js"></script>
     <style>
 
     </style>
@@ -24,6 +25,11 @@
     var num = 0;
     mermaid.initialize({startOnLoad: false});
     window.$docsify = {
+        timeUpdater: {
+            text: ">最后更新时间: {docsify-updated}",
+            formatUpdated: "{YYYY}/{MM}/{DD}",
+            whereToPlace: "top",  // "top" or "bottom", default to "bottom"
+         },
         name: '',
         repo: 'https://caioo0.github.io/',
         loadSidebar: true,
@@ -81,7 +87,7 @@
                 });
             }
         ],
-        formatUpdated: '{MM}/{DD} {HH}:{mm}'
+
     }
 </script>
 <!-- Put them above docsify.min.js -->
