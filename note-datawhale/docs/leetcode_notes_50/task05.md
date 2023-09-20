@@ -31,21 +31,154 @@
 
 **对撞指针：**一左一右向中间逼近。
 
-**滑动窗口：**类似计算机网络中的滑动窗口，一般是右端向右扩充，达到停止条件后右端不动，左端向右端逼近，逼近达到停止条件后，左端不动，右端继续扩充。
+
 
 ### 练习题
 
 #### 1. [0344. 反转字符串](https://leetcode.cn/problems/reverse-string/)
 
+```python
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        i, j = 0, len(s)-1
+        while i<j:
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
+
+```
+
+
+
 #### 2. [0345. 反转字符串中的元音字母](https://leetcode.cn/problems/reverse-vowels-of-a-string/)
+
+```python
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        length = len(s)
+        low, high = 0, length-1
+        s = list(s)
+        res =['a','e','i','o','u','A','E','I','O','U']
+        while low <= high: 
+            while low< high and s[high] not in res:
+                high-=1
+            while low < high and s[low] not in res:
+                low += 1
+            s[low],s[high]  = s[high],s[low]
+            low+=1
+            high-=1
+        return  "".join(s)
+            
+```
+
+
 
 #### 3. [0015. 三数之和](https://leetcode.cn/problems/3sum/)
 
+```python
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 3: return []
+        nums, res = sorted(nums), []
+        for i in range(len(nums) - 2):
+            cur, l, r = nums[i], i + 1, len(nums) - 1
+            if res != [] and res[-1][0] == cur: continue 
+
+            while l < r:
+                if cur + nums[l] + nums[r] == 0:
+                    res.append([cur, nums[l], nums[r]])
+                   
+                    while l < r - 1 and nums[l] == nums[l + 1]:
+                        l += 1
+                    while r > l + 1 and nums[r] == nums[r - 1]:
+                        r -= 1
+                if cur + nums[l] + nums[r] > 0:
+                    r -= 1
+                else:
+                    l += 1
+        return res
+
+```
+
+
+
 #### 4. [0027. 移除元素](https://leetcode.cn/problems/remove-element/)
+
+```python
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        s = f = 0
+        while f < len(nums):
+            nums[s] = nums[f]
+            if nums[f] == val:  
+                f += 1
+            else:
+                s += 1
+                f += 1 
+            
+        return s 
+
+```
+
+
 
 #### 5. [0080. 删除有序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/)
 
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        index, l = 0, len(nums)
+
+        if l < 3:
+
+            return len(nums)
+
+        while index <= l - 3:
+
+            if nums[index] != nums[index + 2]:
+
+                index += 1
+
+            else:
+                nums.pop(index + 2)
+
+                l = len(nums)
+        return len(nums)
+
+```
+
+
+
 #### 6. [0925. 长按键入](https://leetcode.cn/problems/long-pressed-name/)
+
+```python
+class Solution:
+    def isLongPressedName(self, name: str, typed: str) -> bool:
+        # 定义指针，分别指向 name 和 typed 的首字符
+        p = 0
+        q = 0
+
+        m = len(name)
+        n = len(typed)
+        # 遍历 typed 与 name 中的字符比较
+        while q < n:
+            # 比较，相同移动指针
+            if p < m and name[p] == typed[q]:
+                p += 1
+                q += 1
+            # 不相同时，要注意 p 指针指向的元素
+            # 如果是首元素，那么表示 name 和 typed 首字符都不同，可以直接返回 False
+            # 如果不在首元素，看是否键入重复，键入重复，继续移动 q 指针，继续判断；如果不重复，也就是不相等的情况，直接返回 False，表示输入错误
+            elif p > 0 and name[p-1] == typed[q]:
+                q += 1
+            else:
+                return False
+        
+        # typed 遍历完成后要检查 name 是否遍历完成
+        return p == m
+
+```
 
 
 
@@ -81,7 +214,27 @@
 
 **测验题：**
 
-[1343. 大小为 K 且平均值大于等于阈值的子数组数目 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/)
+#### [1343. 大小为 K 且平均值大于等于阈值的子数组数目 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/)
+
+```python
+class Solution:
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        res = [0]
+        ans = 0
+        for i in range(len(arr)):
+            res.append(res[-1] + arr[i])
+        
+        for i in range(len(res)-k):
+            b = res[i+k]
+            a = res[i]
+            if (b-a)/k >= threshold:
+                ans+=1
+            
+        
+        return ans
+```
+
+
 
 #### 不定长度滑动窗口
 
@@ -89,14 +242,74 @@
 
 ![image-20230920153437357](.\img\image-20230920153437357.png)
 
-[3. 无重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
+#### [无重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
+
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        cur, res = [], 0
+        for r in range(len(s)):
+            while s[r] in cur: 
+                cur.pop(0) # 左边出
+            cur.append(s[r]) # 右侧无论如何都会进入新的
+            res = max(len(cur),res)
+        return res
+```
 
 
 
-#### 练习题
+### 练习题
 
-1. [0643. 子数组最大平均数 I](https://leetcode.cn/problems/maximum-average-subarray-i/)
+#### [0643. 子数组最大平均数 I](https://leetcode.cn/problems/maximum-average-subarray-i/)
 
-2. [0674. 最长连续递增序列](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/)
+```python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        maxsum = sums = sum(nums[:k])
+        left,right = 1,k
+        while right<len(nums):
+            sums = sums-nums[left-1]+nums[right]
+            maxsum = max(maxsum,sums)
+            left+=1
+            right+=1
+        return maxsum/k
 
-3. [1004. 最大连续1的个数 III](https://leetcode.cn/problems/max-consecutive-ones-iii/)
+```
+
+
+
+#### [0674. 最长连续递增序列](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/)
+
+```python
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        dp = [1 for _ in range(len(nums))]
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i-1]:
+                dp[i] = dp[i-1] + 1
+        return max(dp)
+
+```
+
+
+
+#### [1004. 最大连续1的个数 III](https://leetcode.cn/problems/max-consecutive-ones-iii/)
+
+```python
+class Solution:
+    def longestOnes(self, A: List[int], K: int) -> int:
+        #标准滑动窗口
+        start = 0
+        max_len = float('-inf')
+        count = 0
+        for end in range(len(A)):
+            if A[end] == 1:
+                count += 1
+            while end-start+1 > count + K:
+                if A[start] == 1:
+                    count -= 1
+                start += 1
+            max_len = max(max_len,end-start+1)
+        return max_len
+```
+
