@@ -1,5 +1,7 @@
 # task04: 数组二分查询
 
+>  关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
+
 ## 简介
 
 二分查找算法(Binary Search Algorithm) : 也叫折半查找算法，对数查找算法，是一种用于在有序数组中查找特定元素的高效搜索算法。
