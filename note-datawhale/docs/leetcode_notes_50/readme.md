@@ -1,6 +1,6 @@
 
 
-## [01. 算法入门与数组篇（共 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_01-算法入门与数组篇（共-14-天）)
+### [01. 算法入门与数组篇（共 14 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_01-算法入门与数组篇（共-14-天）)
 
 #### [01.01 数据结构与算法简介、LeetCode 入门及攻略（第 01 ~ 02 天）](https://datawhalechina.github.io/leetcode-notes/#/ch01/index?id=_0101-数据结构与算法简介、leetcode-入门及攻略（第-01-02-天）)
 
