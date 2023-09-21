@@ -2,32 +2,29 @@
 
 >  关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
 
-## 简介
+## 算法解释
 
-二分查找算法(Binary Search Algorithm) : 也叫折半查找算法，对数查找算法，是一种用于在有序数组中查找特定元素的高效搜索算法。
-
-**基本思路**
-
-通过确定目标元素所在的区间范围，反复将查找范围减半，直到找到元素或找不到该元素为止。
-
-
-
-## 实现逻辑
+二分查找算法(Binary Search Algorithm) : 也叫折半查找算法，对数查找算法，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查询的复杂度大大减少。对于一个长度为$O(n)$的数组，二分查找的时间复杂度$0(logn)$。
 
 #### **二分查找前提**
 
 1. 查找的**数据目标**需要是**有顺序的储存结构**，比如Python中的列表`list`。
 2. 这个**数据目标**还需要**按一个顺序排列**（升序or降序）
+3. 二分查找区间的左右端取**开区间或者闭区间**在绝大多数时候都可以,一般建议采用"双闭区间"的写法。
 
+## 实现逻辑
 
-
-用一个动画来体现：
+**用一个动画来体现，这个动画效果揭示了可能找不到答案：**
 
 
 
 ![动图](https://pic3.zhimg.com/v2-580def5b0d44690823114c1203435b4a_b.webp)
 
-#### **局限性**
+
+
+
+
+#### **二分查找的局限性**
 
 - 二分查找依赖数组结构
 
@@ -37,61 +34,65 @@
 
 - 数据量太大不适合二分查找
 
-  
 
 ## **代码实现**
 
-1. 非递归
+### 1. 非递归直接法
 
-   ```python
-   def binary_search(list,item):
-   
-       # 列表的头和尾，代表着数组范围的最小和最大
-       low = 0
-       high = len(list) - 1
-   
-       # 当找到item的时候，low是小于high，也有可能相等
-       while low <= high:
-   
-           mid = (low + high)//2
-   
-           # 取数组的中间值
-           guess = list[mid]
-   
-           # 如果中间值等于索引值，那么就返回中间值的下标
-           if guess == item:
-               return mid
-   
-           # 如果中间值>索引值，因为不包含中间值，所以最大范围high=中间值的下标往左移1位
-           if guess > item:
-               high = mid - 1
-   
-           # 如果中间值<索引值，因为不包含中间值，所以最小范围low=中间值的下标往右移1位
-           else:
-               low = mid + 1
-       return None
-       
-   my_list = [1, 3, 5, 7, 9]
-   print(binary_search(my_list,3))
-   ```
+直接法思想是再循环体中找到元素后直接返回结果。可谓简单粗暴：
 
-2. 递归实现
+```python
+def binary_search(list,item):
 
-   ```python
-   def binary_search(list,data):
-       n = len(list)
-       mid = n // 2
-       if list[mid] > data:
-           return binary_search(list[0:mid],data)
-       elif list[mid] < data:
-           return binary_search(list[mid+1:],data)
-       else:
-           return mid
-   ```
+    # 列表的头和尾，代表着数组范围的最小和最大
+    low = 0
+    high = len(list) - 1
+
+    # 当找到item的时候，low是小于high，也有可能相等
+    while low <= high:
+        mid = (low + high)//2  # // 所代表的含义是「中间数向下取整」
+        # 取数组的中间值
+        guess = list[mid]
+        # 如果中间值等于索引值，那么就返回中间值的下标
+        if guess == item:
+            return mid
+        # 如果中间值>索引值，因为不包含中间值，所以最大范围high=中间值的下标往左移1位
+        if guess > item:
+            high = mid - 1
+        # 如果中间值<索引值，因为不包含中间值，所以最小范围low=中间值的下标往右移1位
+        else:
+            low = mid + 1   
+    return None
+    
+my_list = [1, 3, 5, 7,8, 9]
+print(binary_search(my_list,3))
+```
+
+**时间复杂度$O(logn)$：**在二分循环中，区间每轮缩小一半，循环次数为 $log_2⁡n$ 。
+
+**空间复杂度 $O(1)$** ：指针 low 和 high 使用常数大小空间。
+
+### 2.递归实现
+
+递归思想
+
+```python
+def binary_search(list,data):
+    n = len(list)
+    mid = n // 2
+    if list[mid] > data:
+        return binary_search(list[0:mid],data)
+    elif list[mid] < data:
+        return binary_search(list[mid+1:],data)
+    else:
+        return mid
+```
 
 ## 练习题
 
 #### [704. 二分查找](https://leetcode.cn/problems/binary-search/)
+
+
 
 ```python
 class Solution:
@@ -366,3 +367,8 @@ class Solution:
 | 1011 | [在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/) | [网页链接](https://datawhalechina.github.io/leetcode-notes/#/solutions/1011)、[Github 链接](https://github.com/datawhalechina/leetcode-notes/blob/main/docs/solutions/1011.md) | 数组、二分查找                                         | 中等 |
 | 1482 | [制作 m 束花所需的最少天数](https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/) |                                                              | 数组、二分查找                                         | 中等 |
 
+## 参考资料
+
+1.[Hello-算法](https://www.hello-algo.com/chapter_computational_complexity/time_complexity/#234)
+
+2.[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
