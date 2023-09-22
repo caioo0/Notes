@@ -392,3 +392,11 @@ class Solution:
         return max_len
 ```
 
+## 参考资料
+
+1.[Hello-算法](https://www.hello-algo.com/chapter_computational_complexity/time_complexity/#234)
+
+2.[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
+
+3.[Python技巧之双指针](https://zhuanlan.zhihu.com/p/529362145)
+
