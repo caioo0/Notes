@@ -1,5 +1,5 @@
 - [编程语言](docs/README.md)
-  - [C++ Primer(第五版)](./docs/cpp-primer-plus/README.md)
+  - [C++ Primer(第五版)](./docs/cpp-primer-plus/readme.md)
      * [第1章开始](./docs/cpp-primer-plus/part1.md)
      * [第2章变量和基本类型](./docs/cpp-primer-plus/part2.md)
      * [第3章字符串、向量和数组](./docs/cpp-primer-plus/part3.md)
