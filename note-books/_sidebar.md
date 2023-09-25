@@ -34,7 +34,6 @@
     * [第15章 关系建立和管理](供应链物流管理/part15.md)
     * [第16章 运作、财务和社会绩效](供应链物流管理/part16.md)
     * [第17章 供应链风险](供应链物流管理/part17.md)
-
   - [《CEO 财务分析与决策（第二版）》](Financial_analysis_and_decision_making/README.md)
     * [第一章 解读企业财务报表](Financial_analysis_and_decision_making/chapter01.md)
     * [第二章 CEO 解读企业财务报表](Financial_analysis_and_decision_making/chapter02.md)
