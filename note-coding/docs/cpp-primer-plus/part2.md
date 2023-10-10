@@ -1,12 +1,12 @@
 # 第2章 变量和基本类型
 
->  **本文为《C++ Primer 中文版（第五版）》和 《C++ Primer （第五版）习题集》 第2章阅读要点总结，重要知识点归以及练习题的解答。原书更为详细，本文仅作学习交流使用，未经授权禁止转载。**
+>  **本笔记为《C++ Primer 中文版（第五版）》和 《C++ Primer （第五版）习题集》 第2章阅读要点总结，重要知识点归档以及练习题的解答，原书更为详细，笔记仅作学习交流使用，未经授权禁止转载。**
 
 C++定义了几种基本内置类型，如字符、整型、浮点数等。
 
 ## 2.1 基本内置类型
 
-基本内置类型包括 **算数类型(arithmetic type) ** 和 **空类型(void)**。
+基本内置类型包括 算数类型(arithmetic type)  和 空类型(void)。
 - 算数类型包括字符、整型数、浮点数和布尔值。
 - 空类型不对应具体的值。
 
@@ -18,14 +18,17 @@ C++定义了几种基本内置类型，如字符、整型、浮点数等。
 
 ![image-20230924102424649](.\img\image-20230924102424649.png)
 
-$$
-图为X86系统，如果X64系统所有区别
-$$
 **字符类型：**
 
 1. char：1字节(byte)=8bit。
 2. wchar_t：宽字符，用于扩展字符集，wchar_t 确保可以存放机器最大扩展字符集中的任意一个字符。
 3. char16_t 和 char32_t：为 Unicode 字符集服务。
+
+**注意：**不同系统会有所差异，1字节为 8 位。
+
+**注意：**默认情况下，int、short、long都是带符号的，即 signed。
+
+**注意：**long int 8 个字节，int 都是 4 个字节，早期的 C 编译器定义了 long int 占用 4 个字节，int 占用 2 个字节，新版的 C/C++ 标准兼容了早期的这一设定。
 
 **整型：**
 
@@ -54,7 +57,87 @@ $$
 >
 > - 浮点数运算用 double。float 和 double 的计算代价相差无几。
 
+下面实例可以输出电脑上各种数据类型的大小：
 
+```cpp
+#include<iostream>  
+#include <limits>
+ 
+using namespace std;  
+  
+int main()  
+{  
+    cout << "type: \t\t" << "************size**************"<< endl;  
+    cout << "bool: \t\t" << "所占字节数：" << sizeof(bool);  
+    cout << "\t最大值：" << (numeric_limits<bool>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<bool>::min)() << endl;  
+    cout << "char: \t\t" << "所占字节数：" << sizeof(char);  
+    cout << "\t最大值：" << (numeric_limits<char>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<char>::min)() << endl;  
+    cout << "signed char: \t" << "所占字节数：" << sizeof(signed char);  
+    cout << "\t最大值：" << (numeric_limits<signed char>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<signed char>::min)() << endl;  
+    cout << "unsigned char: \t" << "所占字节数：" << sizeof(unsigned char);  
+    cout << "\t最大值：" << (numeric_limits<unsigned char>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<unsigned char>::min)() << endl;  
+    cout << "wchar_t: \t" << "所占字节数：" << sizeof(wchar_t);  
+    cout << "\t最大值：" << (numeric_limits<wchar_t>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<wchar_t>::min)() << endl;  
+    cout << "short: \t\t" << "所占字节数：" << sizeof(short);  
+    cout << "\t最大值：" << (numeric_limits<short>::max)();  
+    cout << "\t\t最小值：" << (numeric_limits<short>::min)() << endl;  
+    cout << "int: \t\t" << "所占字节数：" << sizeof(int);  
+    cout << "\t最大值：" << (numeric_limits<int>::max)();  
+    cout << "\t最小值：" << (numeric_limits<int>::min)() << endl;  
+    cout << "unsigned: \t" << "所占字节数：" << sizeof(unsigned);  
+    cout << "\t最大值：" << (numeric_limits<unsigned>::max)();  
+    cout << "\t最小值：" << (numeric_limits<unsigned>::min)() << endl;  
+    cout << "long: \t\t" << "所占字节数：" << sizeof(long);  
+    cout << "\t最大值：" << (numeric_limits<long>::max)();  
+    cout << "\t最小值：" << (numeric_limits<long>::min)() << endl;  
+    cout << "unsigned long: \t" << "所占字节数：" << sizeof(unsigned long);  
+    cout << "\t最大值：" << (numeric_limits<unsigned long>::max)();  
+    cout << "\t最小值：" << (numeric_limits<unsigned long>::min)() << endl;  
+    cout << "double: \t" << "所占字节数：" << sizeof(double);  
+    cout << "\t最大值：" << (numeric_limits<double>::max)();  
+    cout << "\t最小值：" << (numeric_limits<double>::min)() << endl;  
+    cout << "long double: \t" << "所占字节数：" << sizeof(long double);  
+    cout << "\t最大值：" << (numeric_limits<long double>::max)();  
+    cout << "\t最小值：" << (numeric_limits<long double>::min)() << endl;  
+    cout << "float: \t\t" << "所占字节数：" << sizeof(float);  
+    cout << "\t最大值：" << (numeric_limits<float>::max)();  
+    cout << "\t最小值：" << (numeric_limits<float>::min)() << endl;  
+    cout << "size_t: \t" << "所占字节数：" << sizeof(size_t);  
+    cout << "\t最大值：" << (numeric_limits<size_t>::max)();  
+    cout << "\t最小值：" << (numeric_limits<size_t>::min)() << endl;  
+    cout << "string: \t" << "所占字节数：" << sizeof(string) << endl;  
+    // << "\t最大值：" << (numeric_limits<string>::max)() << "\t最小值：" << (numeric_limits<string>::min)() << endl;  
+    cout << "type: \t\t" << "************size**************"<< endl;  
+    return 0;  
+}
+```
+
+结果如下：
+
+```
+type:           ************size**************
+bool:           所占字节数：1   最大值：1               最小值：0
+char:           所占字节数：1   最大值：                最小值：�
+signed char:    所占字节数：1   最大值：                最小值：�
+unsigned char:  所占字节数：1   最大值：�               最小值：
+wchar_t:        所占字节数：2   最大值：65535           最小值：0
+short:          所占字节数：2   最大值：32767           最小值：-32768
+int:            所占字节数：4   最大值：2147483647      最小值：-2147483648
+unsigned:       所占字节数：4   最大值：4294967295      最小值：0
+long:           所占字节数：4   最大值：2147483647      最小值：-2147483648
+unsigned long:  所占字节数：4   最大值：4294967295      最小值：0
+double:         所占字节数：8   最大值：1.79769e+308    最小值：2.22507e-308
+long double:    所占字节数：16  最大值：1.18973e+4932   最小值：3.3621e-4932
+float:          所占字节数：4   最大值：3.40282e+38     最小值：1.17549e-38
+size_t:         所占字节数：8   最大值：18446744073709551615    最小值：0
+string:         所占字节数：32
+type:           ************size**************
+```
 
 **练习** **2.1** **：**类型 int、long、long long 和 short 的区别是什么？无符号类型和带符号类型的区别是什么？float 和 double 的区别是什么？
 
@@ -730,9 +813,41 @@ int i = refVal         // 正确 i被初始化为ival的值
 
 ```
 
-**引用只能绑定在对象上，不能与字面值或表达式绑定。**
+- 引用只能绑定在对象上，不能与字面值或表达式绑定。
 
-引用只能绑定同类型对象。
+- 引用只能绑定同类型对象。
+
+通过完整的代码查看：
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int ival = 1024;
+    int &refVal = ival;
+    cout  << " ival: " << ival << ", refVal :" << refVal << ", &refVal : "
+          << &refVal << endl;
+    refVal = 2;
+    cout  << " ival: " << ival << ", refVal :" << refVal << ", &refVal : "
+          << &refVal << endl;
+    int ii = refVal;
+    cout  << " ival: " << ival << ", ii :" << ii << endl;
+    int &refVal3 = refVal;
+     cout  << " refVal3: " << refVal3 << ",  &refVal3: " 
+           << &refVal3 << ",refVal :" << refVal << ", &refVal : "
+           << &refVal << endl;
+    return 0;
+}
+```
+
+结果如下：
+
+```cpp
+ival: 1024, refVal :1024, &refVal : 0x61fe04
+ ival: 2, refVal :2, &refVal : 0x61fe04
+ ival: 2, ii :2
+ refVal3: 2,  &refVal3: 0x61fe04,refVal :2, &refVal : 0x61fe04
+```
 
 #### 引用的定义
 
@@ -750,6 +865,13 @@ int &refVal4 = 10;  		// 错误：引用类型的初始值必须是一个对象
 double dval = 3.14;			
 int &refVal5 = dval;		// 错误：此处引用类型的初始值必须是 int 型对象 
 ```
+
+引用通常用于函数参数列表和函数返回值。下面列出了 C++ 程序员必须清楚的两个与 C++ 引用相关的重要概念：
+
+| 概念                                                         | 描述                                                     |
+| :----------------------------------------------------------- | :------------------------------------------------------- |
+| [把引用作为参数](https://www.runoob.com/cplusplus/passing-parameters-by-references.html) | C++ 支持把引用作为参数传给函数，这比传一般的参数更安全。 |
+| [把引用作为返回值](https://www.runoob.com/cplusplus/returning-values-by-reference.html) | 可以从 C++ 函数中返回引用，就像返回其他数据类型一样。    |
 
 **练习** **2.15** **：**下面的哪个定义是不合法的？为什么？
 
@@ -962,11 +1084,11 @@ double obj = 3.14, * pd = &obj;
 
 #### 指针与引用的区别（不充分）
 
-- 指针本身就是一个对象，需要分配内存。引用是别名，不需要分配内存。允许对指针赋值拷贝，在生命周期内可以先后指向几个不同的对象
+- 不存在空引用。引用必须连接到一块合法的内存。
+- 一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。
+- 引用必须在创建时被初始化。指针可以在任何时间被初始化。
 
-- 指针无须在定义时赋初值，和其它类型一样，在块作用域内定义的指针没有被初始化，也将拥有一个不确定值
-
-- 引用必须边声明边初始化
+- 指针本身就是一个对象，需要分配内存。引用是别名，不需要分配内存。
 
 - 引用的创建和销毁不会调用类的拷贝构造函数和析构函数。
 
@@ -1209,77 +1331,251 @@ r = &i;            // r引用了一个指针，因此给r赋值&i就是令p指�
 
 可以把引用绑定到 const 对象上,就像绑定到其他对象上一样,我们称之为**对常量的引用**.
 
+- 引用必须初始化，因此常量引用也必须初始化。
 
+- 不能用非常量引用指向一个常量对象。可以用常量引用指向一个非常量对象。
+- 注意引用不是对象，因此常量引用不是说引用是常量，引用本来就只能绑定一个对象，而是引用不能改变引用的对象了。
 
-引用必须初始化，因此常量引用也必须初始化。
+```cpp
+const int ci = 1024;
+const int &ri = ci;   // 正确：引用对应的对象都是常量，类似临时量对象 
+r1 = 42;              // 错误：r1 是对常量的引用
+int &r2 = ci;         // 错误：试图让一个非常量引用指向一个常量对象 
+```
 
-注意引用不是对象，因此常量引用不是说引用是常量，引用本来就只能绑定一个对象，而是引用不能改变引用的对象了。
+引用的类型必须与其所引用对象的类型一致，但是有两个例外。
 
-​                const int ci = 42;  const int &r = ci;  // 用于声明引用的 const 都是底层 const              
+- 其中一个例外就是初始化常量引用时允许用任意表达式作为初始值（包括常量表达式），只要该表达式结果可以转换为引用的类型。
 
-不能用非常量引用指向一个常量对象。可以用常量引用指向一个非常量对象。
-
-引用的类型必须与其所引用对象的类型一致，但是有两个例外。其中一个例外就是初始化常量引用时允许用任意表达式作为初始值（包括常量表达式），只要该表达式结果可以转换为引用的类型。
-
-​                const int &r = 42;  // 常量引用可以绑定字面值              
+```
+const int &r = 42;  // 常量引用可以绑定字面值       
+```
 
 当用常量引用绑定一个非常量对象时，不能通过引用改变引用对象的值，但是可以通过其他方式改变值。常量指针也一样。
 
+常量引用仅对可参与的操作做出了限定，**对于引用的对象本身是不是一个常量并未做限定。**
+
+```cpp
+#include <iostream>
+int main ()
+{
+    int i = 5;
+    const int& a = i;
+    i = 0;  //不可以通过a修改i的值，但是i本身可以赋值
+    std::cout << a << " " << i << std::endl; // 运行通过：0  0 
+}
+```
+
+对常量的引用不能被用作修改它所绑定的对象
+
+```cpp
+const int ci = 1024;
+const int& ri = ci;
+ri = 42; //错误，ri是对常量的引用
+int& r2 = ci; //错误，试图让一个非常量引用指向一个非常量对象
+```
+
+
+
 ### **2.4.2 指针和const**
 
-指向常量的指针的用法和常量引用相似，**但是是不一样的。**它既可以指向常量也可以指向非常量，不能改变对象的值。但是非常量对象可以通过其他途径改变值
+- 指向常量的指针(pointer to const)不能用于改变所指对象的值，要想存放常量对象的地址，只能使用指向常量的指针
+- 允许常量指针指向一个非常量对象(这是指针类型必须与其所指对象类型一致的例外之一),和常量引用一样，指向常量的指针也没有规定其所指的对象必须是一个常量，仅仅要求不能通过该指针改变对象的值。
+
+```cpp
+const double pi = 3.14;
+double *cpt = &pi        // 错误：cpt是一个普通指针
+const double* ptr = &pi; // 正确：要想存放常量对象的地址，只能使用指向常量的指针
+*ptr =  42;              // 错误：不能给*ptr赋值，来改变pi的值 
+```
+
+**const指针**，**指针本身为常量，常量指针必须初始化**
+
+```cpp
+int errNumb = 0;
+int* const curr = &errNumb;  //curru将一直指向errNumb
+```
+
+**练习** **2.27** **：**下面的哪些初始化是合法的？请说明原因。
+
+(a) int i = -1, &r = 0; (b) int *const p2 = &i2; 
+
+(c) const int i = -1, &r = 0;(d) const int *const p3 = &i2; 
+
+(e) const int *p1 = &i2; (f) const int &const r2; 
+
+(g) const int i2 = i, &r = i; 
+
+**解答：**
+
+```cpp
+(a) int i = -1, &r = 0;        // 非法 ，非常量引用r不能引用字面值常量0 
+(b) int *const p2 = &i2;       // 合法， p2是常量指针，p2的值永不改变，即p2永远指向i2
+(c) const int i = -1, &r = 0;  // 合法   i 是常量 ，r是常量引用初始值为0 
+(d) const int *const p3 = &i2; // 合法   P3是常量引用，p3永远指向i2 
+(e) const int *p1 = &i2;       // 合法   p1指向一个常量，不能通过p1改变所指对象的值。
+(f) const int &const r2;       // 非法 ，引用本身不是对象，因此不能让引用恒定不变
+(g) const int i2 = i, &r = i;  // 合法 ，i2是常量，r也是常量引用
+```
+
+**练习** **2.28****：**说明下面的这些定义是什么意思，挑出其中不合法的。
+
+(a) int i, *const cp; (b) int *p1, *const p2; 
+
+(c) const int ic, &r = ic; (d) const int *const p3; 
+
+(e) const int *p; 
+
+**解答：**
+
+```cpp
+(a)是非法的，cp 是一个常量指针，因其值不能被改变，所以必须初始化。
+(b)是非法的，cp2 是一个常量指针，因其值不能被改变，所以必须初始化。
+(c)是非法的，ic 是一个常量，因其值不能被改变，所以必须初始化。
+(d)是非法的，p3 是一个常量指针，因其值不能被改变，所以必须初始化；同时p3 指向的是常量，即我们不能通过 p3 改变所指对象的值。
+(e)是合法的，但是 p 没有指向任何实际的对象。
+```
+
+**练习** **2.29****：**假设已有上一个练习中定义的那些变量，则下面的哪些语句是合法
+
+的？请说明原因。
+
+(a) i = ic; 
+
+(b) p1 = p3; 
+
+(c) p1 = ⁣ (d) p3 = ⁣ 
+
+(e) p2 = p1; 
+
+(f) ic = *p3; 
+
+**解答：**
+
+```cpp
+(a)是合法的，常量 ic 的值赋给了非常量 i。
+(b)是非法的，普通指针 p1 指向了一个常量，从语法上说，p1 的值可以随意改
+变，显然是不合理的。
+(c)是非法的，普通指针 p1 指向了一个常量，错误情况与上一条类似。
+(d)是非法的，p3 是一个常量指针，不能被赋值。
+(e)是非法的，p2 是一个常量指针，不能被赋值。
+(f)是非法的，ic 是一个常量，不能被赋值。
+```
 
 ### **2.4.3 顶层const**
 
-**顶层 const** 表示**指针本身**是个常量，**底层 const** 表示**指针所指的对象**是一个常量。顶层 const 对任何数据类型通用，**底层 const** 只用于引用和指针。
+**认识顶层const 和底层const**
 
-顶层 const 的指针表示该指针是 const 对象，因此必须初始化。底层 const 的指针则不用。
+- **顶层 const** 表示**指针本身**是个常量，**底层 const** 表示**指针所指的对象**是一个常量。
+
+- 顶层 const 对任何数据类型通用，**底层 const** 只用于引用和指针。
+
+- 顶层 const 的指针表示该指针是 const 对象，因此必须初始化。底层 const 的指针则不用。
+
+```cpp
+int i = 0;
+int *const p1 = $i;		// 不能改变p1的值，这是一个顶层const
+const int ci = 42; 		// 不能改变ci的值，这是一个顶层const
+const int *p2 = &ci;    // 允许改变p2的值，这是一个底层const 
+const int *const p3 = p2; // 靠右的const是顶层const,靠左的是底层const
+const int &r = ci		// 用于声明引用的const 都是底层const 
+```
+
+如`const int &r = ci`,**拷贝时，拷入和拷出的对象必须是底层const**
 
 实际上只有指针类型既可以是顶层 const 也可以是底层 const，因为引用实际上只能是底层 const，常量引用即为底层 const，不存在顶层 const 的引用。
 
-​                const int &const p2 = p1;// 错误              
+```cpp
+const int &const p2 = p1;// 错误  不能改变p1的值，这是一个顶层const 
+```
 
 从右向左读来判断是顶层 const 还是底层 const。
 
 **对于指针和引用而言，顶层 const 在右边，底层 const 在左边。对于其他类型，全都是顶层 const**
 
-​                const int* const p3 = p2; // 从右向左读，右侧const是顶层const，表明p3是一个常量，左侧const是底层const，表明指针所指的对象是一个常量 const int* p2 = &c;       // 这是一个底层const，允许改变 p2 的值 int* const p1 = &i;       // 这是一个顶层const，不能改变 p1 的值              
+```cpp
+const int* const p3 = p2; // 从右向左读，右侧const是顶层const，表明p3是一个常量，左侧const是底层const，表明指针所指的对象是一个常量 
+const int* p2 = &c;       // 这是一个底层const，允许改变 p2 的值 
+int* const p1 = &i;       // 这是一个顶层const，不能改变 p1 的值          
+```
 
 执行对象的拷贝操作时，不能将底层 const 拷贝给非常量，反之可以，非常量将会转化为常量。
 
+
+
+**练习** **2.30** **：**对于下面的这些语句，请说明对象被声明成了顶层const还是底层const？
+
+const int v2 = 0; int v1 = v2; 
+
+int *p1 = &v1, &r1 = v1; 
+
+const int *p2 = &v2, *const p3 = &i, &r2 = v2; 
+
+**解答：**
+
+```
+v2 和 p3 是顶层const,分别指向常量和常量指针
+p2 和 r2 是底层const,指向常量 
+```
+
+**练习** **2.31** **：**假设已有上一个练习中所做的那些声明，则下面的哪些语句是合法的？请说明顶层 const 和底层 const 在每个例子中有何体现。
+
+r1 = v2; 
+
+p1 = p2; p2 = p1; 
+
+p1 = p3; p2 = p3; 
+
+**解答**
+
+```cpp
+r1 = v2;  // 合法
+p1 = p2;  // 非法，p1是普通指针，p2是常量指针（底层const）（需同为底层const 拷贝）
+p2 = p1;  // 合法，
+p1 = p3;  // 非法，
+p2 = p3;  // 合法，
+```
+
 ### **2.4.4 constexpr和常量表达式**
 
-常量表达式是指**值不会改变**并且**在编译过程就能得到计算结果**的表达式。
+>  常量表达式（const expression）: 指值不会改变并且在编译过程就能得到计算结果的表达式。
 
 **字面值属于常量表达式**，由常量表达式初始化的 const 对象也是常量表达式。
 
-​                const int a = 32;          // 是常量表达式 const int b = a + 1;       // 是常量表达式 const int sz = get_size(); // 不是常量表达式，因为虽然 sz 是常量，但它的具体值等到运行时才知道。              
+```cpp
+const int a = 32;          // 是常量表达式 
+const int b = a + 1;       // 是常量表达式 
+const int sz = get_size(); // 不是常量表达式，因为虽然 sz 是常量，但它的具体值等到运行时才知道。
+```
 
-**cosntexpr变量**
+#### **cosntexpr变量**
 
-在实际应用中很难分辨一个初始值是否是常量表达式，通过将变量声明为 **constexpr 类型**即可由编译器来检查。
+> C++新标准，用constexpr关键字类验证变量的值是否是一个常量表达式
 
-**由 constexpr 声明的变量必须用常量表达式初始化。**
+```cpp
+constexpr int sz = size(); //只有当 size() 是一个 constexpr 函数时这才是一条正确的声明语句  
+constexpr int mf = 20;	   //20是常量表达式
+constexpr int limit = mf + 1; // mf + 1 是常量表达式 
+```
 
-建议：如果认定一个变量是常量表达式，就把它声明为 constexpr 类型。
+#### **字面值类型**
 
-新标准允许定义 constexpr，这种函数应该足够简单以使得编译时就可以计算其结果。
+> 声明constexpt时用到的类型必须有所限制，这些类型为字面值类型。
 
-不能用普通函数初始化 constexpr 变量，但可以使用 constexpr 函数初始化 constexpr 变量。
+包括：算术类型、引用、指针
 
-​                constexpr int sz = size(); //只有当 size() 是一个 constexpr 函数时这才是一条正确的声明语句。              
+- cosntexpr 指针的初始值必须是 nullptr 或 0 或存储于固定地址的对象。
 
-**字面值类型**
-
-**算术类型、引用、指针都属于字面值类型**，自定义类则不属于。
-
-cosntexpr 指针的初始值必须是 nullptr 或 0 或存储于固定地址的对象。函数体之外的对象和静态变量的地址都是固定不变的。
+- 函数体之外的对象和静态变量的地址都是固定不变的。
 
 **指针和constexpr**
 
 注意区分 constexpr 和 const 。constexpr 都是顶层 const，仅对指针本身有效。
 
-​                const int *p = nullptr;     // p 是一个指向整型常量的指针 constexpr int *q = nullptr; // q 是一个指向整数的常量指针              
+```cpp
+const int *p = nullptr;     // p 指向常量的指针 
+constexpr int *q = nullptr; // q 常量指针，constexpr把它所定义的对象置为了顶层const  
+```
 
 **区分const和constexpr**
 
@@ -1287,29 +1583,113 @@ constexpr 限定了变量是**编译器常量**，即变量的值在编译器就
 
 const 则并未区分是编译器常量还是运行期常量。即 const 变量可以在运行期间初始化，只是初始化后就不能再改变了。
 
-**constexpr 变量是真正的“常量”**，而 const 现在一般只用来表示 **“只读”**。
+**constexpr 变量是真正的“常量”**
+
+而 const 现在一般只用来表示 **“只读”**。
+
+#### 成员函数+const
+
+- 判断成员函数是否是const的，可以对其进行重载。作用是修改隐式this指针的类型
+
+- this指针是一个系统送给我们的A *const类型的指针（A为类） 如果是常成员函数的话，系统送的这个this指针会再加一个限制，变成A const* const类型
+- 当声明一个非静态成员函数为const时，对this指针会有影响。对于一个Test类中的const修饰的成员函数，this指针相当于Test const *, 而对于非const成员函数，this指针相当于Test* .
+
+**const成员函数内只能读取类的数据成员，无法修改类的数据成员** **const成员函数内，不能调用其他非const成员函数** 这个特性被用来保证某些成员函数在实现过程中，避免由于程序员大意而对数据进行了错误的修改； 为什么要把const关键字放在参数列表后面，而不是放在前面呢？因为放在参数列表前面就成了修饰成员函数的返回值
+
+**const的用法。如果const成员函数想要改变成员变量怎么办?**
+
+方法一：mutable，如果不加mutable，i是没办法在func中更改的
+
+```cpp
+class C {
+    public :
+        void func(const int &p) const {
+            i = p;
+        }
+        void show() {
+            cout << i << endl;
+        }
+    private:
+        mutable int i;
+};
+
+int main() {
+    C c;
+    c.func(2);
+    c.show();
+    return 0;
+}
+```
+
+**方法二**：
+
+```cpp
+ const_cast(&cd)->op();
+```
+
+ **const的使用方法可以总结为4句话:**
+
+- const 修饰某个非指针类型变量，表示该变量只读。
+- const 修饰指针，在*号前面表示指针指向的内容不可更改，指针本身可以改变。
+- const 修饰指针，在*号后面表示指针本身不可改变(不能被赋值)，指针指向的内容可以改变，这个指针必须在初始化的时候赋值。
+- const 修饰成员函数，表示一个常量对象可以调用该成员函数。
+
+**const和define的区别**
+
+const 是常量数据类型，存处在程序的数据段，define只是进行文本的替换，存在与程序的代码区 角度1： 就定义常量说的话： const 定义的常数是变量 也带类型， #define 定义的只是个常数 不带类型。 角度2： 就起作用的阶段而言： define是在编译的预处理阶段起作用，而const是在 编译、运行的时候起作用。 角度3： 就起作用的方式而言： define只是简单的字符串替换，没有类型检查。而const有对应的数据类型，是要进行判断的，可以避免一些低级的错误。 正因为define只是简单的字符串替换会导致边界效应，具体举例可。
+
+**练习** **2.32** **：**下面的代码是否合法？如果非法，请设法将其修改正确。
+
+int null = 0, *p = null; 
+
+**解答**
+
+```cpp
+int null = 0, *p = null;  // 非法，null是int变量，p是int指针，二者不能直接绑定.
+应该改为:
+int null =0, *p = &null  
+```
 
 ## **2.5 处理类型**
 
 ### **2.5.1 类型别名**
 
-有两种方法定义**类型别名**。
 
-​                typedef double wages;  // 使用 typedef 关键字 using wages = double;  // 使用 using 关键字进行别名声明              
+
+有两种方法定义**类型别名**, 。
+
+```cpp
+typedef double wages;  // 传统方法使用 typedef 关键字 
+using wages = double;  // 新标准使用 using 关键字进行别名声明       
+```
 
 typedef 作为声明语句中的基本数据类型的一部分出现。含有 typedef 的声明语句定义的不再是变量而是类型别名。和其他声明语句一样，typedef 的声明语句中也可以包含类型修饰符，从而构造符合类型。
 
-​                typedef wages base, *p; // base 是 double 的别名，p 是 double* 的别名。              
+```cpp
+typedef double wages;
+using SI = Sales_item;
+int main() {
+    wages hour, week;  // 等价于double hourly,weekly; 
+    SI item;
+    return 0;
+}       
+```
 
-**指针、常量和类型别名**
+#### **指针、常量和类型别名**
 
-​                typedef char* pstring;  const pstring cstr = 0; // 注意：const 是一个指向 char 的常量指针。不能采用直接替换的方式将其理解为 const char* cstr = 0，这是错误的。              
+如果是用某个类型别名指代复合类型，会产生意想不到的效果
+
+```cpp
+typedef char* pstring;  
+const pstring cstr = 0; // 注意：const 是一个指向 char 的常量指针。
+                        // 不能采用直接替换的方式将其理解为 const char* cstr = 0，这是错误的。 
+```
 
 ### **2.5.2 auto类型说明符**
 
-auto 说明符让编译器根据初始值来分析表达式所属的类型。理解：使用 auto 会增加编译时间，但不会增加运行时间。
+auto让编译器通过初始值来推算变量的类型
 
-auto 可以在一条语句中声明多个变量，但是多个变量必须是同一个基本数据类型（整型与整型指针和整型引用算一个类型）。
+> 使用auto声明的变量的语句中，一句只能有一个基本数据类型
 
 **复合类型、常量和auto**
 
@@ -1319,25 +1699,92 @@ auto 可以在一条语句中声明多个变量，但是多个变量必须是同
 2. auto 一般会忽略掉顶层 const，因此对于非指针类型的常量对象，auto 推断出的结果是不含 const 的。如果希望 auto 是一个顶层 const，需要明确指出。
 3. auto 会保留底层 const。
 
-概括一下就是 auto 会忽略引用与顶层 const。
+概括一下就是 auto 会忽略引用与**顶层 const**。
 
-​                const int ci = 1, cr = ci; auto b = ci;       // b 是一个普通的 int。 auto c = cr;       // c 是一个普通的 int。 const auto d = ci; // d 是一个 const int auto &e = ci;      // e 是一个常量引用（常量引用是底层 const）。注意这个微妙的地方。 auto f = &ci;      // f 是一个 const int*（位于左边的 const 是底层 const）              
+```cpp
+const int ci = 1, cr = ci; auto b = ci;       // b 是一个普通的 int。 
+auto c = cr;       // c 是一个普通的 int。 
+const auto d = ci; // d 是一个 const int 
+auto &e = ci;      // e 是一个常量引用（常量引用是底层 const）。注意这个微妙的地方。 
+auto f = &ci;      // f 是一个 const int*（位于左边的 const 是底层 const）   
+```
 
 int 与 int *、int & 是一个基本数据类型，而 const int 与 int 不是一种类型。
 
 用 auto 定义引用时，必须用 & 指明要定义的是引用。
 
+
+
+**练习** **2.33** **：**利用本节定义的变量，判断下列语句的运行结果。
+
+a = 42; b = 42; c = 42; 
+
+d = 42; e = 42; g = 42; 
+
+
+
+**练习** **2.34** **：**基于上一个练习中的变量和语句编写一段程序，输出赋值前后变量的内容，你刚才的推断正确吗？如果不对，请反复研读本节的示例直到你明白错在何处为止。
+
+**解答：**
+
+编写一段程序
+
+```cpp
+#include <iostream>
+int main()
+{
+    int i = 0, &r = i;
+    auto a = r; // a 是一个整数（r 是 i 的别名，而 i 是个整数）
+    const int ci = i, &cr = ci;
+    auto b = ci; // b 是一个整数（ci 的顶层 const 特性被忽略掉了）
+    auto c = cr; // c 是一个整数（cr 是 ci 的别名，ci 本身是一个顶层 const）
+    auto d = &i; // d 是一个整型指针（整数的地址就是指向整数的指针）
+    auto e = &ci; // e是一个指向整型常量的指针（对常量对象取地址是一种底层const）
+    auto &g = ci; // g 是一个整型常量引用，绑定到 ci 
+    std::cout << a << " " << b << " " << c << " " << d << " " << e <<
+              " " << g << std::endl;
+    a = 42;
+    b = 42;
+    c = 42;
+    //d = 42; // 错误：d 是一个指针，赋值非法
+    //e = 42; // 错误：e 是一个指针，赋值非法
+    //g = 42; // 错误：g 是一个常量引用，赋值非法
+    std::cout << a << " " << b << " " << c << " " << d << " " << e <<
+              " " << g << std::endl;
+    return 0;
+}
+```
+
+**练习** **2.35** **：**判断下列定义推断出的类型是什么，然后编写程序进行验证。
+
+const int i = 42; 
+
+auto j = i; const auto &k = i; auto *p = &i; 
+
+const auto j2 = i, &k2 = i; 
+
+**解答**
+
+```
+
+```
+
+
+
 ### **2.5.3 decltype类型指示符**
 
-当希望获得表达式的类型但是不要值的时候，可以使用类型说明符 decltype。
+> 希望从表达式的类型推断出要定义的变量的类型
 
-如果 decltype 使用的表达式是一个变量，则它返回该变量的类型（**包括顶层 const 和引用在内**）。
-
-decltype 与 auto 的不同：decltype 不会忽略引用和顶层 const。
-
-**注意当获得的类型是引用时，必须初始化。**
-
-​                const int ci = 0, &cj = ci; decltype(ci) x = 0;  // x 的类型是 const int decltype(cj) y = x;  // y 的类型是 const int& decltype(cj) z; // z 是一个引用，必须初始化              
+```cpp
+int f() {
+    return 1;
+}
+int main() {
+    decltype(f()) sum = 0;
+    cout << sum << endl;
+    return 0;
+}
+```
 
 引用从来都是作为对象的别名出现，只有在 decltype 处是例外。
 
@@ -1347,7 +1794,10 @@ decltype 与 auto 的不同：decltype 不会忽略引用和顶层 const。
 
 注意**解引用指针的结果**是一个引用类型。**给变量加括号的结果**也是引用类型。**赋值操作的结果**也是引用类型。
 
-​                int i = 42, &r = i, *p; decltype(r+0) b;      // b 的类型是 int，因为 r+0 的结果类型是 int。 decltype(*p) c = i;   // c 的类型是 int&。 decltype((i)) d = i;  // d 的类型是 int&。              
+```cpp
+int i = 42, &r = i, *p; decltype(r+0) b;     // b 的类型是 int，因为 r+0 的结果类型是 int。   decltype(*p) c = i;   // c 的类型是 int&。
+decltype((i)) d = i;  // d 的类型是 int&。    
+```
 
 decltype((var)) 的结果永远是引用，而 decltype(var) 的结果只有当 var 本身就是引用时才是引用。
 
@@ -1355,41 +1805,140 @@ decltype((var)) 的结果永远是引用，而 decltype(var) 的结果只有当 
 
 ### **2.6.1 定义sales_data类型**
 
+使用struct开始，紧跟类名和实体，类体由花括号包围形成一个新的作用域，⭐要加分号
+
 struct+类名+类体+**分号。**类体可以为空。
 
-​                struct Sales_data{};   // 注意：结尾加分号              
+```cpp
+ struct Sales_data{};   // 注意：结尾加分号        
+```
 
-定义类时可以给数据成员提供**类内初始值**以进行初始化。没有类内初始值的成员则被默认初始化。
+#### 类数据成员
 
-类内初始值可以放在花括号中或等号的右边，不能使用圆括号。
+> 每个对象都有自己的一份数据成员拷贝
+
+C++11 新标准规定，可以为数据成员提供一个类内初始值，没有初始值将被默认初始化
+
+### 2.6.2 使用Sales_data类
+
+```cpp
+struct Sales_data {
+    string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+};
+int main() {
+    Sales_data data1, data2;
+    double price = 0;
+    //ISBN 销售数量 单价
+    cin >> data1.bookNo >> data1.units_sold >> price;
+    data1.revenue = data1.units_sold * price;  
+    //data2
+    cin >> data2.bookNo >> data2.units_sold >> price;
+    data2.revenue = data2.units_sold * price;
+    return 0;
+}
+```
+
+**练习** **2.41** **：**使用你自己的 Sales_data 类重写 1.5.1 节（第 20 页）、1.5.2 节（第21 页）和 1.6 节（第 22 页）的练习。眼下先把 Sales_data 类的定义和 main 函数放在同一个文件里。
+
+**解答：**
+
+```cpp
+//1.5.1-1.5.2
+struct Sales_data {
+    string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+    string isbn() { return bookNo; }
+};
+int main() {
+    Sales_data data1, data2;
+    double price = 0;
+    //ISBN 销售数量 单价
+    cin >> data1.bookNo >> data1.units_sold >> price;
+    data1.revenue = data1.units_sold * price;  
+    //data2
+    cin >> data2.bookNo >> data2.units_sold >> price;
+    data2.revenue = data2.units_sold * price;
+    if (data1.isbn() == data2.isbn()) {
+        double total_revenue = data1.revenue + data2.revenue;
+        unsigned totalCnt = data1.units_sold + data2.units_sold;
+        cout << data1.isbn()<< " " << totalCnt << " " << total_revenue << endl;
+        return 0;
+    }
+    else {
+        cout << "Not the same ISBN" << endl;
+        return 0;
+    }
+    return 0;
+}
+
+//1.6
+struct Sales_data {
+    string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+    string isbn() { return bookNo; }
+};
+int main() {
+    Sales_data total;
+    string ID;
+    unsigned count = 0;
+    double price = 0.0;
+    if (cin >> ID >> count >> price) {
+        total.bookNo = ID;
+        total.units_sold = count;
+        total.revenue = price*count;
+        while (cin >> ID >> count >> price) {
+            if (ID == total.isbn()) {
+                total.revenue += count * price;
+                total.units_sold += count;
+            }
+            else {
+                cout << total.isbn() << " " << total.units_sold << " " << total.revenue;
+            }
+        }
+        cout << total.isbn() << " " << total.units_sold << " " << total.revenue;
+    }
+    else {
+        cout << "NO data" << endl;
+    }
+    return 0;
+}
+```
+
+
 
 ### **2.6.3 编写自己的头文件**
 
-类通常定义在头文件中，类所在头文件的名字应与类的名字一样。
+- 类通常定义在头文件中，类所在头文件的名字应与类的名字一样。
 
-头文件通常定义那些**只能被定义一次的实体**，比如类、const、constexpr 等。
+- 头文件通常定义那些**只能被定义一次的实体**，比如类、const、constexpr 等。
 
-头文件一旦改变，相关的源文件必须重新编译以获取更新过的声明。
+- 头文件一旦改变，相关的源文件必须重新编译以获取更新过的声明。
 
-**预处理器概述**
+有必要在书写头文件的时候做适当处理，使其遇到多次包含的情况也能安全和正常工作
 
-确保头文件多次包含仍能安全工作的常用技术是预处理器。
+> 比如一个头文件用了string文件，使用头文件的文件也要用string文件，这个使用的文件两次包含了string头文件
 
-预处理变量有两种状态：已定义和未定义。一般把预处理变量的名字全部大写。
+#### **预处理器概述**
 
-整个程序中的预处理变量包括头文件保护符必须唯一，通常基于头文件中类的名字来构建保护符的名字，以确保其唯一性。
+> 能够确保头文件多次包含仍能安全工作，编译之前执行的程序。
 
-c++ 中包含三个**头文件保护符****：**
+#### 头文件保护符
 
-1. \#define：把一个名字设定为预处理变量
-2. \#ifndef：当且仅当变量已定义时为真，一旦检查结果为真，则执行后续操作直到遇到 #endif 为止
-3. \#endif
+> 其依赖预处理变量，有两种状态：已定义和未定义。一般把预处理变量的名字全部大写。
 
-预处理变量无视作用域的规则，作用范围是文件内
+1. **\#define：**把一个名字设定为预处理变量
 
+2. **\#ifndef：**当且仅当变量已定义时为真，一旦检查结果为真，则执行后续操作直到遇到 #endif 为止
 
+3. **\#endif：**结果为真后，执行后续操作到#endif停止
 
+4. **#ifdef** 当且仅当变量已定义时为真
 
+   
 
 ## **2.7 问题集**
 

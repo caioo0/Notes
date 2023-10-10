@@ -1,12 +1,18 @@
 #include <iostream>
+using namespace std;
+ 
 int main ()
 {
-    int ival = 1024;
-    int* pi = &ival;  //pi 指向一个int型的数
-    int** ppi = &pi;  //ppi 指向一个int型的数
-    std::cout << "the value of ival \n"
-         << "direct value: " << ival << "\n"
-         << "indirect value: " << *pi << "\n"
-         << "doubly indirect value: " << **ppi << ", ppi = " << ppi << " , *ppi = " << *ppi 
-         << std::endl; 
+   // 带有 5 个元素的双精度浮点型数组
+   double runoobAarray[5] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+
+ 
+   cout << "使用 runoobAarray 作为地址的数组值 " << endl;
+   for ( int i = 0; i < 5; i++ )
+   {
+       cout << "*(runoobAarray + " << i << ") : ";
+       cout << *(runoobAarray + i) << endl;
+   }
+ 
+   return 0;
 }

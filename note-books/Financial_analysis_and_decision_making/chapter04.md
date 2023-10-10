@@ -4,8 +4,8 @@
 </p>
 
 ```md
-I learned in life that you have to take the hard knocks the way they are.
-生活教会我，要经受得住它带来的羁绊。
+Power resides where men believe it resides.
+你认为权力存在何处，它就在何处。
 ``` 
 
 其平均的营运资本周转天数比上年同期降低了46.2%（注：REL公司用营运资本周转天数（Days Working Capital）来衡量公司的营运资本管理水平，其计算公式为（应收款＋存货-应付款）/（全部收入/365）。），减少了13.6天。
