@@ -18,7 +18,7 @@ print('Input shape:',X.shape)
 print('Labels:',y)
 
 plt.imshow(torchvision.utils.make_grid(X)[0],cmap='Greys')
-
+plt.show()
 # noise = torch.rand_like(X)
 # print(noise)
 # noise_x = (1-amount)*x + amount *noise
@@ -34,7 +34,6 @@ def corrupt(x,amount):
 fig ,axs = plt.subplots(2,1,figsize=(12,5))
 axs[0].set_title('input data')
 axs[0].imshow(torchvision.utils.make_grid(X)[0],cmap='Greys')
-
 # 加入噪声
 amount = torch.linspace(0,1,X.shape[0]) # 从0到1 -> 退化更强烈
 noise_x = corrupt(X,amount)
@@ -42,5 +41,7 @@ noise_x = corrupt(X,amount)
 # 绘制加噪版本的图像
 axs[1].set_title('Corrupted data (-- amount invreases -->)')
 axs[1].imshow(torchvision.utils.make_grid(noise_x)[0],cmap='Greys')
+plt.show()
+print('完成啦~')
 
 
