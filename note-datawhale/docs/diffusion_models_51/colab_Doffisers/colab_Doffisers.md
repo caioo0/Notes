@@ -1,37 +1,36 @@
 # 第一周练习：Diffusers 介绍
 
-> 代码来自diffusion-models-class（中文）：https://github.com/darcula1993/diffusion-models-class-CN 
-
-### 推荐阅读列表：
-
+** 推荐阅读列表：**
  - [第1章 扩散模型简介](docs/diffusion_models_51/part01.md) 
  - [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md) 
  - [第3章 从零开始搭建扩散模型](docs/diffusion_models_51/part03.md) 
 
 
+## 练习代码 
 在这个 Notebook 里，你将训练你的第一个扩散模型来 **生成美丽的蝴蝶的图片 🦋**。在此过程中，你将了解 🤗 Diffuers 库，它将为我们稍后将在课程中介绍的更高级的应用程序提供良好的基础 
 
 让我们直接上代码吧！
 
-运行环境： Google  colab T4 GPU 
+运行环境：  colab T4 GPU 
+
 
 ```python
 %pip install -qq -U diffusers datasets transformers accelerate ftfy pyarrow==9.0
 
 ```
 
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.5/1.5 MB[0m [31m17.1 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m519.6/519.6 kB[0m [31m49.7 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m7.7/7.7 MB[0m [31m103.7 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m258.1/258.1 kB[0m [31m33.4 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m53.1/53.1 kB[0m [31m7.9 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m302.0/302.0 kB[0m [31m36.8 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.3/1.3 MB[0m [31m86.7 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m115.3/115.3 kB[0m [31m17.2 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m194.1/194.1 kB[0m [31m21.1 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m134.8/134.8 kB[0m [31m7.6 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m3.8/3.8 MB[0m [31m76.7 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m295.0/295.0 kB[0m [31m33.6 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m1.5/1.5 MB[0m [31m17.1 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m519.6/519.6 kB[0m [31m49.7 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m7.7/7.7 MB[0m [31m103.7 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m258.1/258.1 kB[0m [31m33.4 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m53.1/53.1 kB[0m [31m7.9 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m302.0/302.0 kB[0m [31m36.8 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m1.3/1.3 MB[0m [31m86.7 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m115.3/115.3 kB[0m [31m17.2 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m194.1/194.1 kB[0m [31m21.1 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m134.8/134.8 kB[0m [31m7.6 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m3.8/3.8 MB[0m [31m76.7 MB/s[0m eta [36m0:00:00[0m
+    [2K     [90mââââââââââââââââââââââââââââââââââââââââ[0m [32m295.0/295.0 kB[0m [31m33.6 MB/s[0m eta [36m0:00:00[0m
     [?25h
 
 
@@ -45,7 +44,7 @@ notebook_login()
 ```
 
 
-    VBox(children=(HTML(value='<center> <img\nsrc=https://huggingface.co/front/assets/huggingface_logo-noborder.sv…
+    VBox(children=(HTML(value='<center> <img\nsrc=https://huggingface.co/front/assets/huggingface_logo-noborder.svâŚ
 
 
 
@@ -80,7 +79,7 @@ notebook_login()
     Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests->torchvision) (2.0.6)
     Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests->torchvision) (2023.7.22)
     Requirement already satisfied: mpmath>=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy->torch) (1.3.0)
-    
+
 
 
 ```python
@@ -163,61 +162,61 @@ pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float
 ```
 
     The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
-    
+
 
 
     0it [00:00, ?it/s]
 
 
 
-    Downloading (…)ain/model_index.json:   0%|          | 0.00/546 [00:00<?, ?B/s]
+    Downloading (âŚ)ain/model_index.json:   0%|          | 0.00/546 [00:00<?, ?B/s]
 
 
     safety_checker/model.safetensors not found
-    
+
 
 
     Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
 
 
 
-    Downloading (…)_encoder/config.json:   0%|          | 0.00/589 [00:00<?, ?B/s]
+    Downloading (âŚ)_encoder/config.json:   0%|          | 0.00/589 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)rocessor_config.json:   0%|          | 0.00/342 [00:00<?, ?B/s]
+    Downloading (âŚ)rocessor_config.json:   0%|          | 0.00/342 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)tokenizer/merges.txt:   0%|          | 0.00/525k [00:00<?, ?B/s]
+    Downloading (âŚ)tokenizer/merges.txt:   0%|          | 0.00/525k [00:00<?, ?B/s]
 
 
 
-    Downloading (…)cial_tokens_map.json:   0%|          | 0.00/472 [00:00<?, ?B/s]
+    Downloading (âŚ)cial_tokens_map.json:   0%|          | 0.00/472 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)cheduler_config.json:   0%|          | 0.00/289 [00:00<?, ?B/s]
+    Downloading (âŚ)cheduler_config.json:   0%|          | 0.00/289 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)_checker/config.json:   0%|          | 0.00/4.67k [00:00<?, ?B/s]
+    Downloading (âŚ)_checker/config.json:   0%|          | 0.00/4.67k [00:00<?, ?B/s]
 
 
 
-    Downloading (…)okenizer_config.json:   0%|          | 0.00/805 [00:00<?, ?B/s]
+    Downloading (âŚ)okenizer_config.json:   0%|          | 0.00/805 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)tokenizer/vocab.json:   0%|          | 0.00/1.06M [00:00<?, ?B/s]
+    Downloading (âŚ)tokenizer/vocab.json:   0%|          | 0.00/1.06M [00:00<?, ?B/s]
 
 
 
-    Downloading (…)d4e/unet/config.json:   0%|          | 0.00/794 [00:00<?, ?B/s]
+    Downloading (âŚ)d4e/unet/config.json:   0%|          | 0.00/794 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)2d4e/vae/config.json:   0%|          | 0.00/597 [00:00<?, ?B/s]
+    Downloading (âŚ)2d4e/vae/config.json:   0%|          | 0.00/597 [00:00<?, ?B/s]
 
 
 
@@ -229,11 +228,11 @@ pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float
 
 
 
-    Downloading (…)on_pytorch_model.bin:   0%|          | 0.00/167M [00:00<?, ?B/s]
+    Downloading (âŚ)on_pytorch_model.bin:   0%|          | 0.00/167M [00:00<?, ?B/s]
 
 
 
-    Downloading (…)on_pytorch_model.bin:   0%|          | 0.00/1.72G [00:00<?, ?B/s]
+    Downloading (âŚ)on_pytorch_model.bin:   0%|          | 0.00/1.72G [00:00<?, ?B/s]
 
 
 
@@ -243,7 +242,7 @@ pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float
     `text_config_dict` is provided which will be used to initialize `CLIPTextConfig`. The value `text_config["id2label"]` will be overriden.
     `text_config_dict` is provided which will be used to initialize `CLIPTextConfig`. The value `text_config["bos_token_id"]` will be overriden.
     `text_config_dict` is provided which will be used to initialize `CLIPTextConfig`. The value `text_config["eos_token_id"]` will be overriden.
-    
+
 
 
 ```python
@@ -259,13 +258,13 @@ image
 
 
 
-    
+
 ![png](output_10_1.png)
     
 
 
 
-*斜体文本*
+*ćä˝ććŹ*
 
 
 ```python
@@ -284,26 +283,26 @@ make_grid(images)
 ```
 
 
-    Downloading (…)ain/model_index.json:   0%|          | 0.00/180 [00:00<?, ?B/s]
+    Downloading (âŚ)ain/model_index.json:   0%|          | 0.00/180 [00:00<?, ?B/s]
 
 
     diffusion_pytorch_model.safetensors not found
-    
+
 
 
     Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
 
 
 
-    Downloading (…)b9c177f3/config.json:   0%|          | 0.00/702 [00:00<?, ?B/s]
+    Downloading (âŚ)b9c177f3/config.json:   0%|          | 0.00/702 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)cheduler_config.json:   0%|          | 0.00/267 [00:00<?, ?B/s]
+    Downloading (âŚ)cheduler_config.json:   0%|          | 0.00/267 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)on_pytorch_model.bin:   0%|          | 0.00/74.3M [00:00<?, ?B/s]
+    Downloading (âŚ)on_pytorch_model.bin:   0%|          | 0.00/74.3M [00:00<?, ?B/s]
 
 
 
@@ -317,7 +316,7 @@ make_grid(images)
 
 
 
-    
+
 ![png](output_12_8.png)
     
 
@@ -369,7 +368,7 @@ train_dataloader = torch.utils.data.DataLoader(
 
     Repo card metadata block was not found. Setting CardData to empty.
     WARNING:huggingface_hub.repocard:Repo card metadata block was not found. Setting CardData to empty.
-    
+
 
 
     Downloading metadata:   0%|          | 0.00/1.65k [00:00<?, ?B/s]
@@ -399,12 +398,12 @@ show_images(xb).resize((8 * 64, 64), resample=Image.NEAREST)
 ```
 
     X shape: torch.Size([8, 3, 32, 32])
-    
 
 
 
 
-    
+
+
 ![png](output_14_1.png)
     
 
@@ -425,9 +424,9 @@ plt.legend(fontsize="x-large");
 ```
 
 
-    
+​    
 ![png](output_16_0.png)
-    
+​    
 
 
 
@@ -445,9 +444,9 @@ plt.legend(fontsize="x-large");
 ```
 
 
-    
+​    
 ![png](output_19_0.png)
-    
+​    
 
 
 
@@ -463,9 +462,9 @@ plt.legend(fontsize="x-large");
 ```
 
 
-    
+​    
 ![png](output_21_0.png)
-    
+​    
 
 
 
@@ -478,12 +477,12 @@ show_images(noisy_xb).resize((8 * 64, 64), resample=Image.NEAREST)
 ```
 
     Noisy X shape torch.Size([8, 3, 32, 32])
-    
 
 
 
 
-    
+
+
 ![png](output_22_1.png)
     
 
@@ -576,7 +575,7 @@ for epoch in range(30):
 
     /usr/local/lib/python3.10/dist-packages/diffusers/configuration_utils.py:134: FutureWarning: Accessing config attribute `num_train_timesteps` directly via 'DDPMScheduler' object attribute is deprecated. Please access 'num_train_timesteps' over 'DDPMScheduler's config object instead, e.g. 'scheduler.config.num_train_timesteps'.
       deprecate("direct config name access", "1.0.0", deprecation_message, standard_warn=False)
-    
+
 
     Epoch:5, loss: 0.14980323100462556
     Epoch:10, loss: 0.1132772983983159
@@ -584,7 +583,7 @@ for epoch in range(30):
     Epoch:20, loss: 0.08541441080160439
     Epoch:25, loss: 0.07371148932725191
     Epoch:30, loss: 0.07440270017832518
-    
+
 
 
 ```python
@@ -595,14 +594,14 @@ plt.show()
 ```
 
 
-    
+​    
 ![png](output_26_0.png)
-    
+​    
 
 
 
 ```python
-model = butterfly_pipeline.unet # 或者通过管道来调用模型
+model = butterfly_pipeline.unet # ćčéčżçŽĄéćĽč°ç¨ć¨Ąĺ
 ```
 
 
@@ -625,7 +624,7 @@ pipeline_output.images[0]
 
 
 
-    
+
 ![png](output_29_1.png)
     
 
@@ -642,7 +641,7 @@ image_pipe.save_pretrained("my_pipeline")
 ```
 
     model_index.json  scheduler  unet
-    
+
 
 
 ```python
@@ -650,7 +649,7 @@ image_pipe.save_pretrained("my_pipeline")
 ```
 
     config.json  diffusion_pytorch_model.safetensors
-    
+
 
 
 ```python
@@ -658,7 +657,7 @@ image_pipe.save_pretrained("my_pipeline")
 ```
 
     Object `image_pipe.forward` not found.
-    
+
 
 
 ```python
@@ -680,9 +679,9 @@ show_images(sample)
 
 
 
-    
+​    
 ![png](output_34_0.png)
-    
+​    
 
 
 
@@ -744,13 +743,13 @@ tags:
 - diffusion-models-class
 ---
 
-# Model Card for Unit 1 of the [Diffusion Models Class 🧨](https://github.com/huggingface/diffusion-models-class)
+# Model Card for Unit 1 of the [Diffusion Models Class đ§¨](https://github.com/huggingface/diffusion-models-class)
 
-This model is a diffusion model for unconditional image generation of cute 🦋.
+This model is a diffusion model for unconditional image generation of cute đŚ.
 
 ## Usage
 
-```python
+​```python
 from diffusers import DDPMPipeline
 
 pipeline = DDPMPipeline.from_pretrained('{hub_model_id}')
@@ -771,7 +770,7 @@ card.push_to_hub(hub_model_id)
 
 
 
-```python
+​```python
 from diffusers import DDPMPipeline
 
 image_pipe = DDPMPipeline.from_pretrained(hub_model_id)
@@ -780,7 +779,7 @@ pipeline_output.images[0]
 ```
 
 
-    Downloading (…)ain/model_index.json:   0%|          | 0.00/181 [00:00<?, ?B/s]
+    Downloading (âŚ)ain/model_index.json:   0%|          | 0.00/181 [00:00<?, ?B/s]
 
 
 
@@ -788,15 +787,15 @@ pipeline_output.images[0]
 
 
 
-    Downloading (…)c8fdf3a6/config.json:   0%|          | 0.00/1.04k [00:00<?, ?B/s]
+    Downloading (âŚ)c8fdf3a6/config.json:   0%|          | 0.00/1.04k [00:00<?, ?B/s]
 
 
 
-    Downloading (…)cheduler_config.json:   0%|          | 0.00/473 [00:00<?, ?B/s]
+    Downloading (âŚ)cheduler_config.json:   0%|          | 0.00/473 [00:00<?, ?B/s]
 
 
 
-    Downloading (…)ch_model.safetensors:   0%|          | 0.00/74.2M [00:00<?, ?B/s]
+    Downloading (âŚ)ch_model.safetensors:   0%|          | 0.00/74.2M [00:00<?, ?B/s]
 
 
 
@@ -810,13 +809,13 @@ pipeline_output.images[0]
 
 
 
-    
+
 ![png](output_38_7.png)
     
 
 
 
-# 使用 🤗 Accelerate 来扩大规模
+# ä˝żç¨ đ¤ Accelerate ćĽćŠĺ¤§č§ć¨Ą
 
 
 ```python
@@ -833,13 +832,14 @@ pipeline_output.images[0]
     Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
     HTTP request sent, awaiting response... 200 OK
     Length: 29768 (29K) [text/plain]
-    Saving to: ‘train_unconditional.py’
+    Saving to: âtrain_unconditional.pyâ
     
     train_unconditional 100%[===================>]  29.07K  --.-KB/s    in 0.002s  
     
-    2023-10-18 05:48:36 (17.3 MB/s) - ‘train_unconditional.py’ saved [29768/29768]
-    
-    
+    2023-10-18 05:48:36 (17.3 MB/s) - âtrain_unconditional.pyâ saved [29768/29768]
+
+
+​    
 
 
 ```python
@@ -898,13 +898,13 @@ tags:
 - diffusion-models-class
 ---
 
-# Model Card for Unit 1 of the [Diffusion Models Class 🧨](https://github.com/huggingface/diffusion-models-class)
+# Model Card for Unit 1 of the [Diffusion Models Class đ§¨](https://github.com/huggingface/diffusion-models-class)
 
-This model is a diffusion model for unconditional image generation of cute 🦋.
+This model is a diffusion model for unconditional image generation of cute đŚ.
 
 ## Usage
 
-```python
+​```python
 from diffusers import DDPMPipeline
 
 pipeline = DDPMPipeline.from_pretrained('{hub_model_id}')
@@ -918,7 +918,7 @@ card.push_to_hub(hub_model_id)
 ```
 
 
-```python
+​```python
 pipeline = DDPMPipeline.from_pretrained(hub_model_id).to(device)
 images = pipeline(batch_size=8).images
 make_grid(images)
