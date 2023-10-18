@@ -1,6 +1,8 @@
 # 第一周练习：Diffusers 介绍
 
-推荐阅读列表：
+> 代码来自diffusion-models-class（中文）：https://github.com/darcula1993/diffusion-models-class-CN 
+
+### 推荐阅读列表：
 
  - [第1章 扩散模型简介](docs/diffusion_models_51/part01.md) 
  - [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md) 
