@@ -1,5 +1,8 @@
 # 第2章 Hugging Face简介
 
+> 第一周实验题地址：[unit01实验](./docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md) 
+
+
 ![image-20231015205346084](.\img\image-20231015205346084.png)
 
 ## 2.1 Hugging Face核心功能介绍
@@ -30,13 +33,13 @@ Gradio是一个开源的Python库，由Hugging Face推出，用于构建机器�
 
 > Gradio 环境要求：python 3.7+
 
-1. pip安装Gradio 
+1. pip安装Gradio
 
 ```shell
 pip install gradio
 ```
 
-2. 输入代码，文件命名为app.py 
+2. 输入代码，文件命名为app.py
 
 ```python
 import gradio as gr
@@ -54,7 +57,6 @@ demo.launch()
    ```
    gradio app.py 
    ```
-
    ![image-20231016125152793](.\img\image-20231016125152793.png)
 
    ![image-20231016125211038](.\img\image-20231016125211038.png)

@@ -1,6 +1,6 @@
 # 第51期扩散模型从原理到实战
 
-## [扩散模型从原理到实战书本章节](docs/diffusion_models_51/readme.md)
+## [书本章节](docs/diffusion_models_51/README.md)
  - [第1章 扩散模型简介](docs/diffusion_models_51/part01.md) （2023/10/15）
  - [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md) （2023/10/15）
  - [第3章 从零开始搭建扩散模型](docs/diffusion_models_51/part03.md) （2023/10/18）
@@ -11,26 +11,20 @@
  - [第8章 音频扩散模型](docs/diffusion_models_51/part08.md)
  
 ## 打卡任务
-第一周任务进行中（截止至10月20日 23:30）
+### **第一周任务作业:**[unit01练习代码](docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md)
+
+```
 1.扩散模型库Diffusers入门
 2.从零开始搭建扩散模型
 3.选修：尝试在任意平台上部署webui或comfy图形化工具，并生成一副作品
 b.作业：生成一副“赛博猫咪”主题的作品
-﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌
-- 打卡链接✅
-https://datawhaler.feishu.cn/share/base/form/shrcnCPEM3TO3QtG7d8IJipzyFh?ccm_open_type=form_v2_link_share
-```shell
-hugging face :
-281817894@qq.com
-jiub840602Q*&
-
-READ授权：
-jo
-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
-write授权：
-jo
-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
 ```
-https://www.cnblogs.com/huggingface/p/17040323.html
 
-https://zhuanlan.zhihu.com/p/648254009
+```shell
+# huggingface.co 
+write token：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
+```
+
+## 学习资料
+[1]: https://www.cnblogs.com/huggingface/p/17040323.html
+[2]: https://zhuanlan.zhihu.com/p/648254009

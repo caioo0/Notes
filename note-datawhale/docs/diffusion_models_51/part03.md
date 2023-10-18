@@ -1,6 +1,6 @@
 # 第3章 从零开始搭建扩散模型
 
-> 第一周实验题地址：[unit01实验](.colab_Doffisers/colab_Doffisers.md) by colab.T4 GPU 运行
+> 第一周实验题地址：[unit01实验](./docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md) 
 
 
 以MNIST数据集为例，从零构建扩散模型，具体会涉及到如下知识点：

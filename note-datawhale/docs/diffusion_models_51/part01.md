@@ -1,5 +1,5 @@
 # 第1章：基本原理简介
-
+> 第一周实验题地址：[unit01实验](./docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md) 
 > DDPM论文相关：
 >
 > [DDPM: Denoising Diffusion Probabilistic Models](https%3A//arxiv.org/abs/2006.11239)

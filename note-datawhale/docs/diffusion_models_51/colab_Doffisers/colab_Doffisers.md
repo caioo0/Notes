@@ -1,5 +1,17 @@
-# Doffisers
+# 第一周练习：Diffusers 介绍
 
+推荐阅读列表：
+
+ - [第1章 扩散模型简介](docs/diffusion_models_51/part01.md) 
+ - [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md) 
+ - [第3章 从零开始搭建扩散模型](docs/diffusion_models_51/part03.md) 
+
+
+在这个 Notebook 里，你将训练你的第一个扩散模型来 **生成美丽的蝴蝶的图片 🦋**。在此过程中，你将了解 🤗 Diffuers 库，它将为我们稍后将在课程中介绍的更高级的应用程序提供良好的基础 
+
+让我们直接上代码吧！
+
+运行环境： Google  colab T4 GPU 
 
 ```python
 %pip install -qq -U diffusers datasets transformers accelerate ftfy pyarrow==9.0

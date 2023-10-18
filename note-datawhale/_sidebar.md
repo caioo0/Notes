@@ -5,7 +5,7 @@
      * [Task03 详读西瓜书+南瓜书第4章](docs/pumpkin_learning_51/part03.md)
      * [Task04 详读西瓜书+南瓜书第5章](docs/pumpkin_learning_51/part04.md)
      * [Task05 详读西瓜书+南瓜书第6章](docs/pumpkin_learning_51/part05.md)
-  * [第51期扩散模型从原理到实战](docs/diffusion_models_51/readme.md)
+  * [第51期扩散模型从原理到实战](docs/diffusion_models_51/README.md)
      * [第1章 扩散模型简介](docs/diffusion_models_51/part01.md)
      * [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md)
      * [第3章 从零开始搭建扩散模型](docs/diffusion_models_51/part03.md)
