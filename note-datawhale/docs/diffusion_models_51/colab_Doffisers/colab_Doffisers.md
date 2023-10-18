@@ -13,6 +13,7 @@
 
 运行环境：  google colab T4 GPU 
 
+![img.png](img.png)
 
 ```python
 %pip install -qq -U diffusers datasets transformers accelerate ftfy pyarrow==9.0
