@@ -60,3 +60,9 @@ demo.launch()
    ![image-20231016125152793](.\img\image-20231016125152793.png)
 
    ![image-20231016125211038](.\img\image-20231016125211038.png)
+
+
+## 参考资料
+
+1. [扩散模型从原理到实战](https://item.jd.com/14193538.html)
+2. [《扩散模型从原理到实践》学习手册》](https://datawhaler.feishu.cn/docx/PfUFdqkoOoGeqBx6dYVclVWwntd)

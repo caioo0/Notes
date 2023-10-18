@@ -350,4 +350,5 @@ axs[2].imshow(torchvision.utils.make_grid(preds)[0].clip(0, 1), cmap='Greys');
 
 ## 参考资料
 
-1.
+1. [扩散模型从原理到实战](https://item.jd.com/14193538.html)
+2. [《扩散模型从原理到实践》学习手册》](https://datawhaler.feishu.cn/docx/PfUFdqkoOoGeqBx6dYVclVWwntd)

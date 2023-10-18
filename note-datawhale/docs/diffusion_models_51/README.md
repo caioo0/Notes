@@ -26,5 +26,5 @@ write token：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
 ```
 
 ## 学习资料
-[1]: https://www.cnblogs.com/huggingface/p/17040323.html
-[2]: https://zhuanlan.zhihu.com/p/648254009
+1. [扩散模型从原理到实战](https://item.jd.com/14193538.html)
+2. [《扩散模型从原理到实践》学习手册》](https://datawhaler.feishu.cn/docx/PfUFdqkoOoGeqBx6dYVclVWwntd)
