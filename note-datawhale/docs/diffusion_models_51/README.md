@@ -9,7 +9,13 @@
  - [第6章 Stable Diffusion](docs/diffusion_models_51/part06.md)
  - [第7章 DDIM反转](docs/diffusion_models_51/part07.md)
  - [第8章 音频扩散模型](docs/diffusion_models_51/part08.md)
- 
+
+### [学习内容：](docs/diffusion_models_51/README.md)
+
+**diffusion-models-class（英文）：****https://github.com/huggingface/diffusion-models-class**
+
+**diffusion-models-class（中文）：****https://github.com/darcula1993/diffusion-models-class-CN**
+
 ### 打卡任务
 #### **第一周任务作业:**[unit01练习代码](docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md)
 
