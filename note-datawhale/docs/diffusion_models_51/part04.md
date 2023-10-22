@@ -2,8 +2,7 @@
 > **实现代码来自diffusion-models-class（中文）**：https://github.com/darcula1993/diffusion-models-class-CN  
 > 第一周实验题地址：[unit01实验](./docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md) 
 
-
-## 实现代码  
+## 实战代码  
 在这个 Notebook 里，你将训练你的第一个扩散模型来 **生成美丽的蝴蝶的图片 🦋**。在此过程中，你将了解 🤗 Diffuers 库，它将为我们稍后将在课程中介绍的更高级的应用程序提供良好的基础 
 
 让我们直接上代码吧！
