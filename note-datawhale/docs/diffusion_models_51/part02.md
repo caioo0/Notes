@@ -3,7 +3,7 @@
 > 第一周实验题地址：[unit01实验](./docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md) 
 
 
-![image-20231015205346084](.\img\image-20231015205346084.png)
+![image-20231015205346084](./img/image-20231015205346084.png)
 
 ## 2.1 Hugging Face核心功能介绍
 
@@ -57,9 +57,9 @@ demo.launch()
    ```
    gradio app.py 
    ```
-   ![image-20231016125152793](.\img\image-20231016125152793.png)
+   ![image-20231016125152793](./img/image-20231016125152793.png)
 
-   ![image-20231016125211038](.\img\image-20231016125211038.png)
+   ![image-20231016125211038](./img/image-20231016125211038.png)
 
 
 ## 参考资料

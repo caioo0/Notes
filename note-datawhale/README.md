@@ -4,17 +4,19 @@
 
 ### 学习记录
 
-- 2023-02 [第46期 大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)
-- 2022-11 [第43期 跨模态神经搜索实践](datawhale-team/docs/vced_43/README.md)
-- 2022-08 [第40期 计算之魂](datawhale-team/docs/The_soul_of_a_calculation_40/README.md)
+- 2023-10 [第51期扩散模型从原理到实战](docs/diffusion_models_51/README.md)
+- 2023-09 [第50期LeetCode算法(1期)](docs/leetcode_notes_50/readme.md)
+- 2023-02 [第46期 大数据处理技术导论](docs/big-data)
+- 2022-11 [第43期 跨模态神经搜索实践](docs/vced_43/README.md)
+- 2022-08 [第40期 计算之魂](docs/The_soul_of_a_calculation_40/README.md)
 - 2022-07 [第39期 蘑菇书EasyRL](docs/easy-rl_39/README.md)
 - 2022-06 [第38期 GitModel数学建模](docs/gitModeling_37/README.md)
 - 2022-03 [第35期 深入浅出PyTorch](docs/thorough_pytorch/README.md)
 - 2021-12 [第32期 推荐系统实践(新闻推荐)](docs/fun-rec_32/README.md)
 - 2021-11 [第31期 水很深的深度学习(unusual_deep_learning)](docs/unusual_deep_learning_31/README.md)
 - 2021-10 [第30期 树模型与集成学习(tree_ensemble)](docs/tree_ensemble_30/README.md)
-- 2021-09 [第29期 数据可视化（Matplotlib）](/datawhale-team/docs/fantastic-matplotlib_29/README)
-- 2021-08 [第28期 NLP课程（Transformer）](/datawhale-team/docs/transformers_NLP_28/README)
+- 2021-09 [第29期 数据可视化（Matplotlib）](docs/fantastic-matplotlib_29/README)
+- 2021-08 [第28期 NLP课程（Transformer）](docs/transformers_NLP_28/README)
 
 ### DataWhale文档
 

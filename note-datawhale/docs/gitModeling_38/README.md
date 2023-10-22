@@ -3,9 +3,9 @@
 
 
 * [动手学高等数学](docs/gitModeling_38/task01.md)
-* [动手学线性代数](datawhale-team/docs/gitModeling_38/task02.md)
-* [动手学概率论](datawhale-team/docs/gitModeling_38/task03.md)
-* [动手学数理统计](datawhale-team/docs/gitModeling_38/task04.md)
+* [动手学线性代数](docs/gitModeling_38/task02.md)
+* [动手学概率论](docs/gitModeling_38/task03.md)
+* [动手学数理统计](docs/gitModeling_38/task04.md)
 
 
 ### 学习资料

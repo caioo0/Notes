@@ -1,0 +1,162 @@
+{
+  "main": {
+    "id": "aed9b6d39664694a",
+    "type": "split",
+    "children": [
+      {
+        "id": "373430bb4cfedefa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "93724095d0cfac1a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/diffusion_models_51/part04.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8dbd0fb9b7aef5db",
+    "type": "split",
+    "children": [
+      {
+        "id": "4f3183747d981b94",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a4e519568ff20172",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d2db2d19e3a17f0a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b7fd039c44135825",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "76bc750868856cbb",
+    "type": "split",
+    "children": [
+      {
+        "id": "f552667b17b396c9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16a72e6e44433e80",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/diffusion_models_51/part04.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e4115fce853dccc3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/diffusion_models_51/part04.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "936008fde9345f83",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b41064fafecd1eb0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/diffusion_models_51/part04.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "93724095d0cfac1a",
+  "lastOpenFiles": [
+    "docs/diffusion_models_51/colab_Doffisers/colab_Doffisers.md",
+    "docs/diffusion_models_51/colab_Doffisers/img.png",
+    "docs/diffusion_models_51/colab_Doffisers/output_8_0.jpg",
+    "docs/diffusion_models_51/part04.md",
+    "docs/diffusion_models_51/part03.md",
+    "docs/diffusion_models_51/part06.md",
+    "docs/diffusion_models_51/part05.md",
+    "docs/pumpkin_learning_51/part02.md",
+    "Pasted image 20231021125748.png",
+    "docs/pumpkin_learning_51/part01.md"
+  ]
+}

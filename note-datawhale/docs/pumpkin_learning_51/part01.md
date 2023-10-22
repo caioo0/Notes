@@ -1,4 +1,4 @@
-# 一、概览西瓜书+南瓜书第1、2章
+# 第1、2章概论、模型评估和选择
 
 > 学习笔记来源 datawhale-吃瓜教程，视频：[B站南瓜书教学](https://www.bilibili.com/video/BV1Mh411e7VU/?p=2&vd_source=17fa4774c3617361fe8378798cb196a2)
 

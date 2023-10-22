@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "a2493c7c8587b150",
+        "id": "ce5eb80dc169c928",
         "type": "tabs",
         "children": [
           {
-            "id": "b407e1d645b7f249",
+            "id": "d3ae1c2dfed3304f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note-datawhale/docs/leetcode_notes_50/task01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,17 +118,15 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "note-datawhale/docs/leetcode_notes_50/task01.md"
-              }
+              "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,21 +138,57 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "b407e1d645b7f249",
+  "active": "d3ae1c2dfed3304f",
   "lastOpenFiles": [
-    "note-ml/docs/Lebesgue.md",
-    "note-ml/docs/Untitled.md",
-    "img/image-20230912101153647.png.md",
-    "img",
-    "note-coding/docs/数据仓库工具箱/part06.md",
-    "note-coding/docs/数据仓库工具箱/part05.md",
-    "note-coding/docs/数据仓库工具箱/part04.md",
-    "note-coding/docs/数据仓库工具箱/part03.md",
-    "note-coding/docs/数据仓库工具箱/part01.md",
-    "note-coding/docs/数据仓库工具箱/part08.md",
-    "note-exec/Untitled.ipynb",
-    "note-coding/docs/数据仓库工具箱/part07.md",
-    "note-coding/docs/数据仓库工具箱/part02.md",
-    "note-coding/docs/算法导论/第1章 算法在计算中的作用.md"
+    "未命名.md",
+    "note-datawhale/docs/diffusion_models_51/part02.md",
+    "note-datawhale/docs/thorough_pytorch/images/chapter02-02.png",
+    "note-datawhale/docs/thorough_pytorch/images/list.png",
+    "note-datawhale/docs/thorough_pytorch/images/float16.jpg",
+    "note-datawhale/docs/thorough_pytorch/images/finetune.png",
+    "note-datawhale/docs/thorough_pytorch/images/chapter02-03.png",
+    "note-datawhale/docs/thorough_pytorch/images/chapter02-00.png",
+    "note-datawhale/docs/thorough_pytorch/images/chapter02-01.png",
+    "note-datawhale/docs/thorough_pytorch/images",
+    "note-datawhale/docs/thorough_pytorch/requirements.txt",
+    "note-datawhale/docs/thorough_pytorch/README.md",
+    "note-datawhale/docs/thorough_pytorch/chapter08.md",
+    "note-datawhale/docs/thorough_pytorch/chapter08.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter07.md",
+    "note-datawhale/docs/thorough_pytorch/chapter07.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter06.md",
+    "note-datawhale/docs/thorough_pytorch/chapter06.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter05.md",
+    "note-datawhale/docs/thorough_pytorch/chapter05.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter03.md",
+    "note-datawhale/docs/thorough_pytorch/chapter03.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter02.ipynb",
+    "note-datawhale/docs/thorough_pytorch/chapter02.md",
+    "note-datawhale/docs/thorough_pytorch/chapter01.md",
+    "note-datawhale/docs/thorough_pytorch",
+    "note-datawhale/docs/pytorch_rechub_learning_38/task05.md",
+    "note-datawhale/docs/pytorch_rechub_learning_38/task04.md",
+    "note-datawhale/docs/pytorch_rechub_learning_38/task03.md",
+    "note-datawhale/docs/pytorch_rechub_learning_38/task02.md",
+    "note-datawhale/docs/pytorch_rechub_learning_38/task01.md",
+    "note-datawhale/docs/gitModeling_37/figures/fig2.jpg",
+    "note-datawhale/docs/gitModeling_37/figures/fig2.1.jpg",
+    "note-datawhale/docs/gitModeling_37/figures/fig2.0.3.jpg",
+    "note-datawhale/docs/gitModeling_37/figures",
+    "note-datawhale/docs/gitModeling_37/task01.md",
+    "note-datawhale/docs/gitModeling_37/README.md",
+    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter15.md",
+    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter08.md",
+    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter03.md",
+    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter02.md",
+    "note-datawhale/docs/big-data/experiments/ch10-期末大作业/ch10 期末大作业.md",
+    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark的Scala API的使用.md",
+    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark的Scala API介绍.md",
+    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark中Scala、Python和R的Shell操作.md",
+    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark SQL编程开发.md",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "未命名 1.canvas",
+    "未命名.canvas"
   ]
 }

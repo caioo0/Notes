@@ -4,7 +4,7 @@
  - [第1章 扩散模型简介](docs/diffusion_models_51/part01.md) （2023/10/15）
  - [第2章 Hugging Face简介](docs/diffusion_models_51/part02.md) （2023/10/15）
  - [第3章 从零开始搭建扩散模型](docs/diffusion_models_51/part03.md) （2023/10/18）
- - [第4章 Diffusers实战](docs/diffusion_models_51/part04.md)
+ - [part04](docs/diffusion_models_51/part04.md)
  - [第5章 微调和引导](docs/diffusion_models_51/part05.md)
  - [第6章 Stable Diffusion](docs/diffusion_models_51/part06.md)
  - [第7章 DDIM反转](docs/diffusion_models_51/part07.md)
