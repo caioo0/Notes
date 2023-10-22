@@ -1,6 +1,6 @@
 # 二、第3章 线性模型
 
-> 学习笔记来源 datawhale-吃瓜教程，视频：[B站南瓜书教学](https://www.bilibili.com/video/BV1Mh411e7VU/?p=2&vd_source=17fa4774c3617361fe8378798cb196a2)
+> 学习笔记来源 datawhale-吃瓜教程，视频：[B站南瓜书教学](https://www.bilibili.com/video/BV1Mh411e7VU?p=3&vd_source=17fa4774c3617361fe8378798cb196a2)
 
 
 
