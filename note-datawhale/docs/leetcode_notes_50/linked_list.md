@@ -525,7 +525,7 @@ if __name__ == '__main__':
 
 ```
 
-## 1.2 练习题目
+## 1.2 链表基础练习题
 
 ### [1.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.02-Exercises?id=_1-0707-设计链表)[0707. 设计链表](https://leetcode.cn/problems/design-linked-list/)
 
@@ -548,11 +548,50 @@ if __name__ == '__main__':
 适合链表排序与不适合链表排序的算法：
 
 - 适合链表的排序算法：**冒泡排序**、**选择排序**、**插入排序**、**归并排序**、**快速排序**、**计数排序**、**桶排序**、**基数排序**。
-
 - 不适合链表的排序算法：**希尔排序**。
-
 - 可以用于链表排序但不建议使用的排序算法：**堆排序**。
 
-  
+### 2. 链表冒泡排序
+
+### 3. 链表选择排序
+
+### 4. 链表插入排序
+
+### 5. 链表归并排序
+
+### 6. 链表快速排序
+
+### 7. 链表计数排序
+
+### 8. 链表桶排序
+
+### 9. 链表基数排序
+
+## 2.2 链表排序练习题
+
+### [0147. 对链表进行插入排序](https://leetcode.cn/problems/insertion-sort-list/)
+
+### [0021. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+
+### [0148. 排序链表](https://leetcode.cn/problems/sort-list/)
 
 ## 3.1 链表双指针
+
+### 1. 双指针简介
+
+### 2. 起点不一致的快慢指针
+
+### 3. 长度不一致的快慢指针
+
+### 4. 分离双指针
+
+
+
+## 3.2 链表双指针练习题
+
+### [0141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+
+### [0142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+### [0019. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+
