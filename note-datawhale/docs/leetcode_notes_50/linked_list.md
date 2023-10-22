@@ -1,4 +1,7 @@
 # 链表
+> 关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
+
+## 1.1 链表基础知识
 
 「链表 linked list」是一种线性数据结构，其中的每个元素都是一个节点对象，各个节点通过“引用”相连接。引用记录了下一个节点的内存地址，通过它可以从当前节点访问到下一个节点。
 
@@ -26,7 +29,7 @@ class ListNode:
 
 
 
-## **1. 单向链表**
+### **1. 单向链表**
 
 - 每个节点包含一个数据元素和一个指向下一个节点的指针，具体实现如下：
 
@@ -208,7 +211,7 @@ if __name__ == '__main__':
 
 ```
 
-## **2. 双向链表**
+### **2. 双向链表**
 
 - 每个节点包含一个数据元素，2个指针指向上一个和下一个节点，具体实现如下：
 
@@ -350,7 +353,7 @@ if __name__ == '__main__':
 
 
 
-## **3. 单向循环链表**
+### **3. 单向循环链表**
 
 ```python
 #!usr/bin/env python
@@ -522,4 +525,34 @@ if __name__ == '__main__':
 
 ```
 
+## 1.2 练习题目
 
+### [1.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.02-Exercises?id=_1-0707-设计链表)[0707. 设计链表](https://leetcode.cn/problems/design-linked-list/)
+
+### [2.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.02-Exercises?id=_2-0206-反转链表)[0206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+
+### [3.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.02-Exercises?id=_3-0203-移除链表元素)[0203. 移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/)
+
+### [4.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.03-Exercises?id=_1-0328-奇偶链表)[0328. 奇偶链表](https://leetcode.cn/problems/odd-even-linked-list/)
+
+### [5.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.03-Exercises?id=_2-0234-回文链表)[0234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+
+### [6.](https://datawhalechina.github.io/leetcode-notes/#/ch02/02.01/02.01.03-Exercises?id=_3-0138-复制带随机指针的链表)[0138. 复制带随机指针的链表](https://leetcode.cn/problems/copy-list-with-random-pointer/)
+
+
+
+## 2.1 链表排序
+
+### 1. 链表排序介绍
+
+适合链表排序与不适合链表排序的算法：
+
+- 适合链表的排序算法：**冒泡排序**、**选择排序**、**插入排序**、**归并排序**、**快速排序**、**计数排序**、**桶排序**、**基数排序**。
+
+- 不适合链表的排序算法：**希尔排序**。
+
+- 可以用于链表排序但不建议使用的排序算法：**堆排序**。
+
+  
+
+## 3.1 链表双指针
