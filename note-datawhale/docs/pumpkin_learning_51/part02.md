@@ -23,86 +23,82 @@ $$
 - 属性值转换：对离散属性，若属性值之间存在“序关系”，则可以将其转化为连续值；若属性值之间不存在“序关系”，则通常将其转化为向量的形式
 
 - 确定$w$和$b$
-  - 目标：最小化$f(x)$与$y$均方误差，试图学得
-  $$
-  \hat{y} = f(x_i) = wx_i + b, 使得f(x_i) \approx y_i
-  $$
-  - 输入属性只有一个（最小二乘法）：首先计算出每个样本预测值与真实值之间的误差并求和，通过最小化均方误差MSE，使用求偏导等于零的方法计算出拟合直线$y=wx+b$的两个参数$w$和$b$。
-  
-  - 输入属性有多个（多元线性回归）：可类似于最小二乘法，将数据集$D$表示为一个$m\times (d+1)$大小的矩阵，再表示为向量形式，最后通过计算$\hat{w}$偏导，得到最优解。
-  
-  - 目标/损失函数：
-  
-    $$
-    L = \frac{1}{n}\sum^{n}_{i=1}(\hat{y_i} - y_i)^2
-    $$
-  
-    即预测值与真实值之间的平均距离,（MEA）均方误差。将函数带入得到
-  - 
-    $$
+目标：最小化$f(x)$与$y$均方误差，试图学得
+
+$$
+  \hat{y} = f(x_i) = wx_i + b \\
+  f(x_i) \approx{y_i}
+$$
+
+输入属性只有一个（最小二乘法）：首先计算出每个样本预测值与真实值之间的误差并求和，通过最小化均方误差MSE，使用求偏导等于零的方法计算出拟合直线$y=wx+b$的两个参数$w$和$b$。
+
+输入属性有多个（多元线性回归）：可类似于最小二乘法，将数据集$D$表示为一个$m\times (d+1)$大小的矩阵，再表示为向量形式，最后通过计算$\hat{w}$偏导，得到最优解。
+
+目标/损失函数：
+
+$$
+L = \frac{1}{n}\sum^{n}_{i=1}(\hat{y_i} - y_i)^2
+$$
+
+即预测值与真实值之间的平均距离,（MEA）均方误差。将函数带入得到
+
+$$
     L(w,b) = \frac{1}{n}\sum_{n=1}{^n}(wb_i+b-y_i)^2
-    $$
-     求解最小化L时$w和b$的值，
-  
-    即核心目标优化式为：
-    $$
-    (w^*,b^*) = arg  \underset{(w,b)}{min}\sum_{i=1}^n(wx_i +b -y_i)^2
-    $$
-    求解方式有两种：
-  
-    1）最小二乘法（least square method）
-  
-    ​		求解 w 和 b 是使损失函数最小化的过程，在统计中，称为线性回归模型的最小二乘“参数估计”(parameter estimation)。我们可以将 L(w,b) 分别对 w 和 b 求导，得到:
-    $$
-    \frac{\partial{L}}{\partial{w}} = 2 (w\sum_{i=1}^n x^2 - \sum_{i=1}^n x_i(y_i-b))
-    $$
-  
-    $$
-    \frac{\partial{L}}{\partial{b}} = 2 (nb - \sum_{i=1}(y_i-wx_i))
-    $$
-  
-    令上述俩式为0，可得到 w 和 b 最优解的闭式(closed-form)解：
-    $$
-    w = \frac{\sum_{i=1}^n y_i (x_i -\overline{x})}{\sum_{i=1}^n x^2_i - \frac{1}{n}(\sum_{i=1}^n x_i)^2}
-    $$
-  
-    $$
-     b = \frac{1}{n}\sum_{i=1}^n (y_i - wx_i)
-    $$
-  
-    2) 梯度下降（gradient descent）
-  
-    梯度下降核心内容是对自变量进行不断的更新（针对w和b求偏导），使得目标函数不断逼近最小值的过程：
-    $$
-    w \leftarrow w - a \frac{\partial{L}}{\partial{w}}
-    $$
-  
-    $$
-    b \rightarrow b - a \frac{\partial{L}}{\partial{b}}
-    $$
-  
-    
-  
-- 简写形式：$y=w^Tx+b$
+$$
+求解最小化L时$w和b$的值，
 
-- 广义线性模型：$y=g^{-1}(w^Tx_b)$，其中$g(\cdot)$时单调可微函数。
+即核心目标优化式为：
+$$
+  (w^*,b^*) = arg  \underset{(w,b)}{min}\sum_{i=1}^n(wx_i +b -y_i)^2
+$$
+求解方式有两种：
 
-  
+1）最小二乘法（least square method）
+
+求解 w 和 b 是使损失函数最小化的过程，在统计中，称为线性回归模型的最小二乘“参数估计”(parameter estimation)。我们可以将 L(w,b) 分别对 w 和 b 求导，得到:
+$$
+\frac{\partial{L}}{\partial{w}} = 2 (w\sum_{i=1}^n x^2 - \sum_{i=1}^n x_i(y_i-b))
+$$
+
+$$
+\frac{\partial{L}}{\partial{b}} = 2 (nb - \sum_{i=1}(y_i-wx_i))
+$$
+
+令上述俩式为0，可得到 w 和 b 最优解的闭式(closed-form)解：
+$$
+w = \frac{\sum_{i=1}^n y_i (x_i -\overline{x})}{\sum_{i=1}^n x^2_i - \frac{1}{n}(\sum_{i=1}^n x_i)^2}
+$$
+
+$$
+b = \frac{1}{n}\sum_{i=1}^n (y_i - wx_i)
+$$
+      
+2) 梯度下降（gradient descent）
+      
+梯度下降核心内容是对自变量进行不断的更新（针对w和b求偏导），使得目标函数不断逼近最小值的过程：
+      $$
+      w \leftarrow w - a \frac{\partial{L}}{\partial{w}}
+      $$
+
+$$
+b \rightarrow b - a \frac{\partial{L}}{\partial{b}}
+$$
+
+
+简写形式：$y=w^Tx+b$
+
+广义线性模型：$y=g^{-1}(w^Tx_b)$，其中$g(\cdot)$时单调可微函数。
 
 ## 3 对数几率回归
-
 单位阶跃函数：若预测值$z$大于零判为正例，小于零判为反例，预测值为临界值零则可任意判别。
-
-$$
-y = \left \{
-\begin{matrix}
- 0,   z<0; \\
- 0.5, z=0; \\
- 1,   z>0 
-\end{matrix}
-\right.
-$$
 对数几率函数：
+
+$$y=\begin{cases}
+ 0,   z<0;\\
+ 0.5, z=0;\\
+ 1,   z>0\\
+\end{cases}
+$$
 
 $$
 y=\frac{1}{1+e^{-z}}
@@ -130,7 +126,7 @@ $$
   3. 使得各类的协方差之和尽可能小，不同类之间中心的距离尽可能大。
   4. 计算类内散度矩阵：
 
-  $$
+  
 
 
 
@@ -139,19 +135,12 @@ $$
 &=\sum_{x \in X_0} (x-\mu_0) (x-\mu_0)^T+ \sum_{x \in X_1}(x-\mu_1)(x-\mu_1)^T \end{aligned}
 $$
 5. 计算类间散度矩阵：
-    
-    
-    $$
-    S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T
-    $$
-     
-
+$$
+S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T
+$$
 6. 计算LDA最大化的目标函数：
-
-   
-
-   J=\frac{w^T S_b w}{w^T S_w w}
-
+$$
+J=\frac{w^T S_b w}{w^T S_w w}
 $$
 7. $W$的闭式解是$S_w^{-1}S_b$的$N-1$个最大广义特征值所对应的特征向量组成的矩阵
 
@@ -171,7 +160,6 @@ $$
   1. 对训练样本较多的类别中进行“欠采样”（undersampling），使得正反例数目接近，常见的算法有：EasyEnsemble。
   2. 对训练样本较少的类别中进行“过采样”（oversampling），增加较少类的数量，使得正反例数目接近，常见的算法有SMOTE。
   3. 直接基于原数据集进行学习，对预测值进行“再缩放”处理。其中“再缩放”也是“代价敏感学习”的基础。
-
 $$
 \frac{y'}{1-y'}=\frac{y}{1-y} \times \frac{m^{-}}{m^{+}} = \frac{y}{1-y} \times \frac{\text{cost} (+>-)}{\text{cost} (->+)}\quad
 $$

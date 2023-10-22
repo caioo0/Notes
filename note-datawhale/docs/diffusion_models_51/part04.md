@@ -8,7 +8,7 @@
 
 运行环境：  google colab T4 GPU
 
-![img.png](img.png)
+![img.png](./colab_Doffisers/img.png)
 
 首先安装
 
