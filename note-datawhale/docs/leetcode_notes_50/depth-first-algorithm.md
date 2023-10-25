@@ -124,7 +124,7 @@ Solution().dfs_stack(graph, "A")
 [^1]: https://zhuanlan.zhihu.com/p/441063468
 
 - [深度优先搜索 - LeetBook - 力扣（LeetCode）](https://leetcode.cn/leetbook/read/dfs/egx6xc/)
-- 算法数据结构：深度优先搜索（DFS） - 掘金](https://juejin.cn/post/6864348493721387021)
+- [算法数据结构：深度优先搜索（DFS） - 掘金](https://juejin.cn/post/6864348493721387021)
 - [Python 图的 BFS 与 DFS - 黄蜜桃的博客 - CSDN 博客](https://blog.csdn.net/qq_37738656/article/details/83027943)
 - [图的深度优先遍历（递归、非递归；邻接表，邻接矩阵）_zjq_smile 的博客 - CSDN博客](https://blog.csdn.net/zscfa/article/details/75947816)
 - [200. 岛屿数量（DFS / BFS） - 岛屿数量 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-islands/solution/number-of-islands-shen-du-you-xian-bian-li-dfs-or-/)
