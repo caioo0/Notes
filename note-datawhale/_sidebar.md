@@ -18,7 +18,7 @@
       * [02.01:链表](docs/leetcode_notes_50/linked_list.md)
       * [02.02:堆栈与单调栈](docs/leetcode_notes_50/stack.md)
       * [02.03:深度优先搜索](docs/leetcode_notes_50/depth-first-algorithm.md)
-      * [02.04:队列与优先队列](docs/leetcode_notes_50/task05.md)
+      * [02.04:队列与优先队列](docs/leetcode_notes_50/queue.md)
       * [02.05:广度优先搜索](docs/leetcode_notes_50/task05.md)
       * [02.06:拓扑排序](docs/leetcode_notes_50/task05.md)
    * [第50期LeetCode算法(1期)](docs/leetcode_notes_50/readme.md)
