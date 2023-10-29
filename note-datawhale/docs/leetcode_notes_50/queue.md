@@ -1,6 +1,6 @@
 # 队列
 
-
+> 关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
 
 > 队列：遵循先入先出规则的线性数据结构，头部称为“队首”，尾部称为“队尾”，计入队尾的操作称为“入队”，删除队首元素称为“出队”。
 
