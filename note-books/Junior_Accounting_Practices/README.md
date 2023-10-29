@@ -18,6 +18,3 @@
 ### 习题集
 
 1. [会计教练习题库](https://www.kjjl100.com/exam/)
-
-
-![img](img\image-20230903152013535.png)
