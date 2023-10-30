@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="../assets/docsify/docsify-ew.css?v=1.0.0">
     <link rel="stylesheet" href="../assets/npm/mermaid.min.css">
     <script src="../assets/npm/mermaid.min.js"></script>
+    <script src="../assets/npm/disqus.min.js"></script>
+<!--    <script src="../assets/npm/time-updater.min.js"></script>-->
+
+     <style>
+    .markdown-section pre>code{
+      padding: 1.2em 5px;
+    }
+  </style>
 </head>
 <body>
 <div id="app"></div>
@@ -38,6 +46,7 @@
             previousText: '上一章节',
             nextText: '下一章节',
         },
+        disqus: 'shortname',
         search: {
             placeholder: '搜索',
             noData: '找不到结果！',
@@ -75,9 +84,23 @@
                 hook.afterEach(function(html) {
                     return html + footer;
                 });
+            },
+             function(hook, vm) {
+              hook.beforeEach(function(html) {
+                var url =
+                  'https://github.com/caioo0/caioo0.github.io/tree/main/note-books/' +
+                  vm.route.file;
+                var editHtml = '[📝 EDIT ](' + url + ')\n';
+                return (
+                  editHtml +
+                  html +
+                  '\n----\n' +
+                  'Last modified {docsify-updated} ' +
+                  editHtml
+                );
+              });
             }
-        ],
-        formatUpdated: '{MM}/{DD} {HH}:{mm}'
+        ]
     }
 </script>
 <!-- Put them above docsify.min.js -->
@@ -86,7 +109,7 @@
 <script src="../assets/npm/prism-bash.js"></script>
 <script src="../assets/npm/prism-python.js"></script>
 <script src="../assets/npm/docsify-pagination.min.js"></script>
-<script src="./assets/npm/docsify-copy-code.js"></script>
+<script src="../assets/npm/docsify-copy-code.js"></script>
 <!-- CDN files for docsify-katex -->
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
