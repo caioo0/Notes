@@ -1,5 +1,7 @@
 # 拓扑排序
 
+> 关于笔记，主要来自[datawhale-Leetcode算法笔记](https://datawhalechina.github.io/leetcode-notes/#/ch01/01.01/01.01.02-Algorithm-Complexity)
+
 ## 介绍
 
 在图论中，拓扑排序（Topological Sorting）是一个**有向无环图（DAG, Directed Acyclic Graph）**的所有顶点的线性序列。且该序列必须满足下面两个条件：
@@ -161,11 +163,11 @@ class Solution:
 
 ## 练习题目
 
-### [1.](http://localhost/datawhale/leetcode-notes/docs/#/ch02/02.06/02.06.02-Exercises?id=_1-0207-课程表)[0207. 课程表](https://leetcode.cn/problems/course-schedule/)
+### [1.]()[0207. 课程表](https://leetcode.cn/problems/course-schedule/)
 
-### [2.](http://localhost/datawhale/leetcode-notes/docs/#/ch02/02.06/02.06.02-Exercises?id=_2-0210-课程表-ii)[0210. 课程表 II](https://leetcode.cn/problems/course-schedule-ii/)
+### [2.]()[0210. 课程表 II](https://leetcode.cn/problems/course-schedule-ii/)
 
-### [3.](http://localhost/datawhale/leetcode-notes/docs/#/ch02/02.06/02.06.02-Exercises?id=_3-0802-找到最终的安全状态)[0802. 找到最终的安全状态](https://leetcode.cn/problems/find-eventual-safe-states/)
+### [3.]()[0802. 找到最终的安全状态](https://leetcode.cn/problems/find-eventual-safe-states/)
 
-### [4.0851][喧闹和富有](https://leetcode.cn/problems/loud-and-rich/)
+### [4.0851.]()[喧闹和富有](https://leetcode.cn/problems/loud-and-rich/)
 
