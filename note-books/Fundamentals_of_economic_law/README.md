@@ -14,9 +14,9 @@
 
 [第五章：所得税法律制度](Fundamentals_of_economic_law/part5.1.md)(2023/11/01)
 
-[第六章：财产和行为税法律制度](Fundamentals_of_economic_law/part6.1.md)
+[第六章：财产和行为税法律制度](Fundamentals_of_economic_law/part6.1.md) (2023/11/02)
 
-[第七章：税收征收管理法律制度](Fundamentals_of_economic_law/part7.1.md)
+[第七章：税收征管法律制度](Fundamentals_of_economic_law/part7.1.md)
 
 [第八章：劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part.81.md)
 
