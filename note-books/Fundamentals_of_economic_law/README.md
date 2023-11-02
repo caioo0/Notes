@@ -16,9 +16,9 @@
 
 [第六章：财产和行为税法律制度](Fundamentals_of_economic_law/part6.1.md) (2023/11/02)
 
-[第七章：税收征管法律制度](Fundamentals_of_economic_law/part7.1.md)(2023/11/03)
+[第七章：税收征管法律制度](Fundamentals_of_economic_law/part7.1.md)(2023/11/02)
 
-[第八章：劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part8.1.md)(2023/11/04)
+[第八章：劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part8.1.md)(2023/11/02)
 
 ### 习题集
 

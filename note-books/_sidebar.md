@@ -8,7 +8,7 @@
 	* [第6章:财产和行为税法律制度](Fundamentals_of_economic_law/part6.1.md)
 	* [第7章:税收征管法律制度](Fundamentals_of_economic_law/part7.1.md)
 	* [第8章:劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part8.1.md)
-  - [初级会计实务](Junior_Accounting_Practices/readme.md)
+  - [初级会计实务](Junior_Accounting_Practices/README.md)
     * [第1章概述](Junior_Accounting_Practices/第1章概述.md)
     * [第2章会计基础](Junior_Accounting_Practices/第2章会计基础.md)
     * [第3章流动资产1](Junior_Accounting_Practices/第3章流动资产1.md)
