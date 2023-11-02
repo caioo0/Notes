@@ -1,4 +1,4 @@
-- [学习笔记](README.md)
+- [目录](README.md)
   - [经济法基础](Fundamentals_of_economic_law/README.md)
     * [第1章: 总论](Fundamentals_of_economic_law/part1.1.md)
     * [第2章:  会计法律制度](Fundamentals_of_economic_law/part2.1.md)
