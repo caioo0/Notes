@@ -6,7 +6,6 @@
 
 
 ### 目录
-
     1.导言
     2.信念和信念的改变
     3.观察
@@ -23,9 +22,6 @@
 
 ### 参考资料
 [《信念之网》：我们如何优化自己的思想？](https://zhuanlan.zhihu.com/p/411348589)
-[pdf转换](https://www.onlineocr.net/zh_hans/)
-[pdf拆分](https://tools.pdf24.org/zh/pdf-converter)
 
-
-### 领读人
+### 资料整理
 [@Choi-恒者行远](https://github.com/caioo0)  
