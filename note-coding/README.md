@@ -1,6 +1,8 @@
 # 编程之道
 ---
+记录一些学习笔记，仅供个人使用。
 
+### 学习笔记
 - [C++ Primer(第五版)](./docs/cpp-primer-plus/readme.md)
 - [Javascript](docs/JavaScript/readme.md)
 - [Go语言](./docs/go/README.md)
