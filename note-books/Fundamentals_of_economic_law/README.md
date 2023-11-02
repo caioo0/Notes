@@ -18,7 +18,7 @@
 
 [第七章：税收征管法律制度](Fundamentals_of_economic_law/part7.1.md)
 
-[第八章：劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part.81.md)
+[第八章：劳动合同与社会保险法律制度](Fundamentals_of_economic_law/part8.1.md)
 
 ### 习题集
 
