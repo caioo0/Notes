@@ -1,8 +1,8 @@
 # 计算器理论
+---
 
 
-
-## 1. 深入理解计算机系统
+### 1. 深入理解计算机系统
 
 ### 课后实验部署
 
@@ -28,11 +28,11 @@ sudo snap install evince
 evince datalab.pdf  &  //打开pdf 
 ```
 
-## 2. 汇编语言
+### 2. 汇编语言
 
-## 3. 编译原理
+### 3. 编译原理
 
-## 4. 参考资料
+### 4. 参考资料
 
 - [深入理解计算机系统配套的9个lab](https://www.zhihu.com/column/c_1480603406519238656)
 - [Computer Systems: A Programmer's Perspective](https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter2/2.55/)
@@ -41,12 +41,9 @@ evince datalab.pdf  &  //打开pdf
 - [ASCII码一览表，ASCII码对照表](http://c.biancheng.net/c/ascii/)
 - [深入理解计算机系统》中文电子版（原书第 3 版）](https://hansimov.gitbook.io/csapp/)
 - https://www.zhihu.com/people/222-75-24/columns
-
 - https://blog.csdn.net/qq_39654127/article/details/88698911
-
 - https://zhuanlan.zhihu.com/p/139785404
 - https://zhuanlan.zhihu.com/p/380175489
-
 - https://blog.csdn.net/tqdada/article/details/53132201
 - https://blog.csdn.net/tenlee/article/details/48712177
 - https://blog.csdn.net/qq_39654127/article/details/88698911
