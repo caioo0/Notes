@@ -8,13 +8,13 @@
 
 [第二章：会计法律制度](Fundamentals_of_economic_law/part2.1.md) （2023/10/29）
 
-[第三章：支付结算法律制度](Fundamentals_of_economic_law/part3.1.md)
+[第三章：支付结算法律制度](Fundamentals_of_economic_law/part3.1.md) (2023/10/30)
 
-[第四章：增值税，消费税法律制度](Fundamentals_of_economic_law/part4.1.md)
+[第四章：税法概述及货物和劳务税法律制度](Fundamentals_of_economic_law/part4.1.md) (2023/10/31)
 
-[第五章：企业所得税，个人所得税法律制度](Fundamentals_of_economic_law/part5.1.md)
+[第五章：所得税法律制度](Fundamentals_of_economic_law/part5.1.md)(2023/11/01)
 
-[第六章：其他税收法律制度](Fundamentals_of_economic_law/part6.1.md)
+[第六章：财产和行为税法律制度](Fundamentals_of_economic_law/part6.1.md)
 
 [第七章：税收征收管理法律制度](Fundamentals_of_economic_law/part7.1.md)
 

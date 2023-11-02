@@ -10,10 +10,8 @@
 
 $$
 \mathrm{A} = \mathrm{U} \sum \mathrm{V^T}
-
 $$
 
 $$
 分解结果为： 正交矩阵U ，对角阵\sum ，正交矩阵V
-
 $$
