@@ -12,6 +12,7 @@
 
 $$
 f(x)=\operatorname{sign}(w \cdot x+b)
+
 $$
 
 感知机模型对应于输入空间（特征空间）中的分离超平面$w \cdot x+b=0$。
@@ -20,6 +21,7 @@ $$
 
 $$
 \min _{w, b} L(w, b)=-\sum_{x_{i} \in M} y_{i}\left(w \cdot x_{i}+b\right)
+
 $$
 
 损失函数对应于误分类点到分离超平面的总距离。
@@ -30,6 +32,7 @@ $$
 
 $$
 k \leqslant\left(\frac{R}{\gamma}\right)^{2}
+
 $$
 
 当训练数据集线性可分时，感知机学习算法存在无穷多个解，其解由于不同的初值或不同的迭代顺序而可能有所不同。
@@ -38,6 +41,7 @@ $$
 
 $$
 \sigma(z) = \frac{1}{1+e^{-z}}
+
 $$
 
 sigmoid 函数是一个常用的逻辑函数，形状类似于字母 S。在 Python 中，我们可以使用 NumPy 库中的 exp 函数来实现它。
@@ -113,22 +117,23 @@ df = pd.DataFrame(iris.data,columns = iris.feature_names)
 df
 ```
 
-
-
 ```python
 df['label'] = iris.target
 df
 ```
+
 ```python
 df.columns = [
     'sepal length', 'sepal width', 'petal length', 'petal width', 'label'
 ]
 df.label.value_counts()
 ```
+
 0    50
 1    50
 2    50
 Name: label, dtype: int64
+
 ```python
 plt.scatter(df[:50]['sepal length'], df[:50]['sepal width'], label='0')
 plt.scatter(df[50:100]['sepal length'], df[50:100]['sepal width'], label='1')
@@ -136,18 +141,22 @@ plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
 ```
+
 <matplotlib.legend.Legend at 0x19ba5dd96f0>
 ![png](output_10_1.png)
 
 ```python
 data = np.array(df.iloc[:100,[0,1,-1]]) # 通过位置选择前100行的数据
 ```
+
 ```python
 X,y = data[:,:-1],data[:,-1]
 ```
+
 ```python
 y = np.array([1 if i == 1 else -1 for i in y])
 ```
+
 ### Perceptron
 
 ```python
@@ -186,19 +195,26 @@ class Model:
     def score(self):
         pass
 ```
+
 ```python
 perceptron = Model()
 perceptron.fit(X, y)
 ```
+
 'Perceptron Model!'
+
 ```python
 perceptron.w
 ```
+
 array([ 0.78, -1.  ])
+
 ```python
 perceptron.b
 ```
+
 -1.2100000000000009
+
 ```python
 x_points = np.linspace(4, 7, 10)
 y_ = -(perceptron.w[0] * x_points + perceptron.b) / perceptron.w[1]
@@ -212,7 +228,6 @@ plt.legend()
 
 ```
 
-
 <matplotlib.legend.Legend at 0x19ba83e1930>
 
 ### scikit-learn实例
@@ -221,27 +236,33 @@ plt.legend()
 import sklearn
 from sklearn.linear_model import Perceptron
 ```
+
 ```python
 sklearn.__version__
 ```
+
 '1.2.1'
+
 ```python
 clf =Perceptron(fit_intercept =True,max_iter=1000,shuffle=True)
 
 clf.fit(X,y)
 ```
 
-
 ```python
 # Weights assigned to the features.
 print(clf.coef_)
 ```
+
 [[ 23.2 -38.7]]
+
 ```python
 # 截距 Constants in decision function.
 print(clf.intercept_)
 ```
+
 [-5.]
+
 ```python
 # 画布大小
 plt.figure(figsize=(10,10))
@@ -266,6 +287,7 @@ plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
 ```
+
 <matplotlib.legend.Legend at 0x19ba8763f70>
 
 **注意 !**
@@ -304,6 +326,7 @@ plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
 ```
+
 <matplotlib.legend.Legend at 0x19ba8821390>
 
 ## mnist实例
@@ -316,7 +339,7 @@ mnist数据集由6万张训练数据和1万张测试数据组成，这里提供�
 
 链接: https://pan.baidu.com/s/1eI0G5a6j_v7k9XRho4v0PQ?pwd=hzxy
 
-提取码: hzxy 
+提取码: hzxy
 
 ```python
 # mnist_loader.py
@@ -359,6 +382,7 @@ def load_data():
 
     return train_loader, validation_loader, test_loader
 ```
+
 ```python
 
 ## network.py
@@ -476,6 +500,7 @@ net = Network([784, 30, 10])
 train_model(train_loader, 20, 0.001)
 test_model(test_loader)
 ```
+
 ### 练习题
 
 #### 问题1  假设把一个感知机网络中的所有权重和偏置乘以一个正的常数c ，请证明该网络的行为不会改变。
@@ -486,6 +511,7 @@ test_model(test_loader)
 
 $$
 g(x) = sign(w·x + b)
+
 $$
 
 其中，w和b是权重和偏置，x是输入，sign是符号函数，它将w·x + b的值映射到+1或-1两个类别之一。
@@ -493,6 +519,7 @@ $$
 
 $$
 g_c(x) = sign(c·w·x + c·b)
+
 $$
 
 显然，`c·w·x + c·b`仍然是一个线性函数，并且它的斜率和原来的斜率相同（因为c是常数），因此，它仍然是一个线性分类器。所以，该网络的行为不会改变。
@@ -526,4 +553,8 @@ $$
 
 $$
 E=\lambda \frac{1}{m} \sum_{k=1}^m E_k+(1-\lambda) \sum_{i} w_i^2
+
 $$
+
+## 参考资料
+1. https://blog.csdn.net/qq_32241189/article/details/80305566

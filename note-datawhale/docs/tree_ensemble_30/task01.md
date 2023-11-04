@@ -1,6 +1,6 @@
 # Part A: 决策树（上）
 ----
->（本学习笔记来源于[DataWhale-树模型与集成学习](https://datawhalechina.github.io/machine-learning-toy-cod)）  
+>（本学习笔记来源于[DataWhale-树模型与集成学习](https://datawhalechina.github.io/machine-learning-toy-code)）  
 ```md
 “迭代者为人,递归者为神.” ---(L. Peter Deutsch)
 ```
