@@ -2,7 +2,7 @@
 
 
 
-# 1、Go构建项目的时候，解决missing go.sum entry for module providing package ＜package_name＞
+## 1、Go构建项目的时候，解决missing go.sum entry for module providing package ＜package_name＞
 
 **解决方案一：**
 
@@ -21,7 +21,7 @@ missing go.sum entry for [module](https://so.csdn.net/so/search?q=module&spm=100
 下载新的依赖包
 
 更新go.sum
- 
+
 
 **解决方案二：**
 
@@ -52,3 +52,12 @@ cgo: exec gcc: exec: "gcc": executable file not found in %PATH%
 [解决cgo问题进入](https://doc.go-admin.dev/guide/other/faq.html#_5-cgo-exec-missing-cc-exec-missing-cc-file-does-not-exist)
 
 :::
+
+
+
+## 2、解决go build时error obtaining VCS status: exit status 128 Use -buildvcs=fals
+
+```
+git config --global --add safe.directory '*'
+```
+
