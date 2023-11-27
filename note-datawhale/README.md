@@ -3,15 +3,15 @@
 记录我参加的Datawhale组队学习，包括笔记和习题解答。
 
 ### 学习记录
-
+- 2023-11 [第52期LeetCode算法(3期)](docs/leetcode_notes/README.md)
+- 2023-11 [第52期深度强化学习](./docs/JoyRL_52/readme.md)
 - 2023-10 [第51期扩散模型从原理到实战](docs/diffusion_models_51/README.md)
 - 2023-10 [第51期吃瓜教程](docs/pumpkin_learning_51/README.md)
-- 2023-10 [第51期LeetCode算法(2期)](docs/leetcode_notes_50/README.md)
-- 2023-09 [第50期LeetCode算法(1期)](docs/leetcode_notes_50/readme.md)
+- 2023-10 [第51期LeetCode算法(2期)](docs/leetcode_notes/README.md)
+- 2023-09 [第50期LeetCode算法(1期)](docs/leetcode_notes/readme.md)
 - 2023-02 [第46期 大数据处理技术导论](docs/big-data)
 - 2022-11 [第43期 跨模态神经搜索实践](docs/vced_43/README.md)
 - 2022-08 [第40期 计算之魂](docs/The_soul_of_a_calculation_40/README.md)
-- 2022-07 [第39期 蘑菇书EasyRL](docs/easy-rl_39/README.md)
 - 2022-06 [第38期 GitModel数学建模](docs/gitModeling_37/README.md)
 - 2022-03 [第35期 深入浅出PyTorch](docs/thorough_pytorch/README.md)
 - 2021-12 [第32期 推荐系统实践(新闻推荐)](docs/fun-rec_32/README.md)
@@ -29,6 +29,7 @@
 【5】[第31期组队学习-水很深的深度学习](https://datawhalechina.github.io/unusual-deep-learning)  
 【6】[第32期组队学习-推荐系统](https://github.com/datawhalechina/fun-rec)  
 【7】[第46期组队学习-大数据处理技术导论](https://github.com/datawhalechina/juicy-bigdata)
+
 ### 社交网站
 
 [@ 蔡-Choi-恒者行远](https://github.com/caioo0)

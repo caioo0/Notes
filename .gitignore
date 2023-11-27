@@ -1,0 +1,4 @@
+# 此为注释 – 将被 Git 忽略
+*.a         # 忽略所有 .a 结尾的文件
+.obsidian/  # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+ 

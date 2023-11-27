@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "ce5eb80dc169c928",
+        "id": "f2b2556a4acaf723",
         "type": "tabs",
         "children": [
           {
-            "id": "d3ae1c2dfed3304f",
+            "id": "f18d67bd3cf24754",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Q-learning",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,11 +65,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 255.49999618530273
+    "width": 213.5
   },
   "right": {
     "id": "f417bfce6b8d492f",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,18 +125,21 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md"
+              }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -138,57 +148,57 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "d3ae1c2dfed3304f",
+  "active": "22855198be37bde7",
   "lastOpenFiles": [
-    "未命名.md",
-    "note-datawhale/docs/diffusion_models_51/part02.md",
-    "note-datawhale/docs/thorough_pytorch/images/chapter02-02.png",
-    "note-datawhale/docs/thorough_pytorch/images/list.png",
-    "note-datawhale/docs/thorough_pytorch/images/float16.jpg",
-    "note-datawhale/docs/thorough_pytorch/images/finetune.png",
-    "note-datawhale/docs/thorough_pytorch/images/chapter02-03.png",
-    "note-datawhale/docs/thorough_pytorch/images/chapter02-00.png",
-    "note-datawhale/docs/thorough_pytorch/images/chapter02-01.png",
-    "note-datawhale/docs/thorough_pytorch/images",
-    "note-datawhale/docs/thorough_pytorch/requirements.txt",
-    "note-datawhale/docs/thorough_pytorch/README.md",
-    "note-datawhale/docs/thorough_pytorch/chapter08.md",
-    "note-datawhale/docs/thorough_pytorch/chapter08.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter07.md",
-    "note-datawhale/docs/thorough_pytorch/chapter07.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter06.md",
-    "note-datawhale/docs/thorough_pytorch/chapter06.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter05.md",
-    "note-datawhale/docs/thorough_pytorch/chapter05.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter03.md",
-    "note-datawhale/docs/thorough_pytorch/chapter03.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter02.ipynb",
-    "note-datawhale/docs/thorough_pytorch/chapter02.md",
-    "note-datawhale/docs/thorough_pytorch/chapter01.md",
-    "note-datawhale/docs/thorough_pytorch",
-    "note-datawhale/docs/pytorch_rechub_learning_38/task05.md",
-    "note-datawhale/docs/pytorch_rechub_learning_38/task04.md",
-    "note-datawhale/docs/pytorch_rechub_learning_38/task03.md",
-    "note-datawhale/docs/pytorch_rechub_learning_38/task02.md",
-    "note-datawhale/docs/pytorch_rechub_learning_38/task01.md",
-    "note-datawhale/docs/gitModeling_37/figures/fig2.jpg",
-    "note-datawhale/docs/gitModeling_37/figures/fig2.1.jpg",
-    "note-datawhale/docs/gitModeling_37/figures/fig2.0.3.jpg",
-    "note-datawhale/docs/gitModeling_37/figures",
-    "note-datawhale/docs/gitModeling_37/task01.md",
-    "note-datawhale/docs/gitModeling_37/README.md",
-    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter15.md",
-    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter08.md",
-    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter03.md",
-    "note-datawhale/docs/Data_analysis_thinking_for_monkey/chapter02.md",
-    "note-datawhale/docs/big-data/experiments/ch10-期末大作业/ch10 期末大作业.md",
-    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark的Scala API的使用.md",
-    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark的Scala API介绍.md",
-    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark中Scala、Python和R的Shell操作.md",
-    "note-datawhale/docs/big-data/experiments/ch08-Spark/Spark SQL编程开发.md",
-    "未命名 3.canvas",
-    "未命名 2.canvas",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree/drawtree.py",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree/tree.py",
+    "note-books/fluent-python/example-code-2e/20-executors/primes/proc_pool.py",
+    "note-books/fluent-python/example-code-2e/20-executors/primes/primes.py",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/slow_server.py",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/requirements.txt",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/README.adoc",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_threadpool_futures.py",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_threadpool.py",
+    "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_asyncio.py",
+    "note-books/fluent-python/example-code-2e/19-concurrency/primes/README.md",
+    "note-books/fluent-python/example-code-2e/18-with-match/lispy/py3.9/README.md",
+    "note-books/fluent-python/example-code-2e/18-with-match/lispy/original/README.md",
+    "note-books/fluent-python/example-code-2e/18-with-match/lispy/README.md",
+    "note-books/fluent-python/example-code-2e/03-dict-set/README.md",
+    "note-books/fluent-python/example-code-2e/02-array-seq/lispy/py3.9/README.md",
+    "note-books/fluent-python/example-code-2e/01-data-model/README.md",
+    "note-datawhale/docs/leetcode_notes/basic_data_types.md",
+    "note-coding/docs/Raft 算法.md",
+    "note-coding/docs/Untitled.md",
+    "note-exec/docs/机器学习思考题目——04基础算法.md",
+    "note-exec/docs/机器学习思考题目——01基础知识篇.md",
+    "note-exec/docs/机器学习思考题目——06决策树.md",
+    "note-ai/docs/algorithm/1.数据结构基础.md",
+    "note-ai/docs/algorithm/2.动态规划.md",
+    "note-ai/docs/algorithm/3.希尔排序.md",
+    "note-ai/docs/algorithm/3.插入排序.md",
+    "note-datawhale/docs/big-data/chapter02.md",
+    "note-datawhale/docs/big-data/Datahub.md",
+    "note-datawhale/docs/leetcode_notes/Binary_Tree.md",
+    "note-datawhale/docs/leetcode_notes/depth-first-algorithm.md",
+    "note-datawhale/docs/JoyRL_52/img/image-20231122145516492.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122145325150.png",
+    "note-datawhale/docs/JoyRL_52/part04.md",
+    "note-datawhale/docs/JoyRL_52/Untitled.md",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122140051278.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122140027637.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122135538683.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122111008048.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122110000173.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122105651003.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122105531829.png",
+    "note-datawhale/docs/leetcode_notes/img/image-20231122105445950.png",
+    "note-datawhale/docs/easy-rl_39/task04.md",
+    "note-datawhale/docs/vced_43/task02.md",
     "未命名 1.canvas",
-    "未命名.canvas"
+    "未命名.canvas",
+    "未命名 3.canvas",
+    "未命名 2.canvas"
   ]
 }

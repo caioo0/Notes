@@ -1,3 +1,7 @@
 {
-  "promptDelete": false
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./img/",
+  "vimMode": false,
+  "showUnsupportedFiles": true
 }

@@ -24,8 +24,6 @@
 - 下采样 : 使用Pooling来减少每层的样本数，进一步减少参数数量，同时还可以提升模型的鲁棒性。
 
 
-
-
 ## 1. 卷积（Convolution）
 
 
@@ -35,12 +33,12 @@
 
 **连续卷积：**  
 
-$ (f*g)(n)= \int^{\infty}_{-\infty}f(\tau)g(n-\tau)d\tau ， n=\tau + (n-\tau)$
+$(f*g)(n)= \int^{\infty}_{-\infty}f(\tau)g(n-\tau)d\tau ， n=\tau + (n-\tau)$
 
 
 **离散卷积：**  
 
-$ (f*g)(n)= \sum^{\infty}_{\tau=-\infty}f(\tau)g(n-\tau) ， n=\tau + (n-\tau)$
+$(f*g)(n)= \sum^{\infty}_{\tau=-\infty}f(\tau)g(n-\tau) ， n=\tau + (n-\tau)$
 
 
 **卷积应用场景**

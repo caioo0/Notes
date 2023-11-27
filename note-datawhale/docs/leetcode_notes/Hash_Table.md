@@ -573,7 +573,7 @@ class Solution:
         return res
 ```
 
-![image-20231115154218722](D:\www\learning\caioo0.github.io\note-datawhale\docs\leetcode_notes\img\image-20231115154218722.png)
+![image-20231115154218722](.\img\image-20231115154218722.png)
 
 ### 5. [0350. 两个数组的交集 II](https://leetcode.cn/problems/intersection-of-two-arrays-ii/)
 
@@ -634,3 +634,5 @@ class MyHashMap:
 2、https://tianchi.aliyun.com/course/932/14648
 
 3、https://www.hello-algo.com/chapter_hashing/hash_collision/
+
+4、https://mp.weixin.qq.com/s/2B_nkrpBceTlIM8-8vikXQ
