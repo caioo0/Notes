@@ -239,6 +239,52 @@ class Solution:
 
 ### [5.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.02/03.02.07-Exercises?id=_2-0459-重复的子字符串)[0459. 重复的子字符串](https://leetcode.cn/problems/repeated-substring-pattern/)
 
+解：
+
+```python
+class Solution:
+
+    def repeatedSubstringPattern(self, s: str) -> bool:
+
+        if len(s) == 0:
+            return False
+
+        next = self.next(s)
+        n = len(s)
+        # 最长公共前后缀
+        maxLen = next[n - 1] + 1
+
+        if maxLen == 0 or s[n - 1] != s[n - 1 - maxLen]:
+            return False
+
+        return n % (n - maxLen) == 0
+
+            
+    def next(self, s: str):
+        # 后缀匹配指向
+        i = 0
+        # 前缀匹配指向
+        j = -1
+        # 初始化 next 数组
+        next = [-1] * len(s)
+
+        # 此处 next[0] = -1，所以只需要求剩下的 len(T)-1 个即可
+        while i < len(s) - 1:
+            # j == -1 就是找无可找 or 匹配成功，相同前缀长度增加1
+            if j == -1 or s[i] == s[j]:
+                i += 1
+                j += 1
+                next[i] = j
+            # 匹配不成功则在前面的子串中继续搜索，直至找不到（即 j== -1 的情况）
+            else:
+                j = next[j]
+
+        return next
+
+```
+
+
+
 ### [6.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.02/03.02.07-Exercises?id=_3-0686-重复叠加字符串匹配)[0686. 重复叠加字符串匹配](https://leetcode.cn/problems/repeated-string-match/)
 
 ### [7.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.02/03.02.11-Exercises?id=_1-0208-实现-trie-前缀树)[0208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)

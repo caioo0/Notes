@@ -194,6 +194,24 @@ class UnionFind(object):
         return self.find(p) == self.find(q)     # 即判断两个结点是否是属于同一个祖先
 ```
 
+## 练习题
+
+### [1.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.02-Exercises?id=_1-0990-等式方程的可满足性)[0990. 等式方程的可满足性](https://leetcode.cn/problems/satisfiability-of-equality-equations/)
+
+### [2.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.02-Exercises?id=_2-1202-交换字符串中的元素)[1202. 交换字符串中的元素](https://leetcode.cn/problems/smallest-string-with-swaps/)
+
+### [3.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.02-Exercises?id=_3-0947-移除最多的同行或同列石头)[0947. 移除最多的同行或同列石头](https://leetcode.cn/problems/most-stones-removed-with-same-row-or-column/)
+
+### [4.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.03-Exercises?id=_1-0547-省份数量)[0547. 省份数量](https://leetcode.cn/problems/number-of-provinces/)
+
+### [5.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.03-Exercises?id=_2-0684-冗余连接)[0684. 冗余连接](https://leetcode.cn/problems/redundant-connection/)
+
+### [6.](https://datawhalechina.github.io/leetcode-notes/#/ch03/03.05/03.05.03-Exercises?id=_3-0765-情侣牵手)[0765. 情侣牵手](https://leetcode.cn/problems/couples-holding-hands/)
+
+
+
+> 更多见：https://datawhalechina.github.io/leetcode-notes/#/ch03/03.01/03.01.04-Hash-Table-List
+
 ## 参考
 
 - 【博文】[数据结构--并查集的原理及实现](https://www.cnblogs.com/hapjin/p/5478352.html)
