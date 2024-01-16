@@ -2,6 +2,23 @@
 
 > 笔记来源：https://zhuanlan.zhihu.com/p/120341980
 
+
+
+Docker 基本操作：
+
+```
+docker pull {image:tag}  #拉取镜像
+docker images  #查看镜像
+docker ps -a  #查看容器
+docker rm -f {CONTAINER ID}  #删除容器
+docker rmi {IMAGE ID}  #删除镜像
+docker run -dit {IMAGE ID}  #镜像创建容器
+docker exec -it {CONTAINER ID} /bin/bash  #进入容器
+Ctrl+P+Q  #退出容器
+```
+
+
+
 ### docker原理
 
 容器技术先于docker而存在，docker提供了容器技术的封装，让使用者可以很方便的操作容器，而不用关心其底层实现原理。

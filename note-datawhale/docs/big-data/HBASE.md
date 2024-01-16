@@ -9,7 +9,6 @@ Life is what you make it.
 生活需要自己塑造。
 
 ```
-
 ## 3.1 NoSQL 简介
 
 NoSQL(NoSQL = Not Only SQL )，意即"不仅仅是SQL"。

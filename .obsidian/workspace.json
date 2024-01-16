@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
+                "file": "note-ai/docs/calculus/单变量微积分-06-线性近似和二阶近似.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Q-learning",
+                "query": "file:微积分",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5
+    "width": 349.5
   },
   "right": {
     "id": "f417bfce6b8d492f",
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
+                "file": "note-ai/docs/calculus/单变量微积分-06-线性近似和二阶近似.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md",
+                "file": "note-ai/docs/calculus/单变量微积分-06-线性近似和二阶近似.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note-exec/docs/机器学习思考题目——01基础知识篇.md"
+                "file": "note-ai/docs/calculus/单变量微积分-06-线性近似和二阶近似.md"
               }
             }
           }
@@ -148,8 +148,45 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "22855198be37bde7",
+  "active": "f18d67bd3cf24754",
   "lastOpenFiles": [
+    "note-datawhale/docs/big-data/HBASE.md",
+    "note-ai/docs/calculus/img/1203675-20171129174333347-1994125605.png",
+    "note-ai/docs/calculus/img/1203675-20180519142514616-222509202.png",
+    "note-ai/docs/calculus/img/1203675-20180519142448854-606919752.png",
+    "note-ai/docs/calculus/img/1203675-20170912105850610-254910805.png",
+    "note-ai/docs/calculus/img/1203675-20170912105825735-1428429080.png",
+    "note-ai/docs/calculus/img/1203675-20180519142402954-1097529653.png",
+    "note-ai/docs/calculus/img/1203675-20180519142309961-376855761.png",
+    "note-ai/docs/calculus/img/1203675-20180519142249429-231859593.png",
+    "note-ai/docs/calculus/img/1203675-20180519142214408-1238915120.png",
+    "note-ai/docs/calculus/img/1203675-20180519142107371-1239972289.png",
+    "note-ai/docs/calculus/单变量微积分-31-幂级数和泰勒级数.md",
+    "note-ai/docs/calculus/单变量微积分-30-无穷级数和收敛判定.md",
+    "note-ai/docs/calculus/单变量微积分-29-反常积分和瑕积分 - 副本 (2).md",
+    "note-ai/docs/calculus/单变量微积分-29-反常积分和瑕积分 - 副本.md",
+    "note-ai/docs/calculus/单变量微积分-29-反常积分和瑕积分.md",
+    "note-ai/docs/calculus/单变量微积分-28-不定式和洛必达法则.md",
+    "note-ai/docs/calculus/单变量微积分-27-极坐标下的面积.md",
+    "note-ai/docs/calculus/单变量微积分-26-参数方程.md",
+    "note-ai/docs/calculus/单变量微积分-25-弧长和曲面面积.md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式 - 副本 (5).md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式 - 副本 (4).md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式 - 副本 (3).md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式 - 副本 (2).md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式 - 副本.md",
+    "note-ai/docs/calculus/单变量微积分-23-部分分式.md",
+    "note-ai/docs/calculus/单变量微积分-22-三角替换3（反向替换和配方).md",
+    "note-ai/docs/calculus/单变量微积分-21-三角替换2（tan和sec）.md",
+    "note-ai/docs/calculus/单变量微积分-20-三角替换1（sin和cos）.md",
+    "note-ai/docs/calculus/单变量微积分-19-数值积分.md",
+    "note-ai/docs/calculus/单变量微积分-18-定积分的应用3（均值、权重、概率）.md",
+    "note-ai/docs/calculus/单变量微积分-17-定积分的应用2（体积）.md",
+    "note-ai/docs/calculus/单变量微积分-16-定积分的应用1（对数与面积）.md",
+    "note-ai/docs/calculus/单变量微积分-15-微积分第二基本定理.md",
+    "note-ai/docs/calculus/单变量微积分-14-微积分第一基本定理.md",
+    "note-ai/docs/calculus/单变量微积分-13-定积分.md",
+    "note-ai/docs/calculus/单变量微积分-07-曲线构图md",
     "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree/drawtree.py",
     "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree/tree.py",
     "note-books/fluent-python/example-code-2e/20-executors/primes/proc_pool.py",
@@ -159,43 +196,6 @@
     "note-books/fluent-python/example-code-2e/20-executors/getflags/README.adoc",
     "note-books/fluent-python/example-code-2e/20-executors/getflags/httpx-error-tree",
     "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_threadpool_futures.py",
-    "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_threadpool.py",
-    "note-books/fluent-python/example-code-2e/20-executors/getflags/flags_asyncio.py",
-    "note-books/fluent-python/example-code-2e/19-concurrency/primes/README.md",
-    "note-books/fluent-python/example-code-2e/18-with-match/lispy/py3.9/README.md",
-    "note-books/fluent-python/example-code-2e/18-with-match/lispy/original/README.md",
-    "note-books/fluent-python/example-code-2e/18-with-match/lispy/README.md",
-    "note-books/fluent-python/example-code-2e/03-dict-set/README.md",
-    "note-books/fluent-python/example-code-2e/02-array-seq/lispy/py3.9/README.md",
-    "note-books/fluent-python/example-code-2e/01-data-model/README.md",
-    "note-datawhale/docs/leetcode_notes/basic_data_types.md",
-    "note-coding/docs/Raft 算法.md",
-    "note-coding/docs/Untitled.md",
-    "note-exec/docs/机器学习思考题目——04基础算法.md",
-    "note-exec/docs/机器学习思考题目——01基础知识篇.md",
-    "note-exec/docs/机器学习思考题目——06决策树.md",
-    "note-ai/docs/algorithm/1.数据结构基础.md",
-    "note-ai/docs/algorithm/2.动态规划.md",
-    "note-ai/docs/algorithm/3.希尔排序.md",
-    "note-ai/docs/algorithm/3.插入排序.md",
-    "note-datawhale/docs/big-data/chapter02.md",
-    "note-datawhale/docs/big-data/Datahub.md",
-    "note-datawhale/docs/leetcode_notes/Binary_Tree.md",
-    "note-datawhale/docs/leetcode_notes/depth-first-algorithm.md",
-    "note-datawhale/docs/JoyRL_52/img/image-20231122145516492.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122145325150.png",
-    "note-datawhale/docs/JoyRL_52/part04.md",
-    "note-datawhale/docs/JoyRL_52/Untitled.md",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122140051278.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122140027637.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122135538683.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122111008048.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122110000173.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122105651003.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122105531829.png",
-    "note-datawhale/docs/leetcode_notes/img/image-20231122105445950.png",
-    "note-datawhale/docs/easy-rl_39/task04.md",
-    "note-datawhale/docs/vced_43/task02.md",
     "未命名 1.canvas",
     "未命名.canvas",
     "未命名 3.canvas",

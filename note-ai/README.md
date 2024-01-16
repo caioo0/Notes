@@ -14,3 +14,4 @@
 1. https://geek-docs.com/linear-algebra/linearalgebra-tutorials/linear-algebra-intro.html
 
 2. [MIT数学笔记](https://www.zhihu.com/column/c_1029672383375949824)
+3. [实验四、数据挖掘之KNN,Naive Bayes](https://www.cnblogs.com/wonker/p/11062717.html)

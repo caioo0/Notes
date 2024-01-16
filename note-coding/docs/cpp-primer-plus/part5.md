@@ -235,7 +235,7 @@ void StrBlob::check(size_type i, const string& msg)
 }         
 ```
 
-##    **4.7 问题**
+##    5.7 问题
 
 1. 使用范围 for 语句注意什么？
 2. try 语句块的使用方式
@@ -246,5 +246,3 @@ void StrBlob::check(size_type i, const string& msg)
 1. 如果要写元素的话必须要使用引用方式 auto&，但是**建议不论何时都使用引用，且当不需要写时使用常量引用。**
 2. throw 放在 try 块内，catch 用来捕获异常，可以使用省略号来捕获所有的异常类型。如果抛出了异常而未使用 catch 捕获，系统会调用 terminate 终止程序的运行。
 3. 如 exceptIon, bad_alloc, bad_cast，runtime_error, logic_error 等。定义在头文件 exception, new, type_info, stdexcept 等头文件中。
-
-**第5章 语句**

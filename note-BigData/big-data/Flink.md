@@ -86,85 +86,43 @@ Spark Streaming 微批次：
 
 DataSet API 为有界数据集提供了额外的支持，例如循环与迭代。这些API处理的数据类型以类（classes）的形式由各自的编程语言所表示。
 
-## 2. Flink 核心架构
 
-Flink 采用分层的架构设计，从而保证各层在功能和职责上的清晰。如下图所示，由上而下分别是 API & Libraries 层、Runtime 核心层以及物理部署层：
 
-![](https://image.ldbmcs.com/2020-10-25-UAmaYT.jpg)
+## flink性能对比
 
-### 2.1 API & Libraries 层
+Flink是一行一行处理，而sparkstream是基于数据片集合（RDD）进行小批量处理，所以spark在流处理方面，不可避免增加一些延时。flink的流式计算跟storm性能差不多，支持毫秒级计算，而spark则只支持秒级计算。
 
-这一层主要提供了编程 API 和 顶层类库：
 
-* 编程 API : 用于进行流处理的 DataStream API 和用于进行批处理的 DataSet API；
-* 顶层类库：包括用于复杂事件处理的 CEP 库；用于结构化数据查询的 SQL & Table 库，以及基于批处理的机器学习库 FlinkML 和 图形处理库 Gelly。
 
-### 2.2 Runtime 核心层
+Spark vs flink vs Storm:
 
-这一层是 Flink 分布式计算框架的核心实现层，包括作业转换，任务调度，资源分配，任务执行等功能，基于这一层的实现，可以在流式引擎下同时运行流处理程序和批处理程序。
 
-### 2.3 物理部署层
 
-Flink 的物理部署层，用于支持在不同平台上部署运行 Flink 应用。
+Spark:
 
-## 3. Flink 分层 API
+以批处理为核心，用微批去模拟流式处理
 
-在上面介绍的 API & Libraries 这一层，Flink 又进行了更为具体的划分。具体如下：
+支持sql处理，流处理，批处理
 
-![](https://image.ldbmcs.com/2020-10-25-A65dz4.jpg)
+对于流处理：因为是微批处理，所以实时性弱，吞吐量高，延迟度高
 
-按照如上的层次结构，API 的一致性由下至上依次递增，接口的表现能力由下至上依次递减，各层的核心功能如下：
 
-### 3.1 SQL & Table API
 
-SQL & Table API 同时适用于批处理和流处理，这意味着你可以对有界数据流和无界数据流以相同的语义进行查询，并产生相同的结果。除了基本查询外， 它还支持自定义的标量函数，聚合函数以及表值函数，可以满足多样化的查询需求。
+Flink:
 
-### 3.2 DataStream & DataSet API
+以流式处理为核心，用流处理去模拟批处理
 
-DataStream & DataSet API 是 Flink 数据处理的核心 API，支持使用 Java 语言或 Scala 语言进行调用，提供了数据读取，数据转换和数据输出等一系列常用操作的封装。
+支持流处理，sql处理，批处理
 
-### 3.3 Stateful Stream Processing
+对于流处理：实时性强，吞吐量高，延迟度低。
 
-Stateful Stream Processing 是最低级别的抽象，它通过 Process Function 函数内嵌到 DataStream API 中。 Process Function 是 Flink 提供的最底层 API，具有最大的灵活性，允许开发者对于时间和状态进行细粒度的控制。
 
-## 4. Flink 集群架构
 
-## 4.1  核心组件
+Storm:
 
-按照上面的介绍，Flink 核心架构的第二层是 Runtime 层， 该层采用标准的 Master - Slave 结构， 其中，Master 部分又包含了三个核心组件：Dispatcher（分发器）、ResourceManager（资源管理器） 和 JobManager（作业管理器），而 Slave 则主要是 TaskManager（任务管理器） 进程。它们的功能分别如下：
+一条一条处理数据，实时性强，吞吐量低，延迟度低。
 
-* **JobManagers** (也称为  *masters* ) ：
-  * 控制一个应用程序执行的主进程，也就是说，每个应用程序都会被一个不同的JobManager所控制执行。JobManagers 接收由 Dispatcher 传递过来的执行程序，该执行程序包含了作业图 (JobGraph)，逻辑数据流图 (logical dataflow graph) 及其所有的 classes 文件以及第三方类库 (libraries) 等等 。紧接着 JobManagers 会将 JobGraph 转换为一个物理层面的数据流图，这个图被叫做执行图 (ExecutionGraph)，包含了所有可以并发执行的任务。然后JobManager向 ResourceManager 申请资源来执行该任务，一旦申请到资源，就将执行图分发给对应的 TaskManagers 。因此每个作业 (Job) 至少有一个 JobManager；高可用部署下可以有多个 JobManagers，其中一个作为  *leader* ，其余的则处于 *standby* 状态。
-* **TaskManagers** (也称为  *workers* ) : Flink的工作进程，通常Flink中会有多个TaskManager运行，TaskManagers 负责实际的子任务 (subtasks) 的执行，每个 TaskManagers 都拥有一定数量的插槽(slots)。Slot 是一组固定大小的资源的合集 (如计算能力，存储空间)。TaskManagers 启动后，会将其所拥有的 slots 注册到 ResourceManager 上，由 ResourceManager 进行统一管理。
-* **Dispatcher** ：可以跨作业运行，它为应用提交提供了REST接口。负责接收客户端提交的执行程序，并传递给 JobManager 。由于是REST接口，所以Dispatcher可以作为集群的一个HTTP接入点，这样就能够不受防火墙阻拦。除此之外，它还提供了一个 WEB UI 界面，用于展示和监控作业的执行情况。Dispatcher在架构中可能并不是必需的，这取决于应用提交运行的方式。
-* **ResourceManager** ：负责管理任务管理器(TaskManager)的插槽（slots） 并协调集群资源。ResourceManager 接收来自 JobManager 的资源请求，并将存在空闲 slots 的 TaskManagers 分配给 JobManager 执行任务。Flink 基于不同的部署平台，如 YARN , Mesos，K8s 等提供了不同的资源管理器，当 TaskManagers 没有足够的 slots 来执行任务时，它会向第三方平台发起会话来请求额外的资源。另外，ResourceManager还负责终止空闲的TaskManager，释放计算资源。
-
-## 任务提交流程
-
-我们来看看当一个应用提交执行时，Flink的各个组件是如何交互协作的：
-
-![image.png](assets/1651313732747-image.png)
-
-上图是从一个较为高层级的视角，来看应用中各组件的交互协作。如果部署的集群环境不同（例如YARN,Mesos,Kubernetes,standalone等），其中一些步骤可以被省略，或是有些组件会运行在同一个JVM进程中。
-
-具体地，如果我们将Flink集群部署到YARN上，那么就会有如下的提交流程：
-
-![image.png](assets/1651314054390-image.png)
-
-Flink任务提交后，client向HDFS上传Flink的Jar包和配置，之后向Yarn ResourceManager提交任务，ResourceManager分配Container资源并通知对应的NodeManager启动ApplicationMaster，
-
-## 5. Flink 的优点
-
-最后基于上面的介绍，来总结一下 Flink 的优点：
-
-* Flink 是基于事件驱动 (Event-driven) 的应用，能够同时支持流处理和批处理；
-* 基于内存的计算，能够保证高吞吐和低延迟，具有优越的性能表现；
-* 支持精确一次 (Exactly-once) 语意，能够完美地保证一致性和正确性；
-* 分层 API ，能够满足各个层次的开发需求；
-* 支持高可用配置，支持保存点机制，能够提供安全性和稳定性上的保证；
-* 多样化的部署方式，支持本地，远端，云端等多种部署方案；
-* 具有横向扩展架构，能够按照用户的需求进行动态扩容；
-* 活跃度极高的社区和完善的生态圈的支持。
+注：目前Flink母公司已被阿里巴巴收购，阿里巴巴基于Flink之上做了一些调整和补充，开源了一款Blink。
 
 ## 参考资料
 

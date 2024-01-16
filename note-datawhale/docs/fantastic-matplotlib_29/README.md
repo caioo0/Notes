@@ -14,6 +14,21 @@
 - [莫烦PYTHON](https://morvanzhou.github.io/tutorials/data-manipulation/plt/1-1-why/)
 - [Iris-数据可视化](https://www.jianshu.com/p/3bb2cc453df1)
 
+### 使用简介
+
+```python
+import matplotlib.pyplot as plt
+
+# 附加设置
+plt.rc("font",size=14)
+plt.rc("axes",labelsize=14,titlesize=14)
+plt.rc("legend",fontsize=14)
+plt.rc("xtick",labelsize=10)
+plt.rc("ytick",labelsize=10)
+```
+
+
+
 
 ### 主要贡献者
 [@ Choi-恒者行远](https://github.com/caioo0)  
