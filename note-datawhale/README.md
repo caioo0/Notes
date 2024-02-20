@@ -3,12 +3,15 @@
 记录我参加的Datawhale组队学习，包括笔记和习题解答。
 
 ### 学习记录
-- 2023-11 [第52期LeetCode算法(3期)](docs/leetcode_notes/README.md)
+- 2024-01 [第54期LeetCode算法(5)](docs/leetcode_notes/README.md)
+- 2024-01 [第54期量化入门教程](docs/whale-quant_54/readme.md)
+- 2023-12 [第53期LeetCode算法(4缺)](docs/leetcode_notes/README.md)
+- 2023-11 [第52期LeetCode算法(3)](docs/leetcode_notes/README.md)
 - 2023-11 [第52期深度强化学习](./docs/JoyRL_52/readme.md)
 - 2023-10 [第51期扩散模型从原理到实战](docs/diffusion_models_51/README.md)
 - 2023-10 [第51期吃瓜教程](docs/pumpkin_learning_51/README.md)
 - 2023-10 [第51期LeetCode算法(2期)](docs/leetcode_notes/README.md)
-- 2023-09 [第50期LeetCode算法(1期)](docs/leetcode_notes/readme.md)
+- 2023-09 [第50期LeetCode算法(1期)](docs/leetcode_notes/README.md)
 - 2023-02 [第46期 大数据处理技术导论](docs/big-data)
 - 2022-11 [第43期 跨模态神经搜索实践](docs/vced_43/README.md)
 - 2022-08 [第40期 计算之魂](docs/The_soul_of_a_calculation_40/README.md)
