@@ -1,8 +1,13 @@
 # 计算器理论
 ---
 
-
 ### 1. 深入理解计算机系统
+
+```java
+相关资料：https://github.com/solmp/CSAPP
+```
+
+
 
 ### 课后实验部署
 
@@ -47,3 +52,4 @@ evince datalab.pdf  &  //打开pdf
 - https://blog.csdn.net/tqdada/article/details/53132201
 - https://blog.csdn.net/tenlee/article/details/48712177
 - https://blog.csdn.net/qq_39654127/article/details/88698911
+- [编译原理三大经典书籍（龙书 虎书 鲸书）](https://blog.csdn.net/imxiangzi/article/details/7558660)

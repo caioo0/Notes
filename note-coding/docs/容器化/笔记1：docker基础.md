@@ -4,6 +4,16 @@
 
 
 
+>   "registry-mirrors": [
+>     "https://docker.m.daocloud.io",
+>     "https://dockerproxy.com",
+>     "https://docker.mirrors.ustc.edu.cn",
+>     "https://docker.nju.edu.cn",
+>     "https://ccr.ccs.tencentyun.com"
+>   ],
+
+
+
 Docker 基本操作：
 
 ```

@@ -1,7 +1,7 @@
+/** EasyWeb开发文档 date:2019-08-29 License By http://easyweb.vip */
 
-.icon-arrow, .icon-link {
-    width: 1rem;
-    height: 1rem
+* {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 body, .sidebar {
@@ -90,6 +90,10 @@ body, .sidebar {
 
 
 
+/** 布局样式 */
+.content {
+    padding-top: 0;
+}
 
 /** //布局样式end */
 

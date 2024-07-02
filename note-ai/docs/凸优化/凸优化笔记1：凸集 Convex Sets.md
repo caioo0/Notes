@@ -4,7 +4,7 @@
 
 区分两种集合的定义（下面的描述并不是严格的数学语言，领会意思就行了）：
 
-**仿射集（Affine set）: ** $x =  \theta  x_1 + (1 - \theta ) x_2 , \theta \in R$
+**仿射集（Affine set）: ** $ x =  \theta  x_1 + (1 - \theta ) x_2 , \theta \in R $
 
 **凸集（Convex set）：**$x =  \theta  x_1 + (1 - \theta ) x_2 , \theta \in [0,1]$
 
