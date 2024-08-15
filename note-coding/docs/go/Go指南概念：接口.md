@@ -1,10 +1,124 @@
 # Go指南：接口
 
+
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Animal interface {
+	Run()
+}
+
+type Dog struct {
+}
+
+func (d *Dog) Run() {
+	fmt.Println("狗在跑")
+}
+
+func main() {
+	var an Animal
+	an = &Dog{}
+	an.Run()
+}
+
+```
+
+
+
 ### 接口
 
 **接口类型** 是由一组方法签名定义的集合。
 
-接口类型的变量可以保存任何实现了这些方法的值。
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Person interface {
+	Say(string) string
+	Walk(int)
+}
+
+func main() {
+	var person Person
+	fmt.Println(person)
+}
+// go run test30.go
+// <nil> 
+```
+
+再来一个：
+
+```go
+package main
+
+import "fmt"
+
+type IDuck interface {
+	Quack()
+	Walk()
+}
+
+func DuckDance(duck IDuck) {
+	for i := 0; i < 3; i++ {
+		duck.Quack()
+		duck.Walk()
+	}
+}
+
+type Bird struct{}
+
+func (b Bird) Quack() {
+	fmt.Println(" I am Quack!")
+}
+
+func (b Bird) Walk() {
+	fmt.Println("I am Walk!")
+}
+
+type YDuck interface {
+	Say() string
+	Swim() string
+}
+
+type Duck struct{}
+
+func (b Duck) Say() string {
+	return "I am Say!"
+}
+
+func (b Duck) Swim() string {
+	return "I am swim!"
+}
+
+type Animal struct {
+	YDuck YDuck
+}
+
+func (c *Animal) Build() {
+
+	fmt.Println(c.YDuck.Say())
+	fmt.Println(c.YDuck.Swim())
+	fmt.Println("animals完成")
+}
+
+func main() {
+	// 直接调用
+	DuckDance(Bird{})
+
+	// 使用YDuck
+	a := Animal{Duck{}}
+	a.Build()
+}
+
+```
 
 **注意:** 示例代码的 22 行存在一个错误。由于 `Abs` 方法只为 `*Vertex` （指针类型）定义，因此 `Vertex`（值类型）并未实现 `Abser`。
 

@@ -1,12 +1,101 @@
-# GO学习：并发编程
+# GO学习：并发编程(goroutine)
 
 > https://juejin.cn/post/7225230646246981692
 
-## 什么是 Golang 通道？
+
+
+## sync 
+
+Go 语言提供了sync 和 channel 两种方式支持协程（goroutine）的并发。
+
+例如，我们希望并发下载N个资源，多个并发协程之间不需要通信，那么就可以使用sync.WaitGroup,等待所有并发协程执行结束。
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+var wg sync.WaitGroup 
+
+func download(url string) {
+	fmt.Println("start to download",url)
+	time.Sleep(time.Second)  //模拟耗时操作
+	wg.Done() 
+}
+
+
+func main() {
+	for i :=0; i < 3; i++ {
+		wg.Add(1) // 添加计数 ,wg.Done() 减去一个计数 
+		go download("a.com/" + string(i+'0'))  //启用新的协程并发执行download函数。
+	}
+
+	wg.Wait()  // 等待所有的协程执行结束
+	fmt.Println("Done!")
+}
+```
+
+
+
+## ## 通道（channel ）
+
+先上实例：
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+var ch = make(chan string, 10)
+
+func download(url string) {
+	fmt.Println("Downloading", url)
+	time.Sleep(2 * time.Second)
+	ch <- url //将 url 发送到通道中
+}
+
+func main() {
+	for i := 0; i < 5; i++ {
+		go download("https://www.baidu.com" + string(i+'0'))
+
+	}
+	for i := 0; i < 5; i++ {
+		msg := <-ch //从通道中接收数据
+		fmt.Println("Downloaded", msg)
+	}
+	fmt.Println("All downloads completed")
+
+}
+
+```
+
+使用channel通道，可以在协程之间传递消息。阻塞等待并发协程返回消息。
+
+```
+￥ go run test21.go
+Downloading https://www.baidu.com4
+Downloading https://www.baidu.com1
+Downloading https://www.baidu.com3
+Downloading https://www.baidu.com0
+Downloading https://www.baidu.com2
+Downloaded https://www.baidu.com2
+Downloaded https://www.baidu.com4
+Downloaded https://www.baidu.com0
+Downloaded https://www.baidu.com3
+Downloaded https://www.baidu.com1
+All downloads completed
+```
 
 通道：一种高效、安全、灵活的并发机制，用于在并发环境下实现数据的同步和传递。
 
-通道提供了一各线程安全的队列，只允许一个goroutine进行读操作、另一个goroutine进行写操作。通过这种方式，通道可以有效地解决并发编程中的竞态条件、锁问题等常见问题。
+通道提供了一个线程安全的队列，只允许一个goroutine进行读操作、另一个goroutine进行写操作。通过这种方式，通道可以有效地解决并发编程中的竞态条件、锁问题等常见问题。
 
 >  竞态条件：是指多个进程（线程、协程）读写某些共享数据，而最后的结果取决于进程运行的准确时序。也就是当多个进程（线程、协程）竞争同一资源时，如果对资源的访问顺序敏感，就称存在竞态条件。
 
@@ -14,9 +103,19 @@
 
 在通道创建时，可以指定通道的容量，即通道缓冲区的大小，如果不指定则默认为无缓冲通道。
 
-### Golang 通道的基本语言
+### Golang 通道
 
-Golang通道的基本语法非常简单，使用`make`函数来创建一个通道：
+我们使用`make`来创建`channel`
+
+```go
+ch1 := make(chan T) // 无缓冲
+
+ch2 := make(chan T, 2) // 带缓冲
+```
+
+`T`为数据类型。
+
+实例：
 
 ```go
 ch :=make(chan int)  //无缓冲通道
@@ -49,6 +148,8 @@ x  := <- ch     // 从通道中
 ```
 
 创建了一个名为ch的通道，通道的数据类型为 int，通道缓冲区的大小为 0。
+
+
 
 ## Golang 通道的超时和计时器
 
